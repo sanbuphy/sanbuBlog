@@ -49,10 +49,10 @@ Waline：需要搭建后端服务与数据库服务，提供评论与浏览量�
 
 ```javascript title='docusaurus.config.js'
 giscus: {
-  repo: 'kuizuo/blog',
-  repoId: 'MDEwOlJlcG9zaXRvcnkzOTc2MjU2MTI=',
+  repo: "sanbuphy/sanbuBlog",
+  repoId: 'R_kgDOKAWX2g',
   category: 'General',
-  categoryId: 'DIC_kwDOF7NJDM4CPK95',
+  categoryId: 'DIC_kwDOKAWX2s4CYLy0',
   theme: 'light',
   darkTheme: 'dark',
 }
