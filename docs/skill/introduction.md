@@ -1,27 +1,7 @@
 ---
 id: introduction
 slug: /skill
-title: 技术笔记简介
-keywords:
-  - 前端
-  - 后端
-  - Vue
-  - React
-  - JavaScript
-  - 逆向
-  - HTTP
+title: 笔记记录简介
 ---
 
-有关自己的技术笔记，用于快速查阅和复习。
-
-- Web
-- 前端
-- 后端
-- Vue
-- React
-- JavaScript（TypeScript）
-- 安卓
-- 逆向
-- HTTP
-
-**做到即查即用，能复制粘贴解决的，就绝不百度。**
+pass

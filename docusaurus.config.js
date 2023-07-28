@@ -64,7 +64,7 @@ const config = {
         {
           label: 'AwesomeWeb',
           position: 'left',
-          to: 'project',
+          to: 'docs/other/awesomeweb',
         },
         {
           label: 'blog',
