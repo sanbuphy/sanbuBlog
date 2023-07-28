@@ -130,6 +130,10 @@ html[data-theme='dark'] .bloghome__intro > p {
   &:hover {
     text-decoration: none;
   }
+  
+  & + & {
+    margin-left: 20px; /* 设置按钮之间的间距 */
+  }
 }
 
 html[data-theme='dark'] {

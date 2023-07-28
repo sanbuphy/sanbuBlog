@@ -20,9 +20,8 @@ function FriendHeader() {
         <CodeBlock language="jsx">
           {`{
   // 本站信息
-  title: '愧怍的小站',
-  description: '道阻且长，行则将至',
-  avatar: 'https://kuizuo.cn/img/logo.png'
+  title: '散步的小屋',
+  description: '不懂就问，不会就学',
 }`}
         </CodeBlock>
       </div>
