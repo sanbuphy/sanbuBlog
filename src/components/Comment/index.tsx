@@ -22,7 +22,7 @@ const defaultConfig: Partial<GiscusProps> & { darkTheme: string } = {
 
 export default function Comment(): JSX.Element {
   const themeConfig = useThemeConfig() as CustomThemeConfig
-  const { i18n } = useDocusaurusContext()
+  // const { i18n } = useDocusaurusContext()
 
   // merge default config
   const giscus = { ...defaultConfig, ...themeConfig.giscus }
@@ -35,7 +35,7 @@ export default function Comment(): JSX.Element {
 
   giscus.theme =
     useColorMode().colorMode === 'dark' ? giscus.darkTheme : giscus.theme
-  giscus.lang = i18n.currentLocale
+  // giscus.lang = i18n.currentLocale
 
   return (
     <BrowserOnly fallback={<div>Loading Comments...</div>}>

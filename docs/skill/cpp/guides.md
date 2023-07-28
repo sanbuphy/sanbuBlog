@@ -2,7 +2,7 @@
 id: cpp-guides
 slug: /cpp
 title: 代码规范
-authors: kuizuo
+authors: sanbu
 keywords: ['cpp']
 ---
 

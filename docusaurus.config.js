@@ -6,7 +6,7 @@ const announcementBarContent = ''
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '散步的小屋',
-  url: 'https://kuizuo.cn',
+  url: 'https://aispacewalk.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'sanbu',
@@ -329,15 +329,15 @@ const config = {
     // ],
   ],
   stylesheets: [],
-  i18n: {
-    defaultLocale: 'zh-CN',
-    locales: ['en', 'zh-CN'],
-    localeConfigs: {
-      en: {
-        htmlLang: 'en-GB',
-      },
-    },
-  },
+  // i18n: {
+  //   defaultLocale: 'zh-CN',
+  //   locales: ['en', 'zh-CN'],
+  //   localeConfigs: {
+  //     en: {
+  //       htmlLang: 'en-GB',
+  //     },
+  //   },
+  // },
 }
 
 module.exports = config
