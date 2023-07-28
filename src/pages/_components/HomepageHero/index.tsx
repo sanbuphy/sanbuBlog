@@ -69,7 +69,7 @@ function Hero() {
         >
           <div className={styles.introGradient}></div>
           <a className={styles.introButton} href={'./about'}>
-            <Translate id="hompage.hero.introduce">自我介绍</Translate>
+            <Translate id="hompage.hero.introduce">关于我</Translate>
           </a>
         </motion.div>
       </div>

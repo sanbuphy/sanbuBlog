@@ -48,8 +48,8 @@ const config = {
       hideOnScroll: true,
       items: [
         {
-          label: '博客',
-          position: 'right',
+          label: 'Note',
+          position: 'left',
           to: 'blog',
           items: [
             {
@@ -75,14 +75,24 @@ const config = {
           ],
         },
         {
-          label: '导航',
-          position: 'right',
+          label: 'Project',
+          position: 'left',
+          to: 'project',
+        },
+        {
+          label: 'AwesomeWeb',
+          position: 'left',
+          to: 'project',
+        },
+        {
+          label: 'blog',
+          position: 'left',
           to: 'resource',
         },
         {
-          label: '项目',
-          position: 'right',
-          to: 'project',
+          label: 'Friend',
+          position: 'left',
+          to: 'resource',
         },
         // {
         //   type: 'localeDropdown',
@@ -90,7 +100,7 @@ const config = {
         // },
       ],
     },
-    footer: {
+    footer: { // 下面的栏目
       style: 'dark',
       links: [
         {
