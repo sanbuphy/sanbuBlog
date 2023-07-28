@@ -48,31 +48,13 @@ const config = {
       hideOnScroll: true,
       items: [
         {
-          label: 'Note',
+          label: 'Notes',
+          to: 'docs/skill/',
+        },
+        {
+          label: 'AI',
           position: 'left',
-          to: 'blog',
-          items: [
-            {
-              label: '标签',
-              to: 'blog/tags',
-            },
-            {
-              label: '归档',
-              to: 'blog/archive',
-            },
-            {
-              label: '笔记',
-              to: 'docs/skill/',
-            },
-            {
-              label: '工具推荐',
-              to: 'docs/tools/',
-            },
-            {
-              label: '前端示例',
-              to: 'https://example.kuizuo.cn',
-            },
-          ],
+          to: 'docs/ai/',
         },
         {
           label: 'Project',
@@ -87,12 +69,28 @@ const config = {
         {
           label: 'blog',
           position: 'left',
-          to: 'resource',
+          to: 'blog',
         },
         {
           label: 'Friend',
           position: 'left',
           to: 'resource',
+        },
+        {
+          label: 'other',
+          position: 'left',
+          to: 'blog',
+          items: [
+            {
+              label: '标签',
+              to: 'blog/tags',
+            },
+            {
+              label: '归档',
+              to: 'blog/archive',
+            },
+
+          ],
         },
         // {
         //   type: 'localeDropdown',
@@ -272,14 +270,14 @@ const config = {
   plugins: [
     'docusaurus-plugin-image-zoom',
     'docusaurus-plugin-sass',
-    path.resolve(__dirname, './src/plugin/plugin-baidu-tongji'),
-    path.resolve(__dirname, './src/plugin/plugin-baidu-push'),
+    // path.resolve(__dirname, './src/plugin/plugin-baidu-tongji'),
+    // path.resolve(__dirname, './src/plugin/plugin-baidu-push'),
     [
       path.resolve(__dirname, './src/plugin/plugin-content-blog'),
       {
         path: 'blog',
         editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
-          `https://github.com/kuizuo/blog/edit/main/${blogDirPath}/${blogPath}`,
+          `https://github.com/sanbuphy/sanbuBlog/edit/main/${blogDirPath}/${blogPath}`,
         editLocalizedFiles: false,
         blogDescription: '散步的个人博客',
         blogSidebarCount: 10,
@@ -301,34 +299,34 @@ const config = {
         disableInDev: false,
       },
     ],
-    [
-      '@docusaurus/plugin-pwa',
-      {
-        debug: true,
-        offlineModeActivationStrategies: [
-          'appInstalled',
-          'standalone',
-          'queryString',
-        ],
-        pwaHead: [
-          {
-            tagName: 'link',
-            rel: 'icon',
-            href: '/img/logo.png',
-          },
-          {
-            tagName: 'link',
-            rel: 'manifest',
-            href: '/manifest.json',
-          },
-          {
-            tagName: 'meta',
-            name: 'theme-color',
-            content: 'rgb(51 139 255)',
-          },
-        ],
-      },
-    ],
+    // [
+    //   '@docusaurus/plugin-pwa',
+    //   {
+    //     debug: true,
+    //     offlineModeActivationStrategies: [
+    //       'appInstalled',
+    //       'standalone',
+    //       'queryString',
+    //     ],
+    //     pwaHead: [
+    //       {
+    //         tagName: 'link',
+    //         rel: 'icon',
+    //         href: '/img/logo.png',
+    //       },
+    //       {
+    //         tagName: 'link',
+    //         rel: 'manifest',
+    //         href: '/manifest.json',
+    //       },
+    //       {
+    //         tagName: 'meta',
+    //         name: 'theme-color',
+    //         content: 'rgb(51 139 255)',
+    //       },
+    //     ],
+    //   },
+    // ],
   ],
   stylesheets: [],
   i18n: {

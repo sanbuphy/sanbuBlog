@@ -1,6 +1,6 @@
 ---
 id: introduction
-slug: /skill
+slug: /ai
 title: 技术笔记简介
 keywords:
   - 前端
@@ -12,16 +12,5 @@ keywords:
   - HTTP
 ---
 
-有关自己的技术笔记，用于快速查阅和复习。
-
-- Web
-- 前端
-- 后端
-- Vue
-- React
-- JavaScript（TypeScript）
-- 安卓
-- 逆向
-- HTTP
 
 **做到即查即用，能复制粘贴解决的，就绝不百度。**

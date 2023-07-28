@@ -49,7 +49,7 @@ function ShowcaseHeader() {
   return (
     <section className="margin-top--lg margin-bottom--lg text--center">
       <h1>{TITLE}</h1>
-      <p>{DESCRIPTION}</p>
+      {/* <p>{DESCRIPTION}</p>
       <a
         className="button button--primary"
         href={GITHUB_URL}
@@ -57,7 +57,7 @@ function ShowcaseHeader() {
         rel="noreferrer"
       >
         <Translate id="showcase.header.button">前往 Github 克隆项目</Translate>
-      </a>
+      </a> */}
     </section>
   )
 }
