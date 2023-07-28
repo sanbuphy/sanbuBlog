@@ -1,3 +1,4 @@
+// 开局页面的自我介绍相关
 import React from 'react'
 import { motion } from 'framer-motion' // Import motion from framer-motion
 
@@ -34,10 +35,10 @@ function Hero() {
           animate="visible"
           variants={variants}
         >
-          <Translate id="homepage.hero.greet">你好! 我是</Translate>
-          <span className={styles.intro__name}>
-            <Translate id="homepage.hero.name">愧怍</Translate>
-          </span>
+          {/* <Translate id="homepage.hero.greet">你好! 我是</Translate>
+          <span className={styles.intro__name}> */}
+            {/* <Translate id="homepage.hero.name">散步</Translate> */}
+          {/* </span> */}
         </motion.div>
         <motion.p
           custom={2}
@@ -46,7 +47,8 @@ function Hero() {
           variants={variants}
         >
           <Translate id="homepage.hero.text">
-            {`在这里我会分享各类技术栈所遇到问题与解决方案，带你了解最新的技术栈以及实际开发中如何应用，并希望我的开发经历对你有所启发。`}
+            {`I am interested in AI and enjoy asking "why". If you share the same interests, 
+            feel free to ask me any strange questions and we can discuss and research together. (目前还在修改该网页作者的模板中...)`}
           </Translate>
         </motion.p>
         <motion.div

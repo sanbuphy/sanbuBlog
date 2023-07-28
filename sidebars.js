@@ -1,6 +1,7 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   skill: [
+    // 这里应该是存放各种索引关联关系,也可以自动生成
     'skill/introduction',
     {
       label: 'Docusaurus 主题魔改',

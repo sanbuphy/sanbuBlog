@@ -1,3 +1,4 @@
+//首页的社交联系
 import React from 'react'
 import { useThemeConfig } from '@docusaurus/theme-common'
 import { ThemeConfig } from '@docusaurus/preset-classic'
@@ -39,16 +40,16 @@ export default function SocialLinks({ ...prop }) {
   return (
     <div className={styles.social__links} {...prop}>
       <SocialLink href={socials.github} icon="ri:github-line" />
-      <SocialLink href={socials.juejin} icon={<JuejinIcon />} />
-      <SocialLink href={socials.twitter} icon="ri:twitter-line" />
-      <SocialLink href={socials.qq} icon="ri:qq-line" />
-      <SocialLink href={socials.zhihu} icon="ri:zhihu-line" />
+      {/* <SocialLink href={socials.juejin} icon={<JuejinIcon />} /> */}
+      {/* <SocialLink href={socials.twitter} icon="ri:twitter-line" /> */}
+      {/* <SocialLink href={socials.qq} icon="ri:qq-line" /> */}
+      {/* <SocialLink href={socials.zhihu} icon="ri:zhihu-line" /> */}
       <SocialLink href={socials.email} icon="ri:mail-line" />
-      <SocialLink
-        href={socials.cloudmusic}
-        icon="ri:netease-cloud-music-line"
-      />
-      <SocialLink href="/rss.xml" icon="ri:rss-line" />
+      {/* <SocialLink */}
+        {/* href={socials.cloudmusic} */}
+        {/* icon="ri:netease-cloud-music-line" */}
+      {/* /> */}
+      {/* <SocialLink href="/rss.xml" icon="ri:rss-line" /> */}
     </div>
   )
 }

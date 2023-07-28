@@ -1,20 +1,20 @@
 const path = require('path')
+// const beian = '闽ICP备2020017848号-2'
 const beian = '闽ICP备2020017848号-2'
-
 const announcementBarContent = ''
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '愧怍的小站',
+  title: '散步的小屋',
   url: 'https://kuizuo.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'kuizuo',
+  organizationName: 'sanbu',
   projectName: 'blog',
-  tagline: '道阻且长，行则将至',
+  tagline: '不懂就问，不会就学',
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-  themeConfig: {
-    image: 'img/logo.png',
+  themeConfig: {  
+    image: 'img/logo.jpg',
     // announcementBar: {
     //   id: 'announcementBar-3',
     //   content: announcementBarContent,
@@ -22,15 +22,15 @@ const config = {
     metadata: [
       {
         name: 'keywords',
-        content: '愧怍, kuizuo',
+        content: '散步, sanbu',
       },
       {
         name: 'keywords',
-        content: 'blog, javascript, typescript, node, react, vue, web',
+        content: 'blog, ai, python, c++',
       },
       {
         name: 'keywords',
-        content: '编程爱好者, Web开发者, 写过爬虫, 学过逆向，现在主攻ts全栈',
+        content: 'AI爱好者与开发者',
       },
     ],
     docs: {
@@ -39,7 +39,7 @@ const config = {
       },
     },
     navbar: {
-      title: '愧怍的小站',
+      title: '散步的小屋',
       logo: {
         alt: '愧怍',
         src: 'img/logo.webp',
@@ -84,10 +84,10 @@ const config = {
           position: 'right',
           to: 'project',
         },
-        {
-          type: 'localeDropdown',
-          position: 'right',
-        },
+        // {
+        //   type: 'localeDropdown',
+        //   position: 'right',
+        // },
       ],
     },
     footer: {
@@ -127,20 +127,20 @@ const config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/kuizuo',
+              href: 'https://github.com/sanbuphy',
             },
-            {
-              label: 'Twitter',
-              to: 'https://twitter.com/kuizuo',
-            },
-            {
-              label: '掘金',
-              href: 'https://juejin.cn/user/1565318510545901',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/M8cVcjDxkz',
-            },
+            // {
+            //   label: 'Twitter',
+            //   to: 'https://twitter.com/kuizuo',
+            // },
+            // {
+            //   label: '掘金',
+            //   href: 'https://juejin.cn/user/1565318510545901',
+            // },
+            // {
+            //   label: 'Discord',
+            //   href: 'https://discord.gg/M8cVcjDxkz',
+            // },
           ],
         },
         {
@@ -215,14 +215,14 @@ const config = {
       playgroundPosition: 'top',
     },
     socials: {
-      github: 'https://github.com/kuizuo',
-      twitter: 'https://twitter.com/kuizuo',
-      juejin: 'https://juejin.cn/user/1565318510545901',
-      csdn: 'https://blog.csdn.net/kuizuo12',
-      qq: 'https://wpa.qq.com/msgrd?v=3&amp;uin=911993023&amp;site=qq',
-      zhihu: 'https://www.zhihu.com/people/kuizuo',
-      cloudmusic: 'https://music.163.com/#/user/home?id=1333010742',
-      mail: 'mailto:hi@kuizuo.cn',
+      github: 'https://github.com/sanbuphy',
+      // twitter: 'https://twitter.com/kuizuo',
+      // juejin: 'https://juejin.cn/user/1565318510545901',
+      // csdn: 'https://blog.csdn.net/kuizuo12',
+      // qq: 'https://wpa.qq.com/msgrd?v=3&amp;uin=911993023&amp;site=qq',
+      // zhihu: 'https://www.zhihu.com/people/kuizuo',
+      // cloudmusic: 'https://music.163.com/#/user/home?id=1333010742',
+      mail: 'physicoada@gmail.com',
     },
   },
   headTags: [
@@ -230,7 +230,7 @@ const config = {
       tagName: 'meta',
       attributes: {
         name: 'description',
-        content: '愧怍的个人博客',
+        content: '散步的个人博客',
       },
     },
   ],
@@ -271,7 +271,7 @@ const config = {
         editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
           `https://github.com/kuizuo/blog/edit/main/${blogDirPath}/${blogPath}`,
         editLocalizedFiles: false,
-        blogDescription: '愧怍的个人博客',
+        blogDescription: '散步的个人博客',
         blogSidebarCount: 10,
         blogSidebarTitle: 'Blogs',
         postsPerPage: 10,
@@ -280,8 +280,8 @@ const config = {
           defaultReadingTime({ content, options: { wordsPerMinute: 300 } }),
         feedOptions: {
           type: 'all',
-          title: '愧怍',
-          copyright: `Copyright © ${new Date().getFullYear()} 愧怍 Built with Docusaurus.<p><a href="http://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
+          title: '散步',
+          copyright: `Copyright © ${new Date().getFullYear()} 散步 Built with Docusaurus.<p><a href="http://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
         },
       },
     ],
