@@ -120,10 +120,6 @@ const config = {
               label: '实战项目',
               to: 'project',
             },
-            {
-              label: '前端示例',
-              to: 'https://example.kuizuo.cn',
-            },
           ],
         },
         {
@@ -201,7 +197,7 @@ const config = {
     algolia: {
       appId: 'GV6YN1ODMO',
       apiKey: '50303937b0e4630bec4a20a14e3b7872',
-      indexName: 'kuizuo',
+      indexName: 'sanbu',
     },
     zoom: {
       selector: '.markdown :not(em) > img',
@@ -224,11 +220,11 @@ const config = {
     },
     socials: {
       github: 'https://github.com/sanbuphy',
-      // twitter: 'https://twitter.com/kuizuo',
+      // twitter: 'https://twitter.co',
       // juejin: 'https://juejin.cn/user/1565318510545901',
-      // csdn: 'https://blog.csdn.net/kuizuo12',
+      // csdn: 'https://blog.csdn.n',
       // qq: 'https://wpa.qq.com/msgrd?v=3&amp;uin=911993023&amp;site=qq',
-      // zhihu: 'https://www.zhihu.com/people/kuizuo',
+      // zhihu: 'https://www.zhihu.com/p',
       // cloudmusic: 'https://music.163.com/#/user/home?id=1333010742',
       mail: 'physicoada@gmail.com',
     },
