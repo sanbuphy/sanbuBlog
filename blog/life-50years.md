@@ -1,5 +1,4 @@
 ---
-slug: life-style
 title: 人生五十年——郭盛
 date: 2023-06-10
 authors: sanbu
@@ -14,6 +13,8 @@ keywords: [life]
 刹那繁华瞬间即逝，风流人物，今非昔比。
 
 人生五十年，莫非熙熙攘攘，浮生幻梦。
+
+<!--truncate-->
 
 名垂青史，功败湮灭，只是宿命因果 。
 

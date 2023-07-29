@@ -1,6 +1,4 @@
 ---
-id: other-make-blog-by-vercel
-slug: /other/make-blog-by-vercel
 title: 使用vercel部署个人主页
 ---
 
@@ -73,6 +71,8 @@ yarn start
 若成功，此时你会看到一个0.0.0.0的网站已经启动，此时你就可以及时修改代码并及时看到网页变化了（每一次保存都是一次构建）
 
 至此，开始享受你的个人网站之旅把～（坑的还在后面。。。如果你想要图床还需要自己寻找oss，如果都是文字或者图片少那就不用担心。随意找一个稳定的图床都可以满足你的需求。不过我对图片的稳定性和数量都有要求，所以就只能选择图床存储的形式了。）
+
+此外，如果你想知道博客怎么写的一些更细节的规则，推荐你参考：[https://cloud.tencent.com/developer/article/1983048?areaSource=102001.14&traceId=_Xwo4tWbxksIqxGksGMYl](https://cloud.tencent.com/developer/article/1983048?areaSource=102001.14&traceId=_Xwo4tWbxksIqxGksGMYl) 我认为这篇文章写的也非常清楚。
 
 ### 三、图床的相关设置
 
