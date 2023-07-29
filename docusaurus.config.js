@@ -41,7 +41,7 @@ const config = {
     navbar: {
       title: '散步的小屋',
       logo: {
-        alt: '愧怍',
+        alt: '散步',
         src: 'img/logo.webp',
         srcDark: 'img/logo.webp',
       },
@@ -55,6 +55,17 @@ const config = {
           label: 'AI',
           position: 'left',
           to: 'docs/ai/',
+          items: [
+            {
+              label: 'Mlsys',
+              to: 'docs/ai/mlsys',
+            },
+            {
+              label: 'Nvidia',
+              to: 'docs/ai/nvidia',
+            },
+
+          ],
         },
         {
           label: 'Project',

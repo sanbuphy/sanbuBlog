@@ -1,6 +1,6 @@
 ---
 id: mlsys-guides
-slug: /mlsys
+slug: /ai/mlsys
 title: 引言
 keywords: ['mlsys']
 ---
