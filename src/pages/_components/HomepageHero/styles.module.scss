@@ -84,7 +84,12 @@ html[data-theme='dark'] .bloghome__intro > p {
   }
 }
 
-.introOuter {
+.buttonGroup {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.outer {
   position: relative;
   overflow: hidden;
   padding: 2px;
@@ -94,7 +99,7 @@ html[data-theme='dark'] .bloghome__intro > p {
   transform: translateZ(0);
 }
 
-.introGradient {
+.gradient {
   position: absolute;
   top: 50%;
   left: 0;
@@ -112,8 +117,8 @@ html[data-theme='dark'] .bloghome__intro > p {
   transform-origin: center;
   will-change: transform;
 }
-
-.introButton {
+                                                
+.button {
   position: relative;
   z-index: 1;
   align-items: center;
@@ -131,13 +136,18 @@ html[data-theme='dark'] .bloghome__intro > p {
     text-decoration: none;
   }
   
-  & + & {
-    margin-left: 20px; /* 设置按钮之间的间距 */
+}
+
+@media screen and (max-width: 600px) {
+  .button {
+    flex-direction: column; /* 当屏幕过小时，修改为垂直排列 */
+    // margin-left: 0; /* 移除按钮之间的间距 */
   }
 }
 
+
 html[data-theme='dark'] {
-  .introGradient {
+  .gradient {
     background: conic-gradient(
       transparent 50deg,
       var(--ifm-color-primary-darker) 80deg,
@@ -145,7 +155,7 @@ html[data-theme='dark'] {
     );
   }
 
-  .introButton {
+  .button {
     border: 1px solid hsl(0deg 0% 100% / 10%);
     background-color: #262626;
   }
@@ -183,11 +193,15 @@ html[data-theme='dark'] {
     height: auto;
   }
 
-  .introOuter {
+  // .buttonGroup {
+  //   // flex-direction: column;
+  // }
+
+  .outer {
     width: 200px;
   }
 
-  .introButton {
+  .button {
     width: 100%;
   }
 }

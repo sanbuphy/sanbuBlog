@@ -61,19 +61,25 @@ function Hero() {
         </motion.div>
 
         <motion.div
-          className={styles.introOuter}
+          className={styles.buttonGroup}
           custom={3}
           initial="hidden"
           animate="visible"
           variants={variants}
         >
-          <div className={styles.introGradient}></div>
-          <a className={styles.introButton} href={'./about'}>
-            <Translate id="hompage.hero.introduce">🤔 关于我</Translate>
-          </a>
-          <a className={styles.introButton} href={'./blog'}>
-            <Translate id="hompage.hero.introduce">🌟 Blog</Translate>
-          </a>
+
+          <div className={styles.outer}>
+            <div className={styles.gradient} />
+            <a className={styles.button} href={'./about'}>
+              <Translate id="hompage.hero.introduce">🤔 关于我</Translate>
+            </a>
+          </div>
+          <div className={styles.outer}>
+            <div className={styles.gradient} />
+            <a className={styles.button} href={'./blog'}>
+              <Translate id="hompage.hero.introduce">🌟 Blog</Translate>
+            </a>
+          </div>
         </motion.div>
       </div>
       <div className={styles.bloghome__image}>
