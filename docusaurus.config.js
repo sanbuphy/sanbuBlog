@@ -64,7 +64,10 @@ const config = {
               label: 'Nvidia',
               to: 'docs/ai/nvidia',
             },
-
+            {
+              label: 'Framework',
+              to: 'docs/ai/framework/introduction',
+            },
           ],
         },
         {

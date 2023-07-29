@@ -8,8 +8,8 @@ import { Friends, type Friend } from '@site/data/friend'
 import styles from './styles.module.css'
 
 const TITLE = '友链'
-const DESCRIPTION = '请点击下方按钮申请友链，熟人可直接找我~'
-const ADD_FRIEND_URL = 'https://github.com/kuizuo/blog/edit/main/data/friend.ts'
+const DESCRIPTION = '欢迎邮箱联系我申请友链，或者在 github discussion 区联系我'
+const ADD_FRIEND_URL = 'https://github.com/sanbuphy/sanbuBlog/discussions'
 
 function FriendHeader() {
   return (
