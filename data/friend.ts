@@ -17,6 +17,12 @@ export const Friends: Friend[] = [
     website: 'https://space.keter.top/',
     avatar: '/img/friend/sonder.jpeg',
   },
+  {
+    title: 'linxu',
+    description: '深度学习/开源社区大佬+1，近期研究大模型',
+    website: 'https://www.cnblogs.com/isLinXu/',
+    avatar: '/img/friend/linxu.jpeg',
+  },
 ]
 
 export type Friend = {
