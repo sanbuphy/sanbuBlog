@@ -62,7 +62,7 @@ const config = {
             },
             {
               label: 'Nvidia',
-              to: 'docs/ai/nvidia',
+              to: 'docs/ai/nvidia/nvidia-guides',
             },
             {
               label: 'Framework',
