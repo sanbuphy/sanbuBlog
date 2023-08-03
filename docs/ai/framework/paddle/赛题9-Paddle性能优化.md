@@ -6,26 +6,26 @@ keywords: ['paddle']
 
 特别感谢：婷姐、son师傅、张师傅
 
-
-
 ## 学习资料
 
 汪汪队任务
 【开源软件创新大赛题目9】[https://github.com/PaddlePaddle/Paddle/issues/55663#paddlepaddle09](https://github.com/PaddlePaddle/Paddle/issues/55663#paddlepaddle09)
 
+- tracking issue [https://github.com/PaddlePaddle/Paddle/issues/55907](https://github.com/PaddlePaddle/Paddle/issues/55907)
+
+包含模型瓶颈的辨别方法和基本分析思路及对应的工具。
+
 - Paddle的性能调优：[https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/performance_improving/index_cn.html](https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/performance_improving/index_cn.html)
+
+- Paddle Profiler:[https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/performance_improving/profiling_model.html](https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/performance_improving/profiling_model.html)
 
 - timeline分析工具：[https://github.com/Xreki/PaPerf](https://github.com/Xreki/PaPerf)
 
 - 其他框架实现：[https://github.com/open-mmlab/mmdetection](https://github.com/open-mmlab/mmdetection)
 
-
-
 【Paddle的性能优化wiki】[https://github.com/PaddlePaddle/Paddle/wiki/Performance-Optimization-in-PaddlePaddle](https://github.com/PaddlePaddle/Paddle/wiki/Performance-Optimization-in-PaddlePaddle)
 
 【算子优化RFC】[https://github.com/PaddlePaddle/community/tree/master/rfcs/OPs-Perf](https://github.com/PaddlePaddle/community/tree/master/rfcs/OPs-Perf)
-
-
 
 ## 提示
 
@@ -35,7 +35,15 @@ keywords: ['paddle']
 
 3、分析方法：分析一下它训练时间的构成，有几大部分，占比如何？去分析每一个过程是不是有瓶颈，借助Profile和nsight 工具分析，找到优化动机，解决对性能影响最大的那些问题，才有可能提升速度。
 
+4、想单独生成timeline就给这个改成True：（参考paddle[性能优化工具文档](https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/performance_improving/profiling_model.html#kaiqixingnengfenxiqi-dingweixingnengpingjingdian)）
 
+性能分析会影响timeline的生成，就是性能分析也会占一些时间，所以单独要timeline的时候还是给这个设置为True比较好。
+
+如果要产出timeline，记得设置timer_only=True，目前是Paddle的Profiler和nsys的封装这两个工具没有做好统一，所以同时启用分析会有问题。暂时的方案就是使用某一个工具，就先把另一个注释掉。或者要用nsys，就把Paddle Profiler设置为timer_only=True也行。
+
+```
+python tools/train.py -c configs/mask_rcnn/mask_rcnn_r50_1x_coco.yml -o LearningRate.base_lr=0.0001 log_iter=1 use_gpu=True save_dir=./test_tipc/output/mask_rcnn_r50_1x_coco/benchmark_train/norm_train_gpus_0_autocast_fp32 epoch=1 pretrain_weights=https://paddledet.bj.bcebos.com/models/mask_rcnn_r50_1x_coco.pdparams TrainReader.batch_size=2 filename=mask_rcnn_r50_1x_coco TrainReader.shuffle=False --enable_ce=True > profier.txt
+```
 
 ## 环境准备
 
@@ -47,16 +55,13 @@ keywords: ['paddle']
 echo 'export LD_LIBRARY_PATH="/usr/lib64:$LD_LIBRARY_PATH"' >> ~/.bashrc
 source ~/.bashrc
 git clone https://github.com/PaddlePaddle/PaddleDetection.git
-git checkout develop  # 一定要切换到这个分支否则会有bug
+git checkout develop  # 一定要切换到这个分支否则会有bug，或者clone 的时候指定分支
 python -m pip install paddlepaddle-gpu==2.5.0 -ihttps://pypi.tuna.tsinghua.edu.cn/simple
 cd PaddleDetection
 pip install -r requirements.txt --user -i https://pypi.tuna.tsinghua.edu.cn/simple
 python setup.py install --user
 python ppdet/modeling/tests/test_architectures.py
 ```
-
-
-
 
 注意 这里如果不--user也会有权限问题，你也可以用虚拟环境的方法解决（有点麻烦）
 
@@ -72,9 +77,6 @@ source env/bin/activate
 which python
 which pip
 ```
-
-
-
 
 然后每次用python -m pip 之类的进行依赖安装即可
 
@@ -94,12 +96,10 @@ bash test_tipc/prepare.sh test_tipc/configs/mask_rcnn/mask_rcnn_r50_1x_coco_trai
 bash test_tipc/benchmark_train.sh test_tipc/configs/mask_rcnn/mask_rcnn_r50_1x_coco_train_infer_python.txt benchmark_train dynamic_bs2_fp32_DP_N1C1;
 ```
 
-
 dynamic_bs2_fp32_DP_N1C1，表示的是bs=2,fp32训练，N1C1单机单卡。如果要换bs，就相应改为dynamic_bs4_fp32_DP_N1C1；换amp训练就改为dynamic_bs2_fp16_DP_N1C1
 
 这里建议你按照自己的显存量力而为。。。如果是12G我建议你还是用混合精度不然大概率显存爆炸。
-
-
+（你可以在profile_log文件夹中查看产生的记录）
 
 若成功，你会看到类似如下输出：
 
@@ -119,9 +119,7 @@ Time Unit: s, IPS Unit: steps/s
 
 ```
 
-
 之后再等待一会儿，你会看见如下输出：
-
 
 ```Plain Text
 python /home/sanbu/github/PaddleDetection/dataset/coco/tools//scripts/analysis.py --filename /home/sanbu/github/PaddleDetection/train_log/PaddleDetection_mask_rcnn_r50_1x_coco_bs2_fp16_DP_N1C1_log                         --speed_log_file '/home/sanbu/github/PaddleDetection/index/PaddleDetection_mask_rcnn_r50_1x_coco_bs2_fp16_DP_N1C1_speed'                         --model_name mask_rcnn_r50_1x_coco_bs2_fp16_DP                         --base_batch_size 2                         --run_mode DP                         --fp_item fp16                         --keyword ips:                         --skip_steps 4                         --device_num N1C1                         --speed_unit images/s                         --convergence_key loss: 
@@ -131,22 +129,19 @@ python /home/sanbu/github/PaddleDetection/dataset/coco/tools//scripts/analysis.p
 -----gpu_num: 1
 Extract 429 records: separator=None; position=None
 average ips of 429 steps, skip 0 step:
-	Avg: 2.942 images/s
-	FPS: 2.942 images/s
+ Avg: 2.942 images/s
+ FPS: 2.942 images/s
 average ips of 429 steps, skip 4 steps, valid steps 383 :
-	var: 0.009 
-	Avg: 2.954 images/s
-	Min: 2.693 images/s
-	Max: 3.123 images/s
-	diff_min_max: -13.742 %
-	FPS: 2.954 images/s
-	Loss: 0.822845
+ var: 0.009 
+ Avg: 2.954 images/s
+ Min: 2.693 images/s
+ Max: 3.123 images/s
+ diff_min_max: -13.742 %
+ FPS: 2.954 images/s
+ Loss: 0.822845
 {"model_branch": "develop", "model_commit": "82968f5df92f1c0cb87c91fd3bf5b93c6d839867", "model_name": "mask_rcnn_r50_1x_coco_bs2_fp16_DP", "batch_size": 2, "fp_item": "fp16", "run_mode": "DP", "convergence_value": "0.822845", "convergence_key": "loss:", "ips": 2.954, "speed_unit": "images/s", "device_num": "N1C1", "model_run_time": "501", "frame_commit": "3bedec8a8ead5bc3c193650969ac180153802c95", "frame_version": "0.0.0"}
 
 ```
-
-
-
 
 ### nsight测试
 
@@ -159,26 +154,17 @@ nsys profile --stats=true -t cuda,nvtx -o paddle_report -f true python tools/inf
 
 ```
 
-
-
-
 之后我们可以对训练脚本修改部分nvtx然后看到更新后的timeline:
 
 ```Shell
 nsys profile --stats=true -t cuda,nvtx -o train_report -f true python tools/train.py -c configs/mask_rcnn/mask_rcnn_r50_1x_coco.yml -o LearningRate.base_lr=0.0001 log_iter=1 use_gpu=True save_dir=./test_tipc/output/mask_rcnn_r50_1x_coco/benchmark_train/norm_train_gpus_0_autocast_fp32 epoch=1 pretrain_weights=https://paddledet.bj.bcebos.com/models/mask_rcnn_r50_1x_coco.pdparams TrainReader.batch_size=2 filename=mask_rcnn_r50_1x_coco TrainReader.shuffle=False --enable_ce=True
 ```
 
-
-
-
 要可视化查看导出的结果，我们需要使用命令启动gui
 
 ```Shell
 nsight-sys 
 ```
-
-
-
 
 因为训练在trainer.train，所以我们可以对目标进行nvtx插桩：
 
@@ -403,14 +389,7 @@ nsight-sys
 
 ```
 
-
-
-
 修改后我们再去执行train.py的profile，就可以看到我们插的桩。
-
-
-
-
 
 ### 性能优化可以关注的点
 
@@ -426,6 +405,3 @@ nsight-sys
 |Nvidia Ampere(A100)|yes|
 |AMD Radeon RX6000|no|
 |AMD Radeon Instinct|yes|
-
-
-
