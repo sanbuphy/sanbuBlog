@@ -1,0 +1,256 @@
+---
+title: vscode疑难解答
+---
+
+由于vscode的各种设置也有点恶心.....在此记录各类可能会遇到的坑.
+
+虽然如此,请你一定要默念VSCODE是真的简单,是真的简单,这样你就一定都能弄明白.
+
+## C&C++
+
+对于臭名昭著的c_cpp_properties.json，额外参数有以下几点：（都是例子
+
+```json
+"includePath":["${workspaceFolder}/**","/usr/local/cuda/include"],
+```
+
+如果你想看更多配置信息,可以在不同位置输入" " 然后会跳出自动补全（也会自动显示对应的意思）  
+
+对于头文件引入,符号补全相关,我们可以在c_cpp_properties.json中修改： （以nvidia-cookbook内的cpp代码自动补全和头文件修复为例）
+
+```json
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/usr/include",
+                "/work/github/trt-samples-for-hackathon-cn/cookbook/include",
+                "/usr/local/cuda/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
+```
+
+为了在vscode中顺利查看STL容器的值，需要简单的配置一下launch.json。首先在运行与调试界面创建launch.json，随后在右下角找到创建配置，选择gdb生成然后创建对应的launch.json即可。其中可能需要填一下对应的二进制启动地址，之后只要随意调试就可以看到STL容器内的值了。
+
+#### windows下的vscode设置
+
+如果你想要在windows下环境进行基本的vscode开发(除了装很大的VS),你可以选择安装mingw gcc g++工具链,或者用scoop管理包进行相应库的安装.
+以下已假设你装好工具链,直接给出需要的配置:
+
+:::info
+注意,你需要把下面涉及 `bin` 地址,以及`gdb g++`相关工具链的地址设置为你自己的默认地址.(本质是调用对应的可执行文件)
+:::
+
+`c_cpp_properties.json`
+
+```json
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.17763.0",
+            "compilerPath": "d:\\Program Files (x86)\\mingw64\\bin\\g++.exe",  // 此处指定自己安装的g++.exe地址
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "${default}",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
+```
+
+`launch.json``
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) 启动",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/cpp_learn",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build",
+            "miDebuggerPath": "d:\\Program Files (x86)\\mingw64\\bin\\gdb.exe"
+        },
+        {
+            "name": "C/C++: g++.exe 生成和调试活动文件",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "d:\\Program Files (x86)\\mingw64\\bin",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "d:\\Program Files (x86)\\mingw64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: g++.exe 生成活动文件"
+        }
+    ]
+}
+```
+
+`tasks.json`
+
+```json
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe 生成活动文件",
+            "command": "d:\\Program Files (x86)\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\build\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "d:\\Program Files (x86)\\mingw64\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
+        }
+    ],
+    "version": "2.0.0"
+}
+```
+
+### cmake
+
+cmake的基础设置可参考:(需要先有个settings.json)
+
+```json
+{
+    "cmake.cmakePath":"/home/cmake-3.16.0-Linux-x86_64/bin/cmake",
+    "cmake.configureArgs":[
+        "-DPY_VERSION=3.7",
+        "-DWITH_GPU=OFF",
+        #注意，在这里可以加入其他的cmake参数，只要是后续-D的都行
+    ],
+}
+```
+
+### gtest
+
+如果在vscode中也想体会到clion单侧的快乐，首先需要安装两个插件：gtest mate和test Explorer UI，其次需要把对应单侧打包成可执行文件（可以每个都打包或者都打包在一个可执行文件
+
+然后在settings.json中需要设定包含test可执行文件的路径，字段如下：(**用于匹配任意相关字符)
+
+```json
+    "testMate.cpp.test.executables": "这里是能找到可执行文件的地址，比如/home/test/build/**test**"
+```
+
+## Python
+
+如何执行文件夹自目录下的子文件夹内的python文件
+
+[https://zhuanlan.zhihu.com/p/458657777](https://zhuanlan.zhihu.com/p/458657777)
+
+常用的调试 launch.json配置：
+
+```JSON
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: 当前文件",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${fileDirname}",
+            "args": ["--config_path=./configs/ppyoloe_l_qat_dis.yaml","--save_dir='./quant_yoloel_output/'"],
+        }
+    ]
+}
+```
+
+注意，如果运行的脚本在某个文件夹内，但是参数引用的文件在上一个地方的文件夹（比如调试tools/traing.py）可以这么写：
+
+```JSON
+"args": ["-c=../configs/ppyoloe/ppyoloe_crn_l_300e_coco.yml",
+        "--slim_config=../configs/slim/quant/ppyoloe_l_qat.yml"],
+```
+
+## 其他
+
+VSCode代码自动补全太慢  （可参考：<https://blog.csdn.net/dddgggd/article/details/129105715>
+首先左下角点开设置，搜索quick suggestions delay
+然后改成5以内就飞快。
+
+vscode怎么多行标签栏而不是自己在那滚动？可参考：<https://www.onlinevideoconverter.com/zh/video-converter>
+搜索首先左下角点开设置，搜索workbench.edit.wrapTabs勾选即可。
+
+## 优雅的调试
+
+如何顺利看调用过程然后自己增加log？————使用调用堆栈。
+
+如何知道自己当前所在区域的“父类”是什么（比如某个函数属于那个类别），不需要拉动框，配合上面标题栏下方的索引即可（比如modules>script.py>load_module），也可以结合大纲判断。
+
+## 推荐的插件
+
+- Compare Folders插件，安装后，选择两个文件夹右键然后再选择最后一个英文的比较，可以对两个文件夹的区别进行比较。
+
+## 推荐学习文章
+
+[vscode一键配置C/C++多个C及CPP文件编译与tasks.json和launch.json原理](https://cloud.tencent.com/developer/article/2146749)
+
+详细讲解了tasks和launch的参数和作用，以及简单的cmake写法
