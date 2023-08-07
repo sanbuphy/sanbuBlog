@@ -48,6 +48,8 @@ title: vscode疑难解答
 
 :::info
 注意,你需要把下面涉及 `bin` 地址,以及`gdb g++`相关工具链的地址设置为你自己的默认地址.(本质是调用对应的可执行文件)
+
+最重要的还是 c_cpp_properties.json ,其他配置理论可以自动生成.
 :::
 
 `c_cpp_properties.json`
@@ -153,7 +155,7 @@ title: vscode疑难解答
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\build\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\build\\${fileBasenameNoExtension}.exe"  //如果你想要修改输出地址用这个就好
             ],
             "options": {
                 "cwd": "d:\\Program Files (x86)\\mingw64\\bin"
@@ -229,6 +231,20 @@ cmake的基础设置可参考:(需要先有个settings.json)
 "args": ["-c=../configs/ppyoloe/ppyoloe_crn_l_300e_coco.yml",
         "--slim_config=../configs/slim/quant/ppyoloe_l_qat.yml"],
 ```
+
+## 优雅Git
+
+利用vscode 快速使用git：
+
+1. 可以利用vscode很容易登录远程的github仓库。（记得网络要科学）
+2. 然后记得添加远程库（选择你的对应仓库，切记最后的远程名不是仓库名，你可以选一个好写的比如remote）
+3. 然后你需要添加一下邮箱和name信息，之后就可以愉快的使用各类命令了
+4. ！！！！切记要先切换到对应的分支操作，否则回滚很麻烦。
+5. 之后在终端还是在vscode gui都是可以很愉快的使用git操作
+
+遇事不决(确保备份了当前文件)：
+
+git reset --hard origin/master
 
 ## 其他
 
