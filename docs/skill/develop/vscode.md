@@ -174,6 +174,32 @@ title: vscode疑难解答
 }
 ```
 
+另外，如果你想让二进制编译产物都在一个指定地址（比如多个src文件，想要练习的结果都在一个目标文件夹，方便gitignore，你可以把上面的配置进行修改）：
+
+`tasks.json` 的对应参数（主要是workspaceFolder，如果你不想生成一大堆编译产物可以把${fileBasenameNoExtension}换成一个名字即可
+
+```json
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/_build/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+```
+
+`launch.json`的对应参数
+
+```json
+            "program": "${workspaceFolder}/_build/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+```
+
 ### cmake
 
 cmake的基础设置可参考:(需要先有个settings.json)
@@ -201,11 +227,11 @@ cmake的基础设置可参考:(需要先有个settings.json)
 
 ## Python
 
-如何执行文件夹自目录下的子文件夹内的python文件
+- 如何执行文件夹自目录下的子文件夹内的python文件
 
 [https://zhuanlan.zhihu.com/p/458657777](https://zhuanlan.zhihu.com/p/458657777)
 
-常用的调试 launch.json配置：
+- 常用的调试 launch.json配置：
 
 ```JSON
 {
@@ -232,6 +258,12 @@ cmake的基础设置可参考:(需要先有个settings.json)
         "--slim_config=../configs/slim/quant/ppyoloe_l_qat.yml"],
 ```
 
+- 自动格式化python代码  
+
+首先安装google的格式化程序：`pip install yapf`
+
+然后键入`ctrl+shift+p`然后输入`settings`往下找到用户的json，如果你是WSL的话就要找到对应WSL的config，然后输入`"python.formatting.provider": "yapf"`。之后只要使用`Alt+shift+F`即可格式化整体的python项目代码。
+
 ## 优雅Git
 
 利用vscode 快速使用git：
@@ -248,12 +280,20 @@ git reset --hard origin/master
 
 ## 其他
 
-VSCode代码自动补全太慢  （可参考：<https://blog.csdn.net/dddgggd/article/details/129105715>
+- VSCode代码自动补全太慢
+
+（可参考：<https://blog.csdn.net/dddgggd/article/details/129105715>
 首先左下角点开设置，搜索quick suggestions delay
 然后改成5以内就飞快。
 
-vscode怎么多行标签栏而不是自己在那滚动？可参考：<https://www.onlinevideoconverter.com/zh/video-converter>
+- vscode怎么多行标签栏而不是自己在那滚动？
+
+可参考：<https://www.onlinevideoconverter.com/zh/video-converter>
 搜索首先左下角点开设置，搜索workbench.edit.wrapTabs勾选即可。
+
+- vscode插件开发指南
+
+<https://github.com/microsoft/vscode-extension-samples>
 
 ## 优雅的调试
 
