@@ -295,6 +295,10 @@ git reset --hard origin/master
 
 <https://github.com/microsoft/vscode-extension-samples>
 
+- vscode + proxy
+
+你可能经常会遇到在 vscode 中使用git同步遇到网络的问题，这时候你只需要搜索设置 proxy，然后根据本地监听的proxy设置一个对应的地址即可。
+
 ## 优雅的调试
 
 如何顺利看调用过程然后自己增加log？————使用调用堆栈。

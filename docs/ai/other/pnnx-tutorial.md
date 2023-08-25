@@ -22,7 +22,7 @@ kuiperinfer中使用的模型是PNNX，目前需要协助支持注册Unet网络�
 
 首先需要导出torchscript文件，再对他进行转换到pnnx格式：
 
-```Python
+```python
 import torch
 import torchvision.models as models
 
@@ -50,7 +50,7 @@ mod.save("resnet18.pt")
 
 CmakeLists:
 
-```C++
+```cpp
 cmake_minimum_required(VERSION 3.0)
 project(MyProject)
 set(CMAKE_CXX_STANDARD 17)
@@ -75,7 +75,7 @@ target_include_directories(read_pnnx PUBLIC "pnnx/src/")
 
 （如果你不想要glog只要把这个相关的依赖都去除就行了）
 
-```C++
+```cpp
 #include "ir.h"
 #include <string>
 #include <iostream>
