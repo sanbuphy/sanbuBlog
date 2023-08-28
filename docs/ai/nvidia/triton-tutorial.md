@@ -582,3 +582,6 @@ Nvidia Triton使用教程：从青铜到王者 - infgrad的文章 - 知乎 <http
 我不会用 Triton 系列：上手指北
 
 [https://www.cnblogs.com/zzk0/p/15543824.html](https://www.cnblogs.com/zzk0/p/15543824.html)
+
+衡量和优化使用 Triton 推理服务器和 Tesla T4 的 TensorFlow 推理系统的性能
+[https://cloud.google.com/architecture/measuring-and-tuning-the-performance-of-a-tensorflow-inference-system?hl=zh-cn#objectives](https://cloud.google.com/architecture/measuring-and-tuning-the-performance-of-a-tensorflow-inference-system?hl=zh-cn#objectives)
