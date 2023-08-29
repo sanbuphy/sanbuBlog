@@ -22,8 +22,12 @@ sudo apt install tmux
 
 tmux 屏幕内滚动: ctrl+b 按下后松起再结合 PgUp 或 PgDn
 
-关闭某个分屏 ctrl+d
+关闭某个分屏（直接退出命令行）ctrl+d
 
 切换不同会话: ctrl+s
 
 进入之前的会话: tmux attach
+
+关闭当前 attach 的 tmux 终端：ctrl+b d
+
+鼠标模式，能直接鼠标点窗口切换，滚轮滚屏： ctrl+b，然后按":"，进入命令行模式输入set -g mouse on
