@@ -138,11 +138,13 @@ gitbook serve
 
 ```
 
-你可以自己尝试,其中md文件对应了你的markdown笔记,除了插件的特殊用    法其他和markdown没有任何区别,如果有疑问可以自行查询资料或者在reference中查找.
+你可以自己尝试,其中md文件对应了你的markdown笔记,除了插件的特殊用法其他和markdown没有任何区别,如果有疑问可以自行查询资料或者在reference中查找.
+
+此外,你可以使用 gitbook pdf 把自己的笔记课件导出成pdf文件,但是你需要先安装calibre依赖:<https://calibre-ebook.com/download_linux>,你可以直接执行这个指令:`sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin`
 
 ## 把笔记部署到 github page 中
 
-我们可以很容易把build的网页部署到 github page上进行对外展示(或者vercel也可以),我们只需要把编译产物 `_book` 文件夹改名为 `docs`,然后在github仓库中的 pages 页面选择这个作为展示文件夹,过一段事件后就可看到对应的网页生效出现.
+我们可以很容易把build的网页部署到 github page上进行对外展示(或者vercel也可以),我们只需要把编译产物 `_book` 文件夹改名为 `docs`,然后在github仓库中的 pages 页面选择这个作为展示文件夹,过一段时间后就可看到对应的网页生效出现.
 
 ## Reference
 
