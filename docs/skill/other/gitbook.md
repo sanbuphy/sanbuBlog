@@ -49,7 +49,7 @@ nvm install <version>
 
 将 `<version>` 替换为你想要安装的具体版本号。例如，要安装 Node.js 12.22.1 版本，可以运行：
 
-```Plain Text
+```Plain Texts
 Copy Code
 nvm install 10.22.0
 ```
@@ -65,7 +65,7 @@ nvm use <version>
 
 ```Plain Text
 Copy Code
-nvm use 10.22.0
+nvm use 12.22.1
 ```
 
 通过执行以上步骤，你可以使用 nvm 在已安装的 Node.js 版本之间进行切换。你可以随时使用 `nvm use <version>` 命令来切换版本。请确保安装的版本在 nvm 支持的版本范围内,注意,有些新的网页框架需要新的node,如果你使用这个版本很可能会冲突,但是别担心,你只要安装比较新的版本比如 `nvm install 16.20.2` 然后 use 切换即可.
@@ -153,3 +153,8 @@ gitbook serve
 - gitbook创建+部署全指南: <https://blog.csdn.net/thdlrt/article/details/131671465>
 - 用 GitBook 编写自己第一本电子书 —— GitBook 的安装和使用 <https://zhuanlan.zhihu.com/p/462773959?utm_id=0>
 - Flexible Alerts使用方法: <http://dianyao.co/gitbook-notes/3.%E6%9B%B4%E5%8A%A0%E7%BE%8E%E8%A7%82/%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E6%9B%B4%E5%8A%A0%E7%BE%8E%E8%A7%82.html>
+- Gitbook详解（五）-插件的配置和使用详解 <https://www.cnblogs.com/jiangming-blogs/p/14643147.html>
+- 打造完美写作系统：Gitbook+Github Pages+Github Actions <https://blog.51cto.com/phyger/5276526>
+- gitbook文档大全 <https://www.zhaowenyu.com/gitbook-doc/plugins/cat-page-copyright.html>
+- 推荐12个实用的gitbook插件 <https://juejin.cn/post/6844903865146441741>
+  
