@@ -244,8 +244,9 @@ cmake的基础设置可参考:(需要先有个settings.json)
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": false,
-            "cwd": "${fileDirname}",
-            "args": ["--config_path=./configs/ppyoloe_l_qat_dis.yaml","--save_dir='./quant_yoloel_output/'"],
+            "cwd": "${fileDirname}", //这个的意思是在当前路径下开始调试，当前文件的执行路径下而不是工作区
+            // "cwd": "${workspaceFolder}"  这个的意思是当前文件所在文件夹下开始调试
+            "args": ["--config_path=./configs/ppyoloe_l_qat_dis.yaml","--save_dir='./quant_yoloel_output/'"], //加入一些运行的参数
         }
     ]
 }
