@@ -315,3 +315,18 @@ git reset --hard origin/master
 [vscode一键配置C/C++多个C及CPP文件编译与tasks.json和launch.json原理](https://cloud.tencent.com/developer/article/2146749)
 
 详细讲解了tasks和launch的参数和作用，以及简单的cmake写法
+
+## clion一些坑备注
+
+不想写新的文章。。clion的问题也顺便记在这里了：
+clion 使用远程工具链，遇到类似这样的错误怎么办：（实际上是控制台输出编码问题）  
+
+```
+make[3]: *** [CMakeFiles/singlestudy.dir/build.make:154锛欳MakeFiles/singlestudy.dir/yushiqi_c++_lab/lab1.cpp.o] 閿欒 1
+make[2]: *** [CMakeFiles/Makefile2:76锛欳MakeFiles/singlestudy.dir/all] 閿欒 2
+make[1]: *** [CMakeFiles/Makefile2:83锛欳MakeFiles/singlestudy.dir/rule] 閿欒 2
+make: *** [Makefile:129锛歴inglestudy] 閿欒 2
+
+```
+
+你只需要找到设置-编辑器-常规-控制台-找到默认编码修改成UTF-8，然后世界就清净了。
