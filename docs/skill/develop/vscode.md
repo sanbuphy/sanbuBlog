@@ -330,3 +330,6 @@ make: *** [Makefile:129锛歴inglestudy] 閿欒 2
 ```
 
 你只需要找到设置-编辑器-常规-控制台-找到默认编码修改成UTF-8，然后世界就清净了。
+
+clion 编译 cuda文件记得cmake要带上：
+`-DCMAKE_CUDA_ARCHITECTURES:STRING=86 -DCMAKE_CUDA_COMPILER:FILEPATH=/usr/local/cuda/bin/nvcc`
