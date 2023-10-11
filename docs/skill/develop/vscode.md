@@ -333,3 +333,8 @@ make: *** [Makefile:129锛歴inglestudy] 閿欒 2
 
 clion 编译 cuda文件记得cmake要带上：
 `-DCMAKE_CUDA_ARCHITECTURES:STRING=86 -DCMAKE_CUDA_COMPILER:FILEPATH=/usr/local/cuda/bin/nvcc`
+
+如何调试 cuda 程序？
+
+1. 修改gdb为cuda-GDB
+2. cmake加入-g -G
