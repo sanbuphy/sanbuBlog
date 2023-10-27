@@ -1,5 +1,5 @@
 ---
-title: 人生五十年——郭盛
+title: 人生五十年——敦盛
 date: 2023-06-10
 authors: sanbu
 tags: [life]
