@@ -3,7 +3,6 @@ id: other-awesomeweb
 slug: /other/awesomeweb
 title: 我的网站大全
 ---
-
 ## 写在前面
 
 收录了个人喜好觉得品味好的网站（也有一些小工具），
@@ -12,7 +11,7 @@ title: 我的网站大全
 
 不定期更新
 
-带目录边栏：[https://www.aispacewalk.cn/docs/other](https://www.aispacewalk.cn/docs/other)
+带目录边栏（电脑上可看）：[https://www.aispacewalk.cn/docs/other/awesomeweb](https://www.aispacewalk.cn/docs/other/awesomeweb)
 
 github开源仓库地址： [https://github.com/sanbuphy/my-awesome-cs](https://github.com/sanbuphy/my-awesome-cs)
 
@@ -180,19 +179,11 @@ tar -cvf - dir1 dir2 dir3 | pigz > output.tar.gz # 压缩文件夹
 unpigz -d your_file_name.gz
 ```
 
-#### vscode相关
+#### git相关，git指南
 
-- 自动格式化python代码
+- 通过聊天的感觉入门并熟练git
 
-首先安装google的格式化程序：`pip install yapf`
-
-然后键入`ctrl+shift+p`然后输入`settings`往下找到用户的json，如果你是WSL的话就要找到对应WSL的config，然后输入`"python.formatting.provider": "yapf"`。之后只要使用`Alt+shift+F`即可格式化整体的python项目代码。
-
-- vscode插件开发
-
-<https://github.com/microsoft/vscode-extension-samples>
-
-#### git相关
+[https://wkevin.github.io/GitChat/gitchat.html#round-1-起步](https://wkevin.github.io/GitChat/gitchat.html#round-1-起步)
 
 - git常见操作整理
 
@@ -218,9 +209,13 @@ unpigz -d your_file_name.gz
 
 [https://www.jianshu.com/p/4a8f4af4e803](https://www.jianshu.com/p/4a8f4af4e803)
 
-- 查看开源项目的数据以及自己的个人数据（比如年度pr数量）：
+- git中文乱码问题解决
 
-[https://ossinsight.io/](https://ossinsight.io/)
+```Bash
+git config --global i18n.commitencoding utf-8
+git config --global i18n.logoutputencoding utf-8
+export LESSCHARSET=utf-8
+```
 
 #### ubuntu常见疑难解答
 
@@ -239,8 +234,11 @@ unpigz -d your_file_name.gz
   - 接下来将/etc/apt/source.list文件内容清空并保存
   - 恢复网络，将第一步中取消掉的四个选项重新点选然后在最佳国内服务器更新即可。
 - 给第三方软件appimage加上快捷方式：[https://www.cnblogs.com/HGNET/p/16396589.html](https://www.cnblogs.com/HGNET/p/16396589.html)
+- `ncdu` 工具分析磁盘空间占用情况（超好用，如果是wsl，运行`ncdu --exclude /mnt` // wsl下排除/mnt  （当然，你也可以用 sudo du -d 1 -h | less 进一步分析）
 
 #### WSL2常见疑难解答
+
+【注！ 推荐使用挂载/mnt的系统磁盘进行操作，否则很容易让wsl的虚拟磁盘占用很大，删除后无法释放。若你想要释放则需要参考下面的指定教程】
 
 - WSL入坑指南（很全的资料，包括开发环境的配置）
 
@@ -313,10 +311,11 @@ sudo sed -i "\$c nameserver $nameserver" /etc/resolv.conf
 ```
 
 - wsl的硬盘空间怎么办？——挂载其他硬盘，如：`sudo mount -t drvfs D: /mnt/d`
+- WSL怎么释放空间，wsl硬盘压缩虚拟硬盘压缩：[https://zhuanlan.zhihu.com/p/521747491](https://zhuanlan.zhihu.com/p/521747491)
 
 #### windows常见工具箱
 
-- 有关win家的镜像源以及VS等的纯净安装文件，以及各种网络工程师能用到的软件程序安装包
+- 有关windows家的镜像源以及VS等的纯净安装文件，以及各种网络工程师能用到的软件程序安装包
 
 [https://msdn.itellyou.cn/](https://msdn.itellyou.cn/)
 
@@ -335,6 +334,18 @@ sudo sed -i "\$c nameserver $nameserver" /etc/resolv.conf
 - windows-linux命令行对照表
 
 [https://www.geeksforgeeks.org/linux-vs-windows-commands/](https://www.geeksforgeeks.org/linux-vs-windows-commands/)
+
+- windows下类似apt这种包管理软件——scoop
+
+[https://blog.csdn.net/weixin_45191386/article/details/130662281](https://blog.csdn.net/weixin_45191386/article/details/130662281)
+
+- windows kill 指定端口程序
+
+```Python
+netstat -ano | findstr :<port_number>
+
+taskkill /PID <pid> /F
+```
 
 #### 正则表达式相关
 
@@ -406,9 +417,9 @@ exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
 snap version
 ```
 
-- NVIDIA docker的使用（用文中方式启动docker的插件，然后用docker  run gpu启动，而不是nvidia-docker，这个已经被废弃了）（有时候update出问题是nvidia网络抽风了。。别急
+- NVIDIA docker的使用（用文中方式启动docker的插件，然后用docker  run gpu启动，或者参考下面的教程安装和启动。）（有时候update出问题是nvidia网络抽风了。。别急
 
-[https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+[https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 
 - docker换源（拉镜像极大加速）
 
@@ -728,6 +739,12 @@ GitHub's largest open-source algorithm library
 
 ## 高性能计算与编译器
 
+常用MPI、cublas等高性能基础库调用api快速入门
+
+[https://docs.hpc.sjtu.edu.cn/app/compilers_and_languages/intel_mpi.html](https://docs.hpc.sjtu.edu.cn/app/compilers_and_languages/intel_mpi.html)
+
+### mlir
+
 LLVM IR入门指南
 
 [https://github.com/Evian-Zhang/llvm-ir-tutorial](https://github.com/Evian-Zhang/llvm-ir-tutorial)
@@ -735,6 +752,14 @@ LLVM IR入门指南
 动手写mlir by strint
 
 [http://strint.github.io/220220-mlir/220220-mlir.html](http://strint.github.io/220220-mlir/220220-mlir.html)
+
+Toy Tutorial : the implementation of a basic toy language on top of MLIR.
+
+[https://mlir.llvm.org/docs/Tutorials/Toy/](https://mlir.llvm.org/docs/Tutorials/Toy/)
+
+Kaileidoscope: LLVM Tutorial Chinese version(中文版)
+
+[https://kaleidoscope-llvm-tutorial-zh-cn.readthedocs.io/zh_CN/latest/](https://kaleidoscope-llvm-tutorial-zh-cn.readthedocs.io/zh_CN/latest/)
 
 ### webgpu
 
@@ -746,7 +771,149 @@ wgpu 中文版跨平台开发（Web + App）教程：
 
 [https://jinleili.github.io/learn-wgpu-zh/](https://jinleili.github.io/learn-wgpu-zh/)
 
+### CUDA编程
+
+CUDA Crash Cours BY CoffeeBeforeArch
+
+[https://www.youtube.com/watch?v=2NgpYFdsduY&list=PLxNPSjHT5qvtYRVdNN1yDcdSl39uHV_sU&index=1](https://www.youtube.com/watch?v=2NgpYFdsduY&list=PLxNPSjHT5qvtYRVdNN1yDcdSl39uHV_sU&index=1)
+
+官方入门文档
+
+[https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html)
+
+适合入门的小型Python编译器项目（包含cuda相关内容）
+
+[https://zhuanlan.zhihu.com/p/603352525](https://zhuanlan.zhihu.com/p/603352525)
+
+cuda学习教程
+
+[https://space.bilibili.com/37270391/channel/seriesdetail?sid=1454805](https://space.bilibili.com/37270391/channel/seriesdetail?sid=1454805)
+
+CUDA-Programming-Guide-in-Chinese
+
+[https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese](https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese)
+
+CUDA C++ Programming Guide
+
+[https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html)
+
+CUDA Freshman:Some of them are from the book "Professional CUDA C Programming"
+
+[https://github.com/Tony-Tan/CUDA_Freshman](https://github.com/Tony-Tan/CUDA_Freshman)
+
+CS344 Introduction to Parallel Programming class code
+
+[https://github.com/udacity/cs344](https://github.com/udacity/cs344)
+
+[https://www.youtube.com/watch?v=F620ommtjqk&list=PLAwxTw4SYaPnFKojVQrmyOGFCqHTxfdv2](https://www.youtube.com/watch?v=F620ommtjqk&list=PLAwxTw4SYaPnFKojVQrmyOGFCqHTxfdv2)
+
+谭升的博客，CUDA编程
+
+[https://face2ai.com/program-blog/](https://face2ai.com/program-blog/)
+
+很好的各种各样CUDA的优化文章合计强烈推荐
+
+[https://github.com/YconquestY/Needle/blob/main/backend.md](https://github.com/YconquestY/Needle/blob/main/backend.md)
+
+### MPI通信
+
+如何同时实现高性能并行+分布式计算？| Taichi x MPI4Py - 太极图形的文章 - 知乎 [https://zhuanlan.zhihu.com/p/581896682](https://zhuanlan.zhihu.com/p/581896682)
+
 ## 深度学习大类
+
+### NVIDIA环境配置常见问题
+
+- 显卡驱动安装快速方法：
+
+（你也可以在这里下：[https://www.nvidia.com/download/index.aspx?lang=en-us](https://www.nvidia.com/download/index.aspx?lang=en-us)）
+
+ubuntu-drivers devices
+
+sudo apt install  输入显示的推荐版本
+
+（如果安装失败了或者重装，请先把原来的依赖删除：sudo apt-get remove --purge nvidia*
+
+- CUDA与cuDNN的安装：（直接官网文档）【警告⚠，如果你需要安装tensorrt，请用deb形式安装cuda安装包，官方建议如果CUDA采用的是deb方式，tensorrt也要采用deb方式，】
+
+注意：a100和3090ti不支持cuda11以下，请装113以上的版本。
+
+教程可参考官网：[Archive of Previous CUDA Releases](https://developer.nvidia.com/cuda-toolkit-archive)
+
+[https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
+
+[https://developer.nvidia.com/rdp/cudnn-archive](https://developer.nvidia.com/rdp/cudnn-archive)
+
+cudnn的官方安装教程（通过tar文件自己cp或者根据教程安装deb）
+
+[https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
+
+cudnn的卸载可参考：[https://zhuanlan.zhihu.com/p/83971195](https://zhuanlan.zhihu.com/p/83971195)
+
+cuda之类的卸载参考：[https://blog.csdn.net/m0_37605642/article/details/119637836](https://blog.csdn.net/m0_37605642/article/details/119637836)
+
+(注意，这里默认是最新版本的，你需要在右下角进入档案选择对应版本安装,或在下面的网页中找到archive）
+
+TensorRT的安装（参考Debian Installation）【警告⚠，如果你需要安装tensorrt，请用deb形式安装cuda安装包，官方建议如果CUDA采用的是deb方式，tensorrt也要采用deb方式】
+
+【不要安装最新的cuda工具包，很可能不支持，一般只支持上一个版本（看清楚对应cuda对应）】
+
+[https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#installing-debian](https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#installing-debian)
+
+- 安装cuda结束后记得把这两个命令加入到~/.bashrc 然后source。
+
+**如果你想要修改版本，可以修改cuda的软链接（选择其他版本的cuda），或者在bashrc中的cuda后面加上版本，如cuda-11.2**
+
+（具体的安装和卸载也可以参考[https://flywine.blog.csdn.net/article/details/81879514](https://flywine.blog.csdn.net/article/details/81879514)）
+
+```Bash
+export PATH="/usr/local/cuda/bin:$PATH" 
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH" 
+
+```
+
+解决nvcc版本不一致问题（可能的方法，更换runtime映射
+
+[https://qiyuan-z.github.io/2022/01/06/解决nvidia-smi和nvcc显示信息与所安装CUDA版本不一致问题/](https://qiyuan-z.github.io/2022/01/06/解决nvidia-smi和nvcc显示信息与所安装CUDA版本不一致问题/)
+
+解决cudnn找不到 问题（软连接到系统库）
+
+[https://blog.csdn.net/qq451882471/article/details/106967942](https://blog.csdn.net/qq451882471/article/details/106967942)
+
+CUDA GPG Repository Key
+
+[https://forums.developer.nvidia.com/t/notice-cuda-linux-repository-key-rotation/212772](https://forums.developer.nvidia.com/t/notice-cuda-linux-repository-key-rotation/212772)
+
+Tensorrt X docker环境搭建（现在（20221228）tensorrt-ubuntu已经支持deb安装，如果tar就选linux的）
+
+[https://blog.csdn.net/hxj0323/article/details/115859174](https://blog.csdn.net/hxj0323/article/details/115859174)
+
+update后nvidia报GPG相关问题（我在18.04的docker遇到）：
+
+```Bash
+echo 'deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /' > /etc/apt/sources.list.d/cuda.list
+apt-key adv --recv-keys --keyserver keyserver.ubuntu.com  $(加入报错的密钥)
+apt update
+```
+
+- 解决类似 `error code is libcuda.so: cannot open shared object file: No such file or directory`的问题：[https://stackoverflow.com/questions/54249577/importerror-libcuda-so-1-cannot-open-shared-object-file](https://stackoverflow.com/questions/54249577/importerror-libcuda-so-1-cannot-open-shared-object-file)
+
+```Bash
+# 此处我们搜索的是libcuda.so
+sudo find /usr/ -name 'libcuda.so' #有时候搜索的是libcuda.so.*
+# 这一步是为了找到所在文件夹，我在WSL中搜到了几个文件夹下，我任意加入一个文件夹到LD_PATH：
+
+# 假如前一步发现libcuda的位置为：/usr/lib/wsl/lib/libcuda.so
+# 告诉系统要在这里找，你也可以把这句话加入到~/.bashrc然后source ~/.bashrc
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/targets/x86_64-linux/lib  
+```
+
+NVIDIA显卡运行时状态监控不错的python库（实时监控）
+
+[https://github.com/XuehaiPan/nvitop](https://github.com/XuehaiPan/nvitop)
+
+windows下安装CUDA工具链相关如果出现VS拓展安装失败的问题，可以先卸载本地安装的所有VS相关软件，然后重新安装官方的最新版本的VS就可以。
+
+NVIDIA显卡计算能力？(如sm75）查询：[https://developer.nvidia.com/zh-cn/cuda-gpus](https://developer.nvidia.com/zh-cn/cuda-gpus)
 
 ### 理论基础（时间少直接看李沐/李宏毅）
 
@@ -764,7 +931,7 @@ wgpu 中文版跨平台开发（Web + App）教程：
 
  [https://zhuanlan.zhihu.com/p/134089340](https://zhuanlan.zhihu.com/p/134089340)
 
-### **李宏毅相关课程**
+### **深度学习网课**
 
 - 李宏毅老师的课程主页：
 
@@ -794,15 +961,13 @@ wgpu 中文版跨平台开发（Web + App）教程：
 
 [https://github.com/mli/paper-reading](https://github.com/mli/paper-reading)
 
-这个网站给出了不同模型的排名及其开源代码
+伯克利 CS 182 深度学习：深度神经网络设计、可视化与理解
 
-[https://paperswithcode.com/](https://paperswithcode.com/)
+Home: [https://cs182sp21.github.io/](https://cs182sp21.github.io/)
 
-pytorch底层源码解析（一个很不错的博主）
+[https://www.bilibili.com/video/BV1PK4y1U751](https://www.bilibili.com/video/BV1PK4y1U751)
 
-[https://www.cnblogs.com/rossiXYZ/category/1626268.html?page=5](https://www.cnblogs.com/rossiXYZ/category/1626268.html?page=5)
-
-### 手写深度学习入门项目
+### 深度学习动手项目
 
 小土堆 pytorch学习
 
@@ -817,6 +982,10 @@ pytorch底层源码解析（一个很不错的博主）
 [https://www.bilibili.com/video/BV1JR4y1g77H](https://www.bilibili.com/video/BV1JR4y1g77H?spm_id_from=333.999.0.0&vd_source=a6509cab8ccb8b81d6a70af693cc008f)
 
 [https://space.bilibili.com/472467171](https://space.bilibili.com/472467171)
+
+学会自己训练一个esrgan等超分辨率模型
+
+ [https://www.youtube.com/watch?v=iH7-eYlf7eg](https://www.youtube.com/watch?v=iH7-eYlf7eg)
 
 ### 开源库/项目
 
@@ -874,94 +1043,6 @@ NLP Chinese Data Augmentation 一键中文数据增强工具
 
 [https://github.com/xiangli0608/Creating-2D-laser-slam-from-scratch](https://github.com/xiangli0608/Creating-2D-laser-slam-from-scratch)
 
-### NVIDIA环境配置常见问题
-
-- 显卡驱动安装快速方法：
-
-ubuntu-drivers devices
-
-sudo apt install  输入显示的推荐版本
-
-- CUDA与cuDNN的安装：（直接官网选择）
-
-注意：a100和3090ti不支持cuda11以下，请装113以上的版本。
-
-推荐装cuda的时候可以用sh的模式，然后顺带安装了驱动（之前就不用装了）对动态库的默认支持更好
-
-教程可参考：[https://blog.csdn.net/tangjiahao10/article/details/125227005](https://blog.csdn.net/tangjiahao10/article/details/125227005)
-
-[https://blog.csdn.net/weixin_37926734/article/details/123033286](https://blog.csdn.net/weixin_37926734/article/details/123033286)
-
-cudnn的卸载可参考：[https://zhuanlan.zhihu.com/p/83971195](https://zhuanlan.zhihu.com/p/83971195)
-
-(注意，这里默认是最新版本的，你需要在右下角进入档案选择对应版本安装,或在下面的网页中找到archive）
-
-- [Archive of Previous CUDA Releases](https://developer.nvidia.com/cuda-toolkit-archive)
-
-[https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
-
-[https://developer.nvidia.com/rdp/cudnn-archive](https://developer.nvidia.com/rdp/cudnn-archive)
-
-cudnn的官方安装教程（通过tar文件自己cp或者根据教程安装deb）
-
-[https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
-
-TensorRT的安装（参考Debian Installation）
-
-[https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#installing-debian](https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#installing-debian)
-
-- 安装cuda结束后记得把这两个命令加入到~/.bashrc 然后source。
-
-**如果你想要修改版本，可以修改cuda的软链接（选择其他版本的cuda），或者在bashrc中的cuda后面加上版本，如cuda-11.2**
-
-（具体的安装和卸载也可以参考[https://flywine.blog.csdn.net/article/details/81879514](https://flywine.blog.csdn.net/article/details/81879514)）
-
-```Bash
-export PATH="/usr/local/cuda/bin:$PATH" 
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH" 
-
-```
-
-解决nvcc版本不一致问题（可能的方法，更换runtime映射
-
-[https://qiyuan-z.github.io/2022/01/06/解决nvidia-smi和nvcc显示信息与所安装CUDA版本不一致问题/](https://qiyuan-z.github.io/2022/01/06/解决nvidia-smi和nvcc显示信息与所安装CUDA版本不一致问题/)
-
-解决cudnn找不到 问题（软连接到系统库）
-
-[https://blog.csdn.net/qq451882471/article/details/106967942](https://blog.csdn.net/qq451882471/article/details/106967942)
-
-CUDA GPG Repository Key
-
-[https://forums.developer.nvidia.com/t/notice-cuda-linux-repository-key-rotation/212772](https://forums.developer.nvidia.com/t/notice-cuda-linux-repository-key-rotation/212772)
-
-Tensorrt X docker环境搭建（现在（20221228）tensorrt-ubuntu已经支持deb安装，如果tar就选linux的）
-
-[https://blog.csdn.net/hxj0323/article/details/115859174](https://blog.csdn.net/hxj0323/article/details/115859174)
-
-update后nvidia报GPG相关问题（我在18.04的docker遇到）：
-
-```Bash
-echo 'deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /' > /etc/apt/sources.list.d/cuda.list
-apt-key adv --recv-keys --keyserver keyserver.ubuntu.com  $(加入报错的密钥)
-apt update
-```
-
-- 解决类似 `error code is libcuda.so: cannot open shared object file: No such file or directory`的问题：[https://stackoverflow.com/questions/54249577/importerror-libcuda-so-1-cannot-open-shared-object-file](https://stackoverflow.com/questions/54249577/importerror-libcuda-so-1-cannot-open-shared-object-file)
-
-```Bash
-# 此处我们搜索的是libcuda.so
-sudo find /usr/ -name 'libcuda.so' #有时候搜索的是libcuda.so.*
-# 这一步是为了找到所在文件夹，我在WSL中搜到了几个文件夹下，我任意加入一个文件夹到LD_PATH：
-
-# 假如前一步发现libcuda的位置为：/usr/lib/wsl/lib/libcuda.so
-# 告诉系统要在这里找，你也可以把这句话加入到~/.bashrc然后source ~/.bashrc
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/targets/x86_64-linux/lib  
-```
-
-NVIDIA显卡运行时状态监控不错的python库（实时监控）
-
-[https://github.com/XuehaiPan/nvitop](https://github.com/XuehaiPan/nvitop)
-
 ### 其他
 
 快速下载torch安装包（wget下载然后直接pip install）
@@ -974,6 +1055,9 @@ NVIDIA显卡运行时状态监控不错的python库（实时监控）
 pip install torch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1
 
 pip install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1
+
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
 ```
 
 孪生神经网络的相关实现：
@@ -994,7 +1078,15 @@ Gradio常见疑难解答：
 
 [https://github.com/isLinXu/awesome-road-map](https://github.com/isLinXu/awesome-road-map)
 
-### MLsystem
+这个网站给出了不同模型的排名及其开源代码
+
+[https://paperswithcode.com/](https://paperswithcode.com/)
+
+pytorch底层源码解析（一个很不错的博主）
+
+[https://www.cnblogs.com/rossiXYZ/category/1626268.html?page=5](https://www.cnblogs.com/rossiXYZ/category/1626268.html?page=5)
+
+### 深度学习系统
 
 ML system 入坑指南
 
@@ -1015,9 +1107,31 @@ cmu 15-884: Machine Learning Systems
 
 [https://catalyst.cs.cmu.edu/15-884-mlsys-sp21/](https://catalyst.cs.cmu.edu/15-884-mlsys-sp21/)
 
+CMU 10-414/714 Deep Learning Systems Algorithms and Implementation
+
+[https://dlsyscourse.org/](https://dlsyscourse.org/)
+
 cmu Deep Learning Systems
 
 [https://dlsyscourse.org/](https://dlsyscourse.org/)
+
+MIT 6.5940: TinyML and Efficient Deep Learning
+
+ [https://efficientml.ai/](https://efficientml.ai/)
+
+[https://efficientml.ai/schedule/](https://efficientml.ai/schedule/)
+
+包括模型压缩、剪枝、量化、神经架构搜索、分布式训练、数据/模型并行化、梯度压缩等技术，以及针对大型语言模型、扩散模型的特定应用加速技术。
+
+Programming Heterogeneous Computing Systems with GPUs and other Accelerators (227-0085-51L)
+
+[https://safari.ethz.ch/projects_and_seminars/doku.php?id=heterogeneous_systems](https://safari.ethz.ch/projects_and_seminars/doku.php?id=heterogeneous_systems)
+
+ MiniTorch
+
+MiniTorch is a diy teaching library for machine learning engineers who wish to learn about the internal concepts underlying deep learning systems. It is a pure Python re-implementation of the Torch API designed to be simple, easy-to-read, tested, and incremental. The final library can run Torch code.
+
+[https://minitorch.github.io/](https://minitorch.github.io/)
 
 ### 深度学习部署
 
@@ -1185,6 +1299,12 @@ how-to-optim-algorithm-in-cuda
 
 [https://github.com/BBuf/how-to-optim-algorithm-in-cuda](https://github.com/BBuf/how-to-optim-algorithm-in-cuda)
 
+#### 手写类课程
+
+手写量化、剪枝、蒸馏
+
+[https://github.com/mepeichun/Efficient-Neural-Network-Bilibili](https://github.com/mepeichun/Efficient-Neural-Network-Bilibili)
+
 #### AIGC
 
 webui的安装相关教程合集
@@ -1199,7 +1319,7 @@ webui的安装相关教程合集
 
 [https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/)
 
-- (windows)anaconda与Jupyter notebook安装教程
+- (windows)anaconda与Jupyter notebook安装教程 (注意，powershell使用anaconda要记得init)
 
 [https://zhuanlan.zhihu.com/p/37093476](https://zhuanlan.zhihu.com/p/37093476)
 
@@ -1241,6 +1361,8 @@ conda所有库更新：`conda update --all`
 - 导出自己安装的那些包（freeze是全部！）：使用pipreqs库
 - powershell下看不到（base）之类的虚拟库信息，显示出脚本安全问题无法启用，可在powershell管理员模式下输入`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`即可解决问题。
 - 使用pip命令时，报错：_sysconfigdata_x86_64_conda_cos7_linux_gnu.py：[https://blog.csdn.net/weixin_44321570/article/details/128514763](https://blog.csdn.net/weixin_44321570/article/details/128514763)
+
+pip 下载 cache不想默认在主目录：`pip config set global.cache-dir 新目录`
 
 awesome项目（包含了绝大部分的python相关资源）
 
@@ -1299,6 +1421,16 @@ supervisor + gunicorn + flask 高并发的接口 + 完整（标准）的日志�
 很不错的python状态机（可以画成图）展示工具：
 
 [https://github.com/laike9m/Cyberbrain](https://github.com/laike9m/Cyberbrain)
+
+### 常见问题解答
+
+- Python requests.exceptions.SSLError: EOF occurred in violation of protocol
+
+python3.10开了代理request会出现类似情况，因为新的标准库更新了ssl版本，需要降低或者使用`pip install urllib3==1.25.11`或者request使用的代理改用
+
+```Python
+{"http": "http://122.230.151.87:35920", "https": "http://122.230.151.87:35920"}
+```
 
 ## C与汇编
 
@@ -1402,6 +1534,10 @@ awesome项目（包含了绝大部分的c++相关资源）
 
 [http://jobbole.github.io/awesome-python-cn/](http://jobbole.github.io/awesome-python-cn/)
 
+C++查看 算法原理
+
+[https://hackingcpp.com/cpp/std/algorithms.html](https://hackingcpp.com/cpp/std/algorithms.html)
+
 cmake 快速编译安装：
 
 前往官网下载最新发行版：[https://cmake.org/download/](https://cmake.org/download/)     然后如下运行即可：
@@ -1488,15 +1624,23 @@ bazel的安装最佳实践：
 
 官方github的release找到bash然后下载运行即可（如果安装到用户权限需要把用户的bin地址加到环境变量）
 
-### C++的杂物间
+protobuf安装最佳实践（不是官网编译安装）
+
+`sudo apt install  libprotobuf-dev protobuf-compiler`
+
+### C++项目相关
 
 DJI thermal analysis tool  相关教程（日文
 
 [https://qiita.com/tutu/items/b5cf2b39dd30786d9064](https://qiita.com/tutu/items/b5cf2b39dd30786d9064)
 
-protobuf安装最佳实践（不是官网编译安装）
+TinyWebServer
 
-`sudo apt install  libprotobuf-dev protobuf-compiler`
+[https://github.com/qinguoyi/TinyWebServer/tree/master](https://github.com/qinguoyi/TinyWebServer/tree/master)
+
+btop （实现一个硬件检测工具）
+
+[https://github.com/aristocratos/btop](https://github.com/aristocratos/btop)
 
 ### 音视频相关
 
@@ -1507,38 +1651,6 @@ protobuf安装最佳实践（不是官网编译安装）
 ffmpeg原理 罗上文
 
 [https://ffmpeg.xianwaizhiyin.net/cover.html](https://ffmpeg.xianwaizhiyin.net/cover.html)
-
-### CUDA
-
-适合入门的小型Python编译器项目（包含cuda相关内容）
-
-[https://zhuanlan.zhihu.com/p/603352525](https://zhuanlan.zhihu.com/p/603352525)
-
-cuda学习教程
-
-[https://space.bilibili.com/37270391/channel/seriesdetail?sid=1454805](https://space.bilibili.com/37270391/channel/seriesdetail?sid=1454805)
-
-CUDA-Programming-Guide-in-Chinese
-
-[https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese](https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese)
-
-CUDA C++ Programming Guide
-
-[https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html)
-
-CUDA Freshman:Some of them are from the book "Professional CUDA C Programming"
-
-[https://github.com/Tony-Tan/CUDA_Freshman](https://github.com/Tony-Tan/CUDA_Freshman)
-
-CS344 Introduction to Parallel Programming class code
-
-[https://github.com/udacity/cs344](https://github.com/udacity/cs344)
-
-[https://www.youtube.com/watch?v=F620ommtjqk&list=PLAwxTw4SYaPnFKojVQrmyOGFCqHTxfdv2](https://www.youtube.com/watch?v=F620ommtjqk&list=PLAwxTw4SYaPnFKojVQrmyOGFCqHTxfdv2)
-
-谭升的博客，CUDA编程
-
-[https://face2ai.com/program-blog/](https://face2ai.com/program-blog/)
 
 ## 程序性能优化
 
@@ -1642,7 +1754,27 @@ pdf24 免费操作pdf文件
 
 svg在线编辑器
 
-[http://www.zuohaotu.com/svg/](http://www.zuohaotu.com/svg/)
+[http://www.zuohaotu.com/svg/](http://www.zuohaotu.com/svg/)、
+
+Software Download Hub 纯净的软件下载区
+
+[https://www.fosshub.com/](https://www.fosshub.com/)
+
+查看开源项目的数据以及自己的个人数据（比如年度pr数量）：
+
+[https://ossinsight.io/](https://ossinsight.io/)
+
+常用的在线avif格式转换器
+
+[https://convertio.co/zh/formats/avif/](https://convertio.co/zh/formats/avif/)
+
+在线图片批量缩放网站 birme
+
+[https://www.birme.net/?target_height=640](https://www.birme.net/?target_height=640)
+
+方便找素材的照片素材网站
+
+[https://pixabay.com/photos/](https://pixabay.com/photos/)
 
 ## 有趣的项目
 
@@ -1681,6 +1813,14 @@ Turn your pandas dataframe into a Tableau-style User Interface for visual analys
 利用chatgpt生成mermaid语言然后导入即可生成流程图
 
 [https://mermaid-js.github.io/mermaid-live-editor/edit](https://mermaid-js.github.io/mermaid-live-editor/edit)
+
+免费可用Typora Markdown
+
+[https://babudiu.com/archives/typora](https://babudiu.com/archives/typora)
+
+Github下载很慢，用上了这个插件后，下载速度嗖嗖嗖的
+
+[https://github.com/fhefh2015/Fast-GitHub](https://github.com/fhefh2015/Fast-GitHub)
 
 ## 提示词工程
 
@@ -1753,6 +1893,24 @@ Turn your pandas dataframe into a Tableau-style User Interface for visual analys
 一个跨平台的划词翻译软件
 
 [https://github.com/pot-app/pot-desktop](https://github.com/pot-app/pot-desktop)
+
+tabby 最好的开源终端之一
+
+[https://tabby.sh/](https://tabby.sh/)
+
+windows下开源录制工具Capture Screen, Audio, Cursor, Mouse Clicks and Keystrokes
+
+[https://github.com/MathewSachin/Captura](https://github.com/MathewSachin/Captura)
+
+kazam ubuntu下最轻便的录制工具，可以直接apt install kazam
+
+油管视频下载器：
+
+[https://github.com/Tyrrrz/YoutubeDownloader](https://github.com/Tyrrrz/YoutubeDownloader)
+
+最好的免费pdf处理开源程序
+
+[https://github.com/torakiki/pdfsam](https://github.com/torakiki/pdfsam)
 
 ### 英文论文好用工具
 
