@@ -26,7 +26,9 @@ The code in this tutorial runs on an 8-GPU server, but it can be easily generali
 首先我们要知道几个基础概念：
 
 group：进程组。默认情况下，只有一个组，即一个 world。（DDP 多进程控制多 GPU）
+
 world_size ：表示全局进程个数。
+
 rank：表示进程序号，用于进程间通讯，表示进程优先级。rank=0 的主机为主节点。
 
 torch.distributed.checkpoint()可以并行保存和加载来自多个rank的模型。此外,检查点自动处理  fully-qualified-name (FQN)在模型和优化器之间的映射,从而启用加载时重新分片到不同的集群拓扑。
