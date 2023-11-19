@@ -18,7 +18,6 @@ gitbook非常适合用来做自己的笔记或者课件存储,可以写出自己
 1. 安装 nvm：在终端中运行以下命令安装 nvm：
 
 ```Plain Text
-Copy Code
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ```
 
@@ -27,14 +26,12 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 2. 在终端中重新加载你的配置文件（例如 ~/.bashrc、~/.bash_profile 或 ~/.zshrc），以激活 nvm。或者，你也可以手动运行以下命令：
 
 ```Plain Text
-Copy Code
 source ~/.bashrc
 ```
 
 3. 查看可以安装的 Node.js 版本列表：
 
 ```Plain Text
-Copy Code
 nvm ls-remote
 ```
 
@@ -43,21 +40,18 @@ nvm ls-remote
 4. 安装所需的 Node.js 版本：
 
 ```Plain Text
-Copy Code
 nvm install <version>
 ```
 
 将 `<version>` 替换为你想要安装的具体版本号。例如，要安装 Node.js 12.22.1 版本，可以运行：
 
 ```Plain Texts
-Copy Code
 nvm install 10.22.0
 ```
 
 5. 使用特定的 Node.js 版本：
 
 ```Plain Text
-Copy Code
 nvm use <version>
 ```
 
