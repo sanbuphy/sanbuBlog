@@ -1,11 +1,11 @@
 ---
-title: GETTING STARTED WITH DISTRIBUTED CHECKPOINT (DCP)
+title: 简单入门分布式 CHECKPOINT (DCP)
 keywords: ['pytorch']
 ---
 
-# 简单入门分布式 checkpoint
+截止至 pytorch 2.1，有关新特性文档的中文翻译
 
-截止至 pytorch 2.1 新特性翻译，原文
+原文**GETTING STARTED WITH DISTRIBUTED CHECKPOINT (DCP)**
 <https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html>
 
 我会加入一些自己查阅帮助理解的资料，并不是完全的照搬翻译。如果想要了解更多有关分布式的东西请参考：
@@ -15,13 +15,18 @@ keywords: ['pytorch']
 前置内容:
 
 [FullyShardedDataParallel API文档](https://pytorch.org/docs/master/fsdp.html)
+
 [torch.load API文档](https://pytorch.org/docs/stable/generated/torch.load.html)
 
 The code in this tutorial runs on an 8-GPU server, but it can be easily generalized to other environments.
+
 在分布式训练期间对AI模型进行检查点保存可能具有挑战性,因为参数和梯度在 trainers 之间进行了分区,
 而在恢复训练时可用的 trainers 数量可能会改变。Pytorch 分布式检查点(DCP)可以帮助简化此过程。
 
-在本教程中,我们展示了如何将DCP API与简单的  FSDP wrapped model 一起使用。
+在本教程中,我们展示了如何将DCP API与简单的  FSDP wrapped model 一起使用。（FSDP 也是一种数据并行策略，但它跨 DDP ranks 对模型参数、优化器状态和梯度做了分片优化。）有关FSDP更多的讯息你可以参考：
+
+Pytorch FULLY SHARDED DATA PARALLEL (FSDP) 初识 - jhang的文章 - 知乎
+<https://zhuanlan.zhihu.com/p/620333654>
 
 ## DCP的工作原理
 
@@ -38,7 +43,7 @@ torch.distributed.checkpoint()可以并行保存和加载来自多个rank的模�
 DCP与torch.save()和torch.load()有几个明显的不同:
 
 - 每个检查点会产生多个文件,每个rank至少一个。
-- 它是原地操作的,这意味着模型应该首先分配它的数据,随后DCP将使用那个存储空间。(torch.load 是需要先加载 state dict 到内存，然后再调用 model 的 load 接口加载到模型。而 dcp 是需要接受 build 好的 model，然后 inplace 的加载权重。每个rank先申请各自的memory，dcp load的时候每个rank各自的state load到memory)
+- DCP是原地操作的,这意味着模型应该首先分配它的数据,随后DCP将使用那个存储空间。(torch.load 是需要先加载 state dict 到内存，然后再调用 model 的 load 接口加载到模型。而 dcp 是需要接受 build 好的 model，然后 inplace 的加载权重。每个rank先申请各自的memory，dcp load的时候每个rank各自的state load到memory)
 
 ## 如何使用DCP
 
