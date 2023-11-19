@@ -3,6 +3,8 @@ title: GETTING STARTED WITH DISTRIBUTED CHECKPOINT (DCP)
 keywords: ['pytorch']
 ---
 
+# 简单入门分布式 checkpoint
+
 截止至 pytorch 2.1 新特性翻译，原文
 <https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html>
 
