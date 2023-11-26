@@ -1,5 +1,5 @@
 ---
-title: 简单入门分布式 CHECKPOINT (DCP)
+title: Tutorial-简单入门分布式 CHECKPOINT (DCP)
 keywords: ['pytorch']
 ---
 
