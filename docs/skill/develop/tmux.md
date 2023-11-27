@@ -34,6 +34,8 @@ tmux 屏幕内滚动: ctrl+b 按下后松起再结合 PgUp 或 PgDn
 
 建议在 tmux 直接拉起一个终端后，可以 ctrl+c 创建一个子终端，开启鼠标模式可以很方便自由切换，或者使用命令切换（ctrl+b n）
 
-## 资料推荐
+## tmux 状态恢复
+
+## reference
 
 tmux插件和配置推荐：[https://gist.github.com/ryerh/14b7c24dfd623ef8edc7](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)
