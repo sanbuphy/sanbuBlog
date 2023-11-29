@@ -6,6 +6,10 @@ title: 快速翻译总结视频内容工作流
 
 以下内容我将以 youtube 的视频展开，你可以使用他翻译总结任何英文相关的视频。
 
+总结结果大概是这样的：<https://www.aispacewalk.cn/docs/ai/framework/pytorch/torchcon_aotinductor>
+
+里面的图片是我自己看的时候带上的，我也修正了一些不通顺的句子，但总的来说你只需要做一个评审员就好了，不再需要自己做繁重的总结和搬运工作。
+
 ## 一、视频下载
 
 首先我们要把 youtube 的视频下载到本地，在这里我使用的是[这个下载](https://youtubemultidownloader.net/)（你只要用里面的下载就好，其他广告内容不必看）。
@@ -38,7 +42,7 @@ more than 20 million downloads across all platforms.,So it's a pretty significan
 
 ```
 
-在这里我们给出了两端文本，接下来我将演示如何使用 GPT 调用接口返回他的翻译信息，参考代码如下：
+在这里我们给出了两端文本，接下来我将演示如何使用 GPT 调用接口返回他的翻译信息，参考代码如下：（记得先安装你的sdk：`pip install openai`） 本质上你也可以用其他大模型的sdk代替，原理是一样的。
 
 ```python
 from openai import OpenAI
