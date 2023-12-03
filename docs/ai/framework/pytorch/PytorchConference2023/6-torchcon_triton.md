@@ -1,5 +1,5 @@
 ---
-title: TorchCon-Triton编译器
+title: 6-Triton编译器
 keywords: ['pytorch']
 ---
 
@@ -45,7 +45,7 @@ Triton是一种用于编写高效自定义深度学习原语的语言和编译�
 
 **Triton是一个Python DSL（领域特定语言），旨在用于编写机器学习内核。** 最初，它严格用于GPU内核，但慢慢地扩展以支持用于机器学习的任何硬件，包括CPU、ASIC等。Triton的目标是让那些没有GPU经验的研究人员能够编写高性能代码。如果你看到幻灯片底部的图表，那真的是Triton想要达到的地方。通过少量的开发工作，你可以非常接近峰值性能。
 
-![image.jpg](images/Torchcon-Triton编译器/image.jpg)
+![image.jpg](Torchcon-Triton编译器/image.jpg)
 
 简而言之，Triton是一个帮助研究人员轻松编写高性能机器学习内核的工具，无论他们是否有GPU经验。
 
@@ -53,11 +53,11 @@ Triton是一种用于编写高效自定义深度学习原语的语言和编译�
 
 但问题在于你对它的控制非常有限。如果现有的操作集中没有你需要的东西，你就只能束手无策，唯一的解决办法是走向另一个极端，**例如编写CUDA或编写PTX，甚至直接编写汇编代码。但问题在于，要编写这些语言，你需要真正成为硬件方面的专家，并且用这些语言编写高效的内核可能非常棘手** 。所以Triton实际上是尝试在这里找到一个中间地带，它允许用户编写高效的内核，并有大量的控制权，但又不必关心那些微小的细节。
 
-![image.jpg](images/Torchcon-Triton编译器/image_1.jpg)
+![image.jpg](Torchcon-Triton编译器/image_1.jpg)
 
 是的，硬件的细节以及如何在特定硬件上获得性能。实际上，**设计的难点在于找到这个最佳平衡点。Triton的设计方式就是找到这个抽象的平衡点，即你想向用户暴露什么，以及你想让编译器做什么？**
 
-![image.jpg](images/Torchcon-Triton编译器/image_2.jpg)
+![image.jpg](Torchcon-Triton编译器/image_2.jpg)
 
 编译器是生产力工具，真的……在这方面，Triton的目标是让编译器为你完成你不想做的工作，但仍然让你能够控制算法、你想要用来进行调整的任何tuning。Triton介于Cuda和Torch之间，因为你仍然可以编写自己的算法，你仍然可以控制自己的类型，你仍然需要决定是否需要以某种类型来保存中间值，你控制所有的精度。**你不必关心如何处理共享内存、在目标有张量核时使用张量核、如何很好地处理负载聚合，以便你有良好的内存访问模式。** 这些人们在编写GPU内核时经常要考虑的事情。你总是要担心这些问题，或者弄清楚我的中间数据的布局是什么等等。编译器会为你完成这些工作。
 
@@ -93,7 +93,7 @@ def softmax_kernel(output_ptr, input_ptr, input_row_stride, output_row_stride, n
 
 之后我将讨论，如何在典型的设备上使用triton，除了内核他还可以集成到完整的graph编译器堆栈中：
 
-![image.jpg](images/Torchcon-Triton编译器/image_3.jpg)
+![image.jpg](Torchcon-Triton编译器/image_3.jpg)
 
 Triton为你提供了一个非常容易、非常自然的从graph表示直接到实现的lowering过程，**并且它实际上允许更简单的graph表示实现**，因为你不必一次性生成一个完美的内核。你可以只生成Triton部分，然后Triton编译器将完成繁重的工作，找出如何有效地将其映射到硬件上。
 
@@ -101,11 +101,11 @@ Triton为你提供了一个非常容易、非常自然的从graph表示直接到
 
 让我们稍微看一下编译器架构。这是一个非常高层次的查看Triton架构的方式。
 
-![image.jpg](images/Torchcon-Triton编译器/image_4.jpg)
+![image.jpg](Torchcon-Triton编译器/image_4.jpg)
 
 Triton被构建为一个老式编译器，包括前端、中端和后端。这里有趣的部分是这两个块，Triton IR和Triton GPU IR，它们是Triton的中间IR，这里有很多魔法发生。你可以在这里看到的另一件有趣的事情是，Triton IR真的允许你针对不同的硬件进行定位，因为Triton IR本身对于这硬件是完全无关的。如果我们放大这个有趣的部分，即基本上发生在Triton IR和最终的LLVM IR之间的事情，LLVM IR是最终的目标。
 
-![image.jpg](images/Torchcon-Triton编译器/image_5.jpg)
+![image.jpg](Torchcon-Triton编译器/image_5.jpg)
 
 基本上，编译器首先接收Triton IR，Triton IR与语言本身非常相似。然后，编译器要做的第一件事是为描述张量如何分布到线程上的布局进行关联。这真的是编译器的核心机制，因为基于这些布局，有多种路径可以改变这些布局，并能够生成一些能够有效地映射到硬件上的东西。因此，我们会像进行coalesce一样，尝试选择一个布局，以便加载存储聚合能够高效进行。
 

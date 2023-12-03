@@ -68,13 +68,13 @@ keywords: ['pytorch']
 
 如果你选择不使用Python进行推理部署，那么AOT inductor就可以作为一个解决方案。
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image.png)
 
 之前Yanan也提到过，torch export是一种导出模型的方式，它表示的是整个图的形态。那么，我们就来谈谈torch inductor的特殊模式。这种特殊模式会将torch导出的图作为输入，然后将其编译成可部署的形态。
 
 在接下来的演讲中，我将深入探讨它的技术细节，主要分为两个部分：编译器部分和运行时部分。这里我借鉴了去年torch inductor教程的一张幻灯片，作为对inductor的快速回顾。
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_1.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_1.png)
 
 同时，我也将强调AOT inductor需要处理的不同之处。这里的文字不必逐字阅读，但从左到右大致描述了torch inductor的不同组件的顺序。最左边的是进行输入标准化的同步操作，之后是IR lowering（中间表示层降低）并进行优化，最后则是代码生成。
 
@@ -84,29 +84,29 @@ keywords: ['pytorch']
 
 同时请记住，我们有两个后端，可以同时用于CPU和GPU。在这次演讲中，我将以GPU端为例，同样适用于CPU。因此，当我们实际改变引导器的代码生成部分时，我们要牢记这个非常重要的设计原则，即尽量重用JIT inductor。
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_2.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_2.png)
 
 这不仅可以免费获得所有优化，还可以减少出错的机会，容易进行验证。
 
 接下来，我将介绍下jit inductor 会生成什么作为wrap code 和kernel code，以及aot inductor会产生不同的结果：
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_3.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_3.png)
 
 看这个例子：它接受forward函数的两个输入x和y，对x进行正弦操作，然后取模，然后进行余弦操作，并返回结果。在 JIT 模式下，它将生成triton代码。比如说第一个操作是正弦操作，那么它将生成类似下面的triton代码。（不要过于关注具体的逐行代码。）
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_4.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_4.png)
 
 在默认引导器中，它将生成triton代码，而不是C++代码或者是AOT编译代码。
 
 对于Python部分，再次针对默认模式inductor，引导器将执行如管理CUDA流、通过(empty strided)处理临时缓冲区以及调用您刚才看到的正弦操作的Trident内核等操作。
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_5.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_5.png)
 
 还记得之后有一个取模操作。此外，它还会通过内存管理重复使用缓冲区等操作。所有这些操作都在Python中完成。
 
 为了使其成为AOT预编译，我们实际上将所有这些操作改成了C++。幸运的是，我们所有这些Python操作都有某种形式的C++实现和pytoch实现支持。而AOT inductor做完后是这样的：
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_6.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_6.png)
 
 这些你都可以直接用C++调用以及buffer管理。
 
@@ -114,17 +114,17 @@ keywords: ['pytorch']
 
 我们只需编译所有内容，导出您的模型，并将其编译为C++。然后，我们调用C++编译器将其编译为共享库。现在让我稍微谈谈运行时部分。仅仅给你一个.so文件可能不足以满足您的实际部署需求。我们从AItemplate runtime design 中借鉴了想法，并为AOT引导器设计了这个运行时环境。它执行诸如多线程模型服务之类的操作。它具有一个线程池，可以运行刚刚编译的AOT编译模型的多个实例。然后这些模型可以共享权重。因为对于推断来说，所有权重都是常量，没有必要复制这些权重。
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_7.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_7.png)
 
 所有这些操作都应该共享。在GPU的情况下，我们还利用CUDA流来增加并发性。因此，当您拥有不同实例的模型时，每个实例都可以在不同的CUDA流上运行。
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_8.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_8.png)
 
 现在，让我们看一个例子，比如您如何实际使用它呢？因为它是预编译的，所以在Python部分，您只需调用类似torch_export.AOT_compile的函数，将其与我们的模型和示例输入一起使用，并且您还可以指定哪个维度是动态的，并传入不同的选项。
 
 在那之后，你应该得到一个编译后的库。编译库将包含我刚才谈到的已编译模型和运行时环境。然后，假设您想在C++环境中部署模型，对吗？您可以使用我们提供的utiils类帮助我们加载so库，您只需像这里的示例一样简单地运行它，提供输入，它就会…那么性能如何呢？让我们看一些数字。
 
-![image.png](images/AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_9.png)
+![image.png](AotInductor+e88343b4-c3e8-48ec-8bc3-8d0598926d0f/image_9.png)
 
 类似之前的讨论，这些数字来自我们的开源性能仪表板。这是一个推断性能指标，也是在我们一直使用的三个基准套件上进行评估的。如果您观察Hugg和Face以及Team的通过率，我们已经达到了超过90%的通过率。在Torchbench方面稍低一些，因为其模型架构的多样性。此外，值得指出的是，**当我们计算Torchbench的通过率时，我们排除了那些具有动态控制流程的基准测试，这些测试仅使用导出无法支持。**我还列出了几何平均加速比，并将默认JIT Inductor的加速比与Eager进行了比较。正如您所看到的，AOT Inductor提供了更好的性能，这主要是因为我们将Python从中删除了。再次强调，对于torch match的数字，由于通过率不是很高，所以这些数字可能有点……但总体而言，它比默认的Inductor要好。
 

@@ -94,6 +94,32 @@ yarn start
 
 注：有时候图片可能文件名内有空格，你要记得把那些空格都替换成%20否则可能无法正常显示，比如 images 20.jpg  要替换成 images%2020.jpg
 
+### 常见脚本
+
+因为转移一些资料和图片修改很浪费时间，这里记录常见脚本：
+
+批量修改当前文件夹图片为jpg并把空格位置变成_ （不支持显示带空格的图片路径）
+
+```python
+import os
+from PIL import Image
+# 保存所有图片为.jpg格式并删除原文件
+for filename in os.listdir():
+    print(filename)
+    if filename.endswith(('.png', '.jpeg', '.gif', '.bmp')):
+        img = Image.open(filename).convert('RGB')
+        new_filename = filename.split('.')[0] + '.jpg'
+        img.save(new_filename, 'JPEG')
+        img.close()
+        os.remove(filename)
+# 检测修改后jpg文件名是否含有空格，有则替换成_
+for filename in os.listdir():
+    if filename.endswith('.jpg') and ' ' in filename:
+        new_filename = filename.replace(' ', '_')
+        os.rename(filename, new_filename)
+
+```
+
 ## Reference
 
 1. [docusaurus文档](https://www.docusaurus.cn/docs)
