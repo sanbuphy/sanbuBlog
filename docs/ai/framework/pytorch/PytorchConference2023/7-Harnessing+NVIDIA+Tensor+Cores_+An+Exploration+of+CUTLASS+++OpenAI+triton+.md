@@ -2,72 +2,67 @@
 title: 7-Harnessing NVIDIA Tensor Cores_ An Exploration of CUTLASS
 keywords: ['pytorch']
 ---
-
 ## 大纲
 
-1. 讲座内容概述
+1. 介绍Cutlass背景和应用场景s
 
-2. Cutlass简介
+2. Cutlass工作原理
 
-3. Cutlass使用场景
+3. Cutlass在PyTorch生态中的应用
 
-4. Cutlass在PyTorch生态中的应用
+4. 最新功能介绍
 
-5. Cutlass新功能
+5. 性能benchmark
 
-6. Triton简介
+6. 未来发展计划
 
 ## 详细要点
 
-### 1. 讲座内容概述
+### 1. 背景介绍
 
-- 介绍Cutlass和Triton
+- Cutlass是NVIDIA开源的深度学习库
 
-- Cutlass背景和版本更新
+- 用于在张量核上进行编程
 
-- Cutlass在 PyTorch中的应用
+- 起初用于Volta,现已广泛应用在生态系统中
 
-- Cutlass新功能如Epilog Visitor Tree
+### 2. 工作原理
 
-- Triton简介
+- 构建于5个抽象层压缩灵活性
 
-### 2. Cutlass简介
+- Cute简化线程数据映射
 
-- 开源库为编程Tensor核心
+- Collective和Tiled ops处理内核计算
 
-- 五层抽象增加灵活性
+### 3. Cutlass在PyTorch生态中的应用
 
-- Python接口简化使用难度
+- 在PyTorch中作为Inductor后端
 
-### 3. Cutlass使用场景
+- AItemplate和Xformer使用Cutlass特性
 
-- Kubos最佳开箱体验
+- PyTorch geometric应用Cutlass做group gemm
 
-- 需求定制化时使用Cutlass
+### 4. 最新功能
 
-### 4. Cutlass在PyTorch生态中的应用
+- Python接口减少C++模板难度
 
-- 性能优化如Inductor备选
+- EpilogueVisitor Tree配置复杂Epilogue
 
-- 记忆网络Attention使用
+- 混合输入gemm支持不同数据类型
 
-- 图算法库使用
+### 5. 性能测试
 
-### 5. Cutlass新功能
+- 利用率达90%以上
 
-- 混合输入Gem
+- 版本优化中不断提升性能
 
-- 更低对齐Gem
+### 6. 未来发展计划
 
-- 多架构支持如Ada
+- 更多优化如低对齐gemm
 
-- 可移植Pipeline
+- 支持Hopper和Ada等新硬件
 
-### 6. Triton简介
-
-- Python编程TensorCores
-
-- 编译器优化隐藏细节
+- 改进文档助力开发
 
 嗨，我们要开始了。我叫马修·尼斯利。我是NVIDIA的深度学习compiler PM，今天我将介绍一些针对NVIDIA Tensorcores的使用方法。首先我要讲一下Cutlass。我会给你一些背景和概述，为什么你可能会使用它，一些最新和即将推出的功能，然后我会概述一下开放平台Triton。如果你刚刚参加了上一场讲座的话那你已经是懂哥了。
 
