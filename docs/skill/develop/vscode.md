@@ -227,6 +227,8 @@ cmake的基础设置可参考:(需要先有个settings.json)
 
 ## Python
 
+- 对于一些很多参数的怎么快速生成 launch.json 调试文件？———— `pip install zpdb` ，然后你只需要 zpdb + 命令就可以生成一个拥有完全参数的调试 launch.json 了！！！！（太强了）
+
 - 如何执行文件夹自目录下的子文件夹内的python文件
 
 [https://zhuanlan.zhihu.com/p/458657777](https://zhuanlan.zhihu.com/p/458657777)
