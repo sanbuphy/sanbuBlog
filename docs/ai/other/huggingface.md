@@ -1,5 +1,5 @@
 ---
-huggingface 最佳实践
+huggingface最佳实践
 ---
 
 ## 优雅的下载
