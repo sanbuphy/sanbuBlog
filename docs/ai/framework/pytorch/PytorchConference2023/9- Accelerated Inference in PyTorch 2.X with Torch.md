@@ -49,7 +49,7 @@ keywords: ['pytorch']
 
 我将在今天的用例中分享一些方法，包括Model performance和core implementation。这意味着，如果你有一个单一的模型，并且你用我们的两种方法之一进行优化，你可以得到相似的性能和核心软件实现。现在你可能会问，为什么我要选择其中之一？因为不同的部署场景需要不同的方法。
 
-![](image/image_XB5jO_DMo5.jpg)
+![](9-torchtrt/image/image_XB5jO_DMo5.jpg)
 
 今天我们将介绍的两种方法是Flexible JIT方法和Serializable AOT方法。如果您的模型具有复杂逻辑，需要即时编译，并且可能需要Python严格部署，那么灵活的JIT方法可能对您来说是最好的选择。如果您需要整个图形捕获，需要对模型进行一些序列化，或者进行C++部署，那么AOT方法可能更适合您的用例。所以考虑到这一点，让我们走一遍这两个用户流程共享的内部路径。
 
@@ -57,17 +57,17 @@ keywords: ['pytorch']
 
 以下是一般的内部构造：
 
-![](image/image_74XSSekpiG.jpg)
+![](9-torchtrt/image/image_74XSSekpiG.jpg)
 
 我们使用ATEN  trace将graph转换过来。实际上，这意味着我们将torch操作符转换成ATEN表示，这只是以一种稍微容易处理的方式来表示相同的操作符。之后，我们进行lowering处理，包括常数折叠和融合以提高性能。然后我们进入划分阶段partitioning。Torch TensorRT会选择运行哪些操作，哪些操作在Torch中运行，从而生成您在右侧看到的分段图形。最后是转换阶段，对于在右侧看到的每个TensorRT图形，他们从其ATEN操作转换为等效的TensorRT layer，最后得到优化后的模型。
 
 所以在谈到这个一般方法后，即针对两种用例的一般路径,我们将稍微深入了解JIT工作流程.,Dheeraj将讨论提前工作流程.,JIT方法使您享受到了Torch.compile的好处.,其中包括复杂的Python代码处理、自动图形分割.,.,NVIDIA的TensorRT的优化能力.,层张量融合、内核自动调优，以及您选择层精度的能力.,
 
-![](image/image_jF-J8FOOxl.jpg)
+![](9-torchtrt/image/image_jF-J8FOOxl.jpg)
 
 在该方法的浏览版中，我们能够在不到一秒钟的时间内对稳定扩散的文本到图像进行基准测试.（4090 16fp 50epoch),那么，JIT方法背后的真正原理是什么?,嗯，从一开始就开始吧.,然后用户只需要在该模型上调用torch.compile,并指定TensorRT作为后端.,现在从这里开始的一切都是在幕后进行的,.,但有助于解释正在发生的事情.
 
-![](image/image_nLH3a4zbIf.jpg)
+![](9-torchtrt/image/image_nLH3a4zbIf.jpg)
 
 因此，在这之后，Torch.compile将会将您的模型代码进行拆分，然后是一个dynamo guard（什么是 dynamo guard？ 请参考： TorchDynamo 源码剖析 04 - Guard, Cache, Execution&#x20;
 [https://zhuanlan.zhihu.com/p/630722214](https://zhuanlan.zhihu.com/p/630722214 "https://zhuanlan.zhihu.com/p/630722214")  ，可以简单理解为dynamo后到python代码的中间层），再然后是另一个graph。之所以会出现这个guard，**是因为在代码中有一个条件语句。实际上，大多数机器学习模型的跟踪器都无法处理这样的条件语句，因为这个条件取决于输入的值**。但是Torch Compile能够处理它，因为这个guard在Python中运行，并且会在条件的值发生变化时触发自动图形重新编译。
@@ -76,7 +76,7 @@ keywords: ['pytorch']
 
 总结用法，用户只需对模型调用torch compile，指定后端tensorRT，并可选择一些选项，然后传递一些输入，它将实时进行编译。这种编译方法对用户来说非常可定制。您可以通过精度关键字参数选择层精度。您可以指定在TensorRT引擎块中所需的最小运算符数量，等等。
 
-![](image/image_E2qqlowPy-.jpg)
+![](9-torchtrt/image/image_E2qqlowPy-.jpg)
 
 就这些，接下来就交给Dheeraj讨论AOT方法。现在让我们来看看Torch TensorRT的AOT方法。
 
@@ -86,23 +86,23 @@ keywords: ['pytorch']
 
 下面的代码段列出了该API的简单用法。一旦您声明了您的模型，只需将其传递给dynamo.trace，然后是dynamo.compile，该函数将返回优化后的TensorRT图模块。
 
-![](image/image_cFKUT3U4hK.jpg)
+![](9-torchtrt/image/image_cFKUT3U4hK.jpg)
 
 TensorRT期望图中每个动态输入都有一系列形状。
 
-![](image/image_ztBCTUWaNX.jpg)
+![](9-torchtrt/image/image_ztBCTUWaNX.jpg)
 
 在右边的图中，您可以看到我们可以使用torch\_tensorrt.input API提供这些形状范围。与刚刚看到的jit流程的区别是您可以提供这个形状范围。这样做的好处是，如果输入形状在提供的范围内发生更改，您无需重新编译即可进行推理。静态是序列化的主要好处之一。
 
 为了总结我们到目前为止所见到的内容，根据您的PyTorch图形，我们使用我们的trace API生成导出的程序，然后使用Dynamo.compile API进行编译。最后，您将获得一个TorchFX图模块，其中包含TensorRT优化的引擎。现在，您可以使用Dynamo.Serialize API，将这些图形模块对象转换为编程脚本或导出程序的表示形式，并随后保存到磁盘上。同样，右侧的代码片段非常易于使用。一旦您从Dynamo.compile中获得了TensorRT模型，只需使用模型及其输入调用serialize API即可。
 
-![](image/image_6lCYA4JE0e.jpg)
+![](9-torchtrt/image/image_6lCYA4JE0e.jpg)
 
 以下是我们目前所见的内容的概述。我们能够处理复杂的Python代码。通过重新编译支持动态形状，将已编译的模块序列化。此外，我们还能够通过我们的输入API支持动态形状，并且将它们序列化为.script或导出的程序，但它无法处理任何图形断点。
 
 然而，这两者之间存在一些重要的相似之处。它们都经历类似的图形优化以进行高性能推断。Torch TensorRT在PyTorch框架中以两个关键路径提供了优化的推理方式。
 
-![](image/image_6dwMm9k8MP.jpg)
+![](9-torchtrt/image/image_6dwMm9k8MP.jpg)
 
 结论和未来工作 &#x20;
 Torch-TensorRT通过两个关键路径在PyTorch中提供了优化的推理：
