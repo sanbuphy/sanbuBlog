@@ -70,9 +70,13 @@ title: 创建属于你的Discord 机器人
 
 我们将使用 discord.py， 这个 Python 库来编写机器人的代码。discord.py 是 Discord 的一个 API 封装器，使在 Python 中更容易创建一个 Discord 机器人。
 
-首先你需要安装环境：
+首先你需要安装环境：【注意，你的python环境需要大于3.8】
 
-`python3 -m pip install discord.py`
+`python3 -m pip install discord.py --upgrade`
+
+*这个版本可能过低，你需要直接源码安装：
+
+`pip install git+https://github.com/rapptz/discord.py`
 
 接下来看看如何处理事件，
 
