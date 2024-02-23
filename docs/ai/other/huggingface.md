@@ -4,6 +4,10 @@ title: huggingface 最佳实践
 
 ## 优雅的下载
 
+### 使用 huggingface-cli 下载
+
+`huggingface-cli download 仓库地址 -local-dir=./models/ --cache-dir=./cache --local-dir-use-symlinks=False --resume-download`
+
 ### 使用snapshot下载
 
 如何下载官方仓库等：
