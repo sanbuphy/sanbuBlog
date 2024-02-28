@@ -29,6 +29,7 @@ snapshot_download(repo_id="decapoda-research/llama-13b-hf",cache_dir="./cache", 
 import os
 
 # 设置环境变量
+os.environ['HF_HOME'] = './cache/'
 os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 # 下载模型
 os.system('huggingface-cli download --resume-download sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 --local-dir /root/data/model/sentence-transformer')
