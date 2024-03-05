@@ -49,7 +49,7 @@ snapshot_download(repo_id="bert-base-chinese",cache_dir="输入你想下载到�
 
 通过环境变量的方式
 
-`export HF_HOME=./cache/`
+`export HF_HOME=./cache/   export HF_ENDPOINT='https://hf-mirror.com'`
 
 具体参考文档
 
