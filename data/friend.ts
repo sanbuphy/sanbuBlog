@@ -23,6 +23,12 @@ export const Friends: Friend[] = [
     website: 'https://www.cnblogs.com/isLinXu/',
     avatar: '/img/friend/linxu.jpeg',
   },
+  {
+    title: 'jackzhu',
+    description: '开源社区老哥，多模态',
+    website: 'https://jackzhu.top/',
+    avatar: '/img/friend/mingzi.jpg',
+  },
 ]
 
 export type Friend = {
