@@ -69,6 +69,10 @@ const config = {
               to: 'docs/ai/framework/introduction',
             },
             {
+              label: 'lab',
+              to: 'docs/ai/lab',
+            },
+            {
               label: 'Others',
               to: 'docs/ai/other/introduction',
             },
