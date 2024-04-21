@@ -1,11 +1,12 @@
 export const projects: Project[] = [
-  // {
-  //   title: 'rust-wasm-md5',
-  //   description: '🦀 Rust + WebAssembly 实现的 MD5 加密',
-  //   website: 'https://github.com/kuizuo/rust-wasm-md5',
-  //   tags: ['opensource'],
-  //   type: 'personal',
-  // },
+  {
+    title: '测试demo',
+    description: '🥭测试',
+    website: 'https://github.com/',
+    preview: '/img/project/vue-chrome-extension.png',
+    tags: ['opensource'],
+    type: 'personal',
+  },
 ]
 
 export type Tag = {
