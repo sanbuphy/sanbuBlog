@@ -6,7 +6,7 @@ title: huggingface 最佳实践
 
 ### 使用 huggingface-cli 下载
 
-`huggingface-cli download 仓库地址 -local-dir=./models/ --cache-dir=./cache --local-dir-use-symlinks=False --resume-download`
+`huggingface-cli download 仓库地址 --local-dir=./models/ --local-dir-use-symlinks=False --resume-download`
 
 ### 使用snapshot下载
 
