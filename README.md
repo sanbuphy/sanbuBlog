@@ -56,8 +56,8 @@
 │   └── theme                      # 自定义主题组件
 ├── static                         # 静态资源文件
 │   └── img                        # 静态图片
-├── docusaurus.config.js           # 站点的配置信息 (增加新的边栏需要修改)
-├── sidebars.js                    # 文档的侧边栏 (增加新的边栏需要修改)
+├── docusaurus.config.js           # 站点的配置信息 (增加新的边栏需要修改，修改后需要重启 yarn 才可以)
+├── sidebars.js                    # 文档的侧边栏 (增加新的边栏需要修改，修改后需要重启 yarn 才可以)
 ├── package.json
 ├── tsconfig.json
 └── pnpm-lock.yaml

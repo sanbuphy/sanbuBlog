@@ -63,8 +63,7 @@ const sidebars = {
       label: 'Mlsys',
       type: 'category',
       link: {
-        type: 'doc',
-        id: 'ai/mlsys/mlsys-guides'
+        type: 'generated-index',
       },  
       items: [
         {
@@ -101,7 +100,7 @@ const sidebars = {
       ],
     },
     {
-      label: 'notes',
+      label: 'Notes',
       type: 'category',
       link: {
         type: 'generated-index',

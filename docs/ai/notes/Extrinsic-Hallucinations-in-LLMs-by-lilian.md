@@ -19,16 +19,16 @@ title: Extrinsic Hallucinations in LLMs by lilian
     - the examples with new knowledge i**ncrease the model’s tendency to hallucinate**.
     - 如何根据模型在闭卷问答数据集（如EntityQuestions）上生成正确答案的可能性，对模型的知识进行分类。给定一个问题𝑞和答案𝑎，定义𝑃Correct(𝑞,𝑎;𝑀,𝑇)来估计模型𝑀在温度𝑇下生成正确答案𝑎的可能性。
 
-            | Type | Category | Definition | Explanation |
-            | --- | --- | --- | --- |
-            | Known | HighlyKnown | $$ P_{\text{Correct}}(q, a; M, T = 0) = 1 $$ | Greedy decoding always predicts the correct answer. |
-            |  | MaybeKnown | $$ P_{\text{Correct}}(q, a; M, T = 0) \in (0, 1) $$ | Greedy decoding sometimes (but not always) predicts the correct answer. |
-            |  | WeaklyKnown | $$ P_{\text{Correct}}(q, a; M, T = 0) = 0 $$ ∧ $$ P_{\text{Correct}}(q, a; M, T > 0) > 0 $$ | Greedy decoding never predicts the correct answer, whereas temperature sampling with $$ T > 0 $$ sometimes predicts the correct answer. |
-            | Unknown | Unknown | $$ P_{\text{Correct}}(q, a; M, T \geq 0) = 0 $$ | The model never predicts the correct answer, thus it seems to lack the knowledge of the correct answer. |
+     | Type | Category | Definition | Explanation |
+     | --- | --- | --- | --- |
+     | Known | HighlyKnown | $$ P_{\text{Correct}}(q, a; M, T = 0) = 1 $$ | Greedy decoding always predicts the correct answer. |
+     |  | MaybeKnown | $$ P_{\text{Correct}}(q, a; M, T = 0) \in (0, 1) $$ | Greedy decoding sometimes (but not always) predicts the correct answer. |
+     |  | WeaklyKnown | $$ P_{\text{Correct}}(q, a; M, T = 0) = 0 $$ ∧ $$ P_{\text{Correct}}(q, a; M, T > 0) > 0 $$ | Greedy decoding never predicts the correct answer, whereas temperature sampling with $$ T > 0 $$ sometimes predicts the correct answer. |
+     | Unknown | Unknown | $$ P_{\text{Correct}}(q, a; M, T \geq 0) = 0 $$ | The model never predicts the correct answer, thus it seems to lack the knowledge of the correct answer. |
 
-            The best dev performance is obtained when the LLM fits **the majority of the `Known` training examples but only a few of the `Unknown` ones**. The model starts to hallucinate when it learns most of the `Unknown` examples.
+The best dev performance is obtained when the LLM fits **the majority of the `Known` training examples but only a few of the `Unknown` ones**. The model starts to hallucinate when it learns most of the `Unknown` examples.
 
-            ![Untitled](Extrinsic%20Hallucinations%20in%20LLMs%20by%20lilian%20ae7d4159ecd04d8caad2e9d08d06e941/Untitled.png)
+![Untitled](Extrinsic-Hallucinations-in-LLMs-by-lilian-ae7d4159ecd04d8caad2e9d08d06e941/Untitled.png)
 
 ## **Hallucination Detection**
 
@@ -38,7 +38,7 @@ title: Extrinsic Hallucinations in LLMs by lilian
 
 This dataset uses Wikipedia documents or sentences as the knowledge base for factuality grounding.The Wikipedia documents are known ground-truth from the [FEVER](https://fever.ai/dataset/fever.html) dataset,
 
-![Untitled](Extrinsic%20Hallucinations%20in%20LLMs%20by%20lilian%20ae7d4159ecd04d8caad2e9d08d06e941/Untitled%201.png)
+![Untitled](Extrinsic-Hallucinations-in-LLMs-by-lilian-ae7d4159ecd04d8caad2e9d08d06e941/Untitled%201.png)
 
 1. **Hallucination NE (Named Entity) errors**: 使用预训练的实体检测模型和文档级grounding知识，该指标测量未出现在grounding文档中的检测到的命名实体的比例。
 2. **Entailment ratios**: 使用基于MNLI和句子级知识基础微调的RoBERTa模型，该指标计算生成句子的分数，这些句子被蕴涵模型标记为与配对的Wikipedia句子相关
@@ -86,7 +86,7 @@ the other must also be true
 
 依赖于对来自黑盒LLM的多个样本的事实错误的一致性检查。考虑到灰盒事实检查测量需要访问LLM的令牌级logprob，SelfCheckGPT只需要不依赖外部知识库的样本，因此黑盒访问就足够了，不需要外部知识库。
 
-![Untitled](Extrinsic%20Hallucinations%20in%20LLMs%20by%20lilian%20ae7d4159ecd04d8caad2e9d08d06e941/Untitled%202.png)
+![Untitled](Extrinsic-Hallucinations-in-LLMs-by-lilian-ae7d4159ecd04d8caad2e9d08d06e941/Untitled%202.png)
 
 ### **Calibration of Unknown Knowledge 对于未知的幻觉**
 
@@ -100,7 +100,7 @@ the other must also be true
 
 *直接查询*要求模型判断生成的引用是否存在。**间接查询**改为询问生成的引用的辅助细节——作者是谁；例如，如果我们想检查`"Is the following paper real?"`，我们可以检查`"Who are the author of the paper?"`
 
-![Untitled](Extrinsic%20Hallucinations%20in%20LLMs%20by%20lilian%20ae7d4159ecd04d8caad2e9d08d06e941/Untitled%203.png)
+![Untitled](Extrinsic-Hallucinations-in-LLMs-by-lilian-ae7d4159ecd04d8caad2e9d08d06e941/Untitled%203.png)
 
 ### RAG
 
@@ -117,7 +117,7 @@ Without grounding by external retrieved knowledge, we can design a process for u
 
 - Dhuliawala 等人（2023）提出了一种名为“验证链”（Chain-of-Verification, CoVe）的方法，通过一系列的行动来规划和执行验证。CoVe 包含四个核心步骤：首先，模型生成一个初始草稿，称为“基线”。接着，模型基于这次生成设计非模板化的验证问题进行事实检查，这可以通过少量示例提示（response, verification questions）实现。第三步是独立回答这些问题，有几种变体设置：(1) 联合：与第二步结合，少量示例结构为（response, verification questions, verification answers）；缺点是原始响应在上下文中，模型可能会重复类似的幻觉。(2) 两步：将验证规划和执行步骤分开，避免原始响应的影响。(3) 分解：每个验证问题单独回答。如果长文本生成导致多个验证问题，我们会逐一回答每个问题。(4) 分解+修订：在分解验证执行后增加“交叉检查”步骤，基于基线响应和验证问题及答案来检测不一致。最后一步是生成最终、改进后的输出，如果发现不一致则进行修订。
 
-    ![Untitled](Extrinsic%20Hallucinations%20in%20LLMs%20by%20lilian%20ae7d4159ecd04d8caad2e9d08d06e941/Untitled%204.png)
+    ![Untitled](Extrinsic-Hallucinations-in-LLMs-by-lilian-ae7d4159ecd04d8caad2e9d08d06e941/Untitled%204.png)
 
     Here are some interesting observations from the CoVe experiments:
 
