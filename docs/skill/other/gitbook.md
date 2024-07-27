@@ -10,6 +10,10 @@ gitbook非常适合用来做自己的笔记或者课件存储,可以写出自己
 
 ## 基础环境配置
 
+:::info
+这些是早期写的，你可以参考我的另一篇nodejs环境部署的文章，那个才是最佳实践。
+:::
+
 首先我们需要安装nvm进行指定nodejs版本的安装
 你可以使用 nvm (Node Version Manager) 工具来切换已安装的 Node.js 版本。
 
@@ -69,7 +73,6 @@ nvm use 12.22.1
 因为我们在上面的node版本是适配gitbook的,所以只需要按照下列方式进行安装和运行
 
 ```bash
-npm install -g gitbook
 npm install -g gitbook-cli
 
 //初始化一本书
