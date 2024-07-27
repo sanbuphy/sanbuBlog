@@ -26,11 +26,7 @@ const config = {
       },
       {
         name: 'keywords',
-        content: 'blog, ai, python, c++',
-      },
-      {
-        name: 'keywords',
-        content: 'AI爱好者与开发者',
+        content: '人工智能',
       },
     ],
     docs: {
@@ -74,7 +70,7 @@ const config = {
             },
             {
               label: 'Notes',
-              to: 'docs/ai/notes/introduction',
+              to: 'docs/ai/notes/introduction', // 不加 introduction 没办法显示。。。似乎空格之类的就挂了，最好标题不要有空格
             },
             {
               label: 'Others',
