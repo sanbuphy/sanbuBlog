@@ -8,6 +8,8 @@ title: huggingface 最佳实践
 
 `huggingface-cli download 仓库地址 --local-dir=./models/ --local-dir-use-symlinks=False --resume-download`
 
+如果你想要下载数据集，你只需要在后续加上 `--repo-type dataset` 即可。
+
 ### 使用snapshot下载
 
 如何下载官方仓库等：
