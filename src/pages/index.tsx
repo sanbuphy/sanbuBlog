@@ -10,7 +10,7 @@ function Home() {
     <Layout description="Description will go into a meta tag in <head />">
       <HomepageHero></HomepageHero>
       <main className="container-wrapper">
-        {/* <HomepageBlog /> */}
+        <HomepageBlog />
         <HomepageProject />
         {/* <HomepageFeatures /> */}
       </main>

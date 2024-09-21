@@ -20,7 +20,7 @@ function FriendHeader() {
         <CodeBlock language="jsx">
           {`{
   // 本站信息
-  title: '散步的小屋',
+  title: '散步Home',
   description: '不懂就问，不会就学',
 }`}
         </CodeBlock>

@@ -44,12 +44,14 @@
     "docusaurus-plugin-sass": "^0.2.5",
     "framer-motion": "^10.13.1",
     "loadsh": "^0.0.4",
+    "nvm": "^0.0.4",
     "ora": "^5.4.1",
     "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-popper": "^2.3.0",
-    "sass": "^1.64.1"
+    "sass": "^1.64.1",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@docusaurus/eslint-plugin": "3.0.0-alpha.0",

@@ -5,7 +5,7 @@ const announcementBarContent = ''
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '散步的小屋',
+  title: '散步Home',
   url: 'https://aispacewalk.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -35,7 +35,7 @@ const config = {
       },
     },
     navbar: {
-      title: '散步的小屋',
+      title: '散步Home',
       logo: {
         alt: '散步',
         src: 'img/logo.webp',
