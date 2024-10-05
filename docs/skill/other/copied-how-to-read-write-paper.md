@@ -275,7 +275,7 @@ Submit the original manuscript showing clearly all textual changes using track c
 
 我最近主要的学习方向是使用深度学习(deep learning)技术的计算机视觉(CV, computer vision)分割(segmentation)任务。可能是因为深度学习技术发展的太快了，尤其是卷积神经网络(CNN, convolutional neural network)之后，一直到不久前GAN(generative adversarial network)开始流行于各个任务，仅仅花了不到十年。
 
-在[Yizeng Han](https://arxiv.org/search/cs?searchtype=author&query=Han%2C+Y)等的综述论文[Dynamic Neural Networks: A Survey]([08]Dynamic-Neural-Networks-A-Survey)中，作者将视觉领域的神经网络近十年的发展分为这样几个阶段：
+在[Yizeng Han](https://arxiv.org/search/cs?searchtype=author&query=Han%2C+Y)等的综述论文Dynamic Neural Networks: A Survey中，作者将视觉领域的神经网络近十年的发展分为这样几个阶段：
 
 1. 快速发展阶段（Fast developing stage），2012~2015
 
