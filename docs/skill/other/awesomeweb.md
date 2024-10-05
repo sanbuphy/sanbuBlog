@@ -5,9 +5,39 @@ title: 我的网站大全
 ---
 ## 写在前面
 
-收录了个人喜好觉得品味好的网站（也有一些小工具），
+If any English-speaking friends see my GitHub repository, some of the resources here might be helpful to you too! You can use translation software to read it.
 
-如果有其他好的建议也欢迎提出，非常感谢。
+```Bash
+Here, I have curated a collection of websites and small tools that I find to be of good taste, covering but not limited to the following areas:
+
+- Mathematics learning
+- Basic computer science learning (operating systems, etc.)
+- Basic computer operations (Windows system, Linux system, Docker)
+- Basic deep learning study materials and practical resources
+- Deep learning system study materials
+- Basic language learning (Python, C++)
+- Interesting open-source projects and tools (can replace common workflows)
+
+Updated periodically, enjoy your time here
+```
+
+With a sidebar directory (viewable on desktop):
+
+[https://www.aispacewalk.cn/docs/other/awesomeweb](https://www.aispacewalk.cn/docs/other/awesomeweb)
+
+GitHub open-source repository: [https://github.com/sanbuphy/my-awesome-cs](https://github.com/sanbuphy/my-awesome-cs)
+
+```Bash
+
+收录了品味好的网站与工具，涵盖不限于以下领域：
+
+- 数学学习
+- 计算机基础学习（操作系统等）
+- 计算机操作基础（windows系统、linux系统、docker）
+- 深度学习基础学习资料及实践资料
+- 深度学习系统学习资料
+- 语言基础学习（python、c++）
+- 有趣的开源项目和工具（可替换常见工作流）
 
 不定期更新
 
@@ -15,7 +45,11 @@ title: 我的网站大全
 
 github开源仓库地址： [https://github.com/sanbuphy/my-awesome-cs](https://github.com/sanbuphy/my-awesome-cs)
 
-**基础素质要求（参考NJU-PA）**
+Feel free to discuss with me in the github issue!
+
+```
+
+**基础素质（参考NJU-PA**[https://nju-projectn.github.io/ics-pa-gitbook/ics2024/](https://nju-projectn.github.io/ics-pa-gitbook/ics2024/)  **）**
 
 提问的艺术
 
@@ -24,6 +58,8 @@ github开源仓库地址： [https://github.com/sanbuphy/my-awesome-cs](https://
 不像弱智一样提问
 
 [https://github.com/tangx/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md](https://github.com/tangx/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md)
+
+不要再偷懒了——南大蒋炎岩
 
 **部分内容出自以下参考网站，也欢迎关注他们**
 
@@ -95,7 +131,7 @@ Quick Reference开发人员速查表（各种语言、脚本、常用工具的�
 
 ### 基本操作
 
-#### GDB、VIM、GIT、SHELL等常见linux操作基础（慢慢来，在使用中学
+#### GDB、VIM、GIT、Terminal艺术
 
 - The Missing Semester of Your CS Education 中文版（强烈推荐）
   - 官方中文站点：[https://missing-semester-cn.github.io/](https://missing-semester-cn.github.io/)
@@ -116,21 +152,13 @@ Quick Reference开发人员速查表（各种语言、脚本、常用工具的�
 
 #### 系统相关及系统信息相关
 
-ubuntu实体机快照：
+获取CPU的性能信息和常见信息，涵盖x86/arm等多硬件
 
-[https://blog.csdn.net/wf19930209/article/details/104236358](https://blog.csdn.net/wf19930209/article/details/104236358)
-
-ubuntu循环依赖问题：
-
-在安装某些东西的时候，你很可能会遇到循环依赖问题，这里慎重降级！！！！除非是必需品。操作不当很容易直接把服务/内核挂了，此时最好的办法是开个docker。（尤其是看到lib XXX的时候要小心）
+[https://github.com/pytorch/cpuinfo](https://github.com/pytorch/cpuinfo)
 
 如何开机自动挂载新硬盘（非ubuntu安装硬盘）
 
 [https://blog.csdn.net/qq_27370437/article/details/117806294](https://blog.csdn.net/qq_27370437/article/details/117806294)
-
-获取CPU的性能信息和常见信息，涵盖x86/arm等多硬件
-
-[https://github.com/pytorch/cpuinfo](https://github.com/pytorch/cpuinfo)
 
 如何维护和切换gcc与g++代码（两种方案）
 
@@ -158,14 +186,6 @@ sudo update-alternatives --config gcc
 sudo pip install s-tui
 
 sudo s-tui
-
-如何打造Ubuntu Togo  利用虚拟机
-
-[https://blog.csdn.net/afsafasfa/article/details/125782222](https://blog.csdn.net/afsafasfa/article/details/125782222)
-
-改变ubuntu swap大小
-
-[https://zhuanlan.zhihu.com/p/222512751](https://zhuanlan.zhihu.com/p/222512751)
 
 多线程并发解压缩文件
 
@@ -217,6 +237,63 @@ git config --global i18n.logoutputencoding utf-8
 export LESSCHARSET=utf-8
 ```
 
+- git 删除历史记录大文件，减轻负担 [https://blog.csdn.net/baobaoxiannv/article/details/105586187](https://blog.csdn.net/baobaoxiannv/article/details/105586187)
+- git如何结束一大堆的safe directory问题（少部分还可以自己一个个忽略，如果全都是就只能这样先把所有safe git 警告关闭 `git config --global --add safe.directory '*'`
+- git-ssh: connect to host [github.com](http://github.com) port 22: Connection timed out
+  - 先看看ssh -T -p 443 [git@ssh.github.com](mailto:git@ssh.github.com)能不能访问，可以的话就进行修改转发：
+
+        编辑 ~/.ssh/config 文件，如果没有config文件的话就直接 vim ~/.ssh/config加入以下内容 （windows在C:\Users\你的用户名\.ssh 中）
+
+```C++
+Host github.com
+HostName ssh.github.com   #或者是Hostname
+Port 443
+```
+
+        再次测试 `ssh -T git@github.com`即可
+
+- vscode免密登陆远程服务器，git免密
+    1. 确保已经有本地公钥私钥，如果没有就`ssh-keygen`生成
+    2. 默认拷贝本地公钥到目标服务器（如果有端口也-p加上端口）如果是windows可以在gitbash中操作即可或者用wsl的鉴权地址指定，随后 `ssh-copy-id  user@remote-host`即可，如果你是windows强烈建议手动指定下：`C:\\Users\\你的用户名\\.ssh\\id_rsa.pub`  linux下也可：`ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-host`
+
+        ，这步结束后，可以直接在终端ssh测试下能否直接连上，理论上可以直接。
+    3. vscode中加入配置即可：（修改下列配置成为你自己的配置），如果还需要密码就是IdentityFile 了
+
+```Python
+Host 名字
+  HostName ssh的名字
+  Port 端口
+  User username
+  IdentityFile "C:\Users\你的用户名\.ssh\id_rsa"
+  IdentityFile "~/.ssh/id_rsa"
+```
+
+- git 放宽安全策略（safe directory）`git config --global --add safe.directory '*'`
+- server certificate verification failed. CAfile: none CRLfile: none 相关错误：`git config --global http.sslverify false`
+- mirror加速： [https://mirror.ghproxy.com/](https://mirror.ghproxy.com/)
+- github mirror大全[https://blog.csdn.net/liveon_/article/details/127933041](https://blog.csdn.net/liveon_/article/details/127933041)
+- 调整一些规则（主要是代理规则），可以使用比如 `git config --global --edit\`
+
+```text
+git config --global url."https://hub.fastgit.xyz/".insteadOf "https://github.com/"
+git config protocol.https.allow always
+```
+
+- github 镜像加速，快速更换所有文件 `find . -type f -exec sed -i 's|https://github.com/|https://更换成镜像加速地址/|g' {} +`
+- wsl 提示 NTA 网络问题无法 proxy：
+
+```text
+# 在 Windows 的 %UserProfile%\.wslconfig 文件中添加以下内容：
+# Settings apply across all Linux distros running on WSL 2
+[wsl2]
+networkingMode=mirrored # 开启镜像网络
+dnsTunneling=true # 开启 DNS Tunneling
+firewall=true # 开启 Windows 防火墙
+autoProxy=true # 开启自动同步代理
+[experimental]
+hostAddressLoopback=true
+```
+
 #### ubuntu常见疑难解答
 
 - 快速下载ubuntu镜像: 找到官网下载链接后使用wget下载
@@ -234,7 +311,79 @@ export LESSCHARSET=utf-8
   - 接下来将/etc/apt/source.list文件内容清空并保存
   - 恢复网络，将第一步中取消掉的四个选项重新点选然后在最佳国内服务器更新即可。
 - 给第三方软件appimage加上快捷方式：[https://www.cnblogs.com/HGNET/p/16396589.html](https://www.cnblogs.com/HGNET/p/16396589.html)
+- ubuntu实体机快照：
+
+    [https://blog.csdn.net/wf19930209/article/details/104236358](https://blog.csdn.net/wf19930209/article/details/104236358)
+- ubuntu循环依赖问题：
+
+    在安装某些东西的时候，你很可能会遇到循环依赖问题，这里慎重降级！！！！除非是必需品。操作不当很容易直接把服务/内核挂了，此时最好的办法是开个docker。（尤其是看到lib XXX的时候要小心）
 - `ncdu` 工具分析磁盘空间占用情况（超好用，如果是wsl，运行`ncdu --exclude /mnt` // wsl下排除/mnt  （当然，你也可以用 sudo du -d 1 -h | less 进一步分析）
+- 如何打造Ubuntu Togo  利用虚拟机
+
+    [https://blog.csdn.net/afsafasfa/article/details/125782222](https://blog.csdn.net/afsafasfa/article/details/125782222)
+- 改变ubuntu swap大小
+
+    [https://zhuanlan.zhihu.com/p/222512751](https://zhuanlan.zhihu.com/p/222512751)
+- ubuntu陷入休眠怎么办如何关闭ubuntu自动休眠：
+
+    首先检查系统日志是不是陷入休眠了，或者直接看`systemctl status sleep.target`
+
+    如果loaded说明启动了挂起规则，此时只需要如此操作后重新查看状态至masked即可：
+
+    `sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target`
+- 快速挂载一个新的盘：
+
+```Bash
+# 方法一（推荐）先分区然后创建文件系统
+fdisk /dev/sdb
+# 依次输入:n->p->1->回车->回车->w
+fdisk -l # 查看到刚才分出来的新分区
+mkfs.ext4 /dev/sdb1
+
+# 方法二（不推荐） 直接格式化创建文件系统
+# 执行：lsblk  然后  sudo mkfs.ext4 /dev/sdb
+sudo mkdir /mnt/mydisk
+sudo mount /dev/sdb1 /mnt/mydisk
+
+# 永久挂载：
+#打开配置文件
+vi /etc/fstab
+#在配置文件最后输入
+/dev/vdb1 /目标目录   ext4    defaults        0 0
+
+```
+
+- 已有文件系统在扩容硬盘，如何继续扩容
+
+```Bash
+# 没有分区，直接构建文件系统的情况
+# 检查文件系统是否有错误，并准备扩展
+sudo e2fsck -f /dev/sdb
+# 使用 resize2fs 工具扩展文件系统：
+sudo resize2fs /dev/sdb
+
+# 已有分区，扩展该分区的文件系统
+sudo apt-get install cloud-guest-utils
+sudo growpart /dev/vdb 1
+sudo resize2fs /dev/vdb1
+sudo mount /dev/vdb1 /挂载点
+
+```
+
+- wget下载如何不需要 -O 强制重命名文件，加入参数 `--content-disposition` ，wget可下载多文件，直接顺序空格间距接下去url 即可，或者 -i xxx.txt
+- /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.30' not found 类似问题：
+
+```text
+# 更新系统 gcc 比较麻烦可以用 conda 里面的，直接修改环境变量就可以让他被优先查找
+conda install -c conda-forge gcc_linux-64=12.1.0 gxx_linux-64=12.1.0
+export PATH=$CONDA_PREFIX/bin:$PATH
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
+# 永久保存 （不建议）
+echo 'export PATH=$CONDA_PREFIX/bin:$PATH' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+source ~/.bashrc
+
+```
 
 #### WSL2常见疑难解答
 
@@ -312,6 +461,42 @@ sudo sed -i "\$c nameserver $nameserver" /etc/resolv.conf
 
 - wsl的硬盘空间怎么办？——挂载其他硬盘，如：`sudo mount -t drvfs D: /mnt/d`
 - WSL怎么释放空间，wsl硬盘压缩虚拟硬盘压缩：[https://zhuanlan.zhihu.com/p/521747491](https://zhuanlan.zhihu.com/p/521747491)
+  - 在Program Files\DOCKERimages\DockerDesktopWSL\data 之类的地方搜索
+  - 或者是 C:\Users\hp\AppData\Local\Packages\之类的地方搜索能找到ext4.vhdx文件
+- WSL 有时候发现没法使用nvidia-smi怎么办？其实有时候是因为没有权限，如果你发现sudo nvidia-smi可以但是非sudo不行那可能是因为root 切 用户的时候权限错了。。。sudo su 用户 就可以解决问题，并不是显卡挂了
+- 一个巨坑，WSL 和 Docker Desktop 的 bug 问题，如果你装了这两个可能会在启动wsl或者vscode链接wsl的时候遇到如下类似的问题：
+
+```Python
+Processing fstab with mount -a failed.
+
+<3>WSL (8) ERROR: CreateProcessEntryCommon:370: getpwuid(0) failed 2
+<3>WSL (8) ERROR: CreateProcessEntryCommon:374: getpwuid(0) failed 2
+<3>WSL (8) ERROR: CreateProcessEntryCommon:577: execvpe /bin/sh failed 2
+<3>WSL (8) ERROR: CreateProcessEntryCommon:586: Create process not expected to return
+
+```
+
+    因为这时候你使用`wsl -l`会发现默认的发行版是 docker-desktop，所以我们需要把他切换成ubuntu即可：使用 `wsl -s Ubuntu` 设置成发行版即可（在 wsl -l 里找你的ubuntu版本）
+
+- 注意不同的操作系统编辑创建文件后行尾符可能不同，使用的时候请显式在IDE指定是LF（如果需要在linux运行）否则会出现 command not found 的 报错。LF（Line Feed）使用于 Unix 和类 Unix 系统，表示为 `\n`，是单个字符（ASCII 10）；CRLF（Carriage Return + Line Feed）使用于 Windows 系统，表示为 `\r\n`，包含两个字符：回车（ASCII 13）和换行（ASCII 10）。
+- windows 和wsl 的路径互相转换
+
+```Bash
+
+# 1. 将 Windows 路径转换为 WSL 路径
+wsl wslpath "F:/download"
+
+# 2. 将当前的CMD目录转换为 WSL 路径
+wsl wslpath "%cd%"
+
+# 在WSL中运行这些命令：
+
+# 1. 将 WSL 路径转换为 Windows 路径
+wsl wslpath -w "/mnt/f/download"
+
+# 2. 将当前的WSL目录转换为 Windows 路径
+wsl wslpath -w `pwd`
+```
 
 #### windows常见工具箱
 
@@ -345,6 +530,26 @@ sudo sed -i "\$c nameserver $nameserver" /etc/resolv.conf
 netstat -ano | findstr :<port_number>
 
 taskkill /PID <pid> /F
+```
+
+- 硬盘分区和文件强制删除工具（比大多数的粉碎工具都好用）
+
+    [https://www.diskgenius.cn/](https://www.diskgenius.cn/)
+- 用于在其他系统去除windows的`\r`标识，避免macos和linux运行报错：
+
+```Bash
+sed -i '' $'s/\r$//' filename
+```
+
+- 美化 power shell全教程 [https://www.kwchang0831.dev/dev-env/pwsh/oh-my-posh](https://www.kwchang0831.dev/dev-env/pwsh/oh-my-posh)
+
+    我的推荐主题：
+
+```PowerShell
+oh-my-posh init pwsh | Invoke-Expression
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\montys.omp.json" | Invoke-Expression
+Import-Module posh-git
+
 ```
 
 #### 正则表达式相关
@@ -511,6 +716,16 @@ nodejs下载安装与初始化方法
 
 [https://blog.csdn.net/xuchaoxin1375/article/details/121709299](https://blog.csdn.net/xuchaoxin1375/article/details/121709299)
 
+用自然语言对话生成前端页面
+
+[https://v0.dev/](https://v0.dev/)
+
+node npm切换版本
+
+```text
+nvm use xxx
+```
+
 #### 其他
 
 云服务器相关：
@@ -523,7 +738,7 @@ nodejs下载安装与初始化方法
 
 [https://unbug.github.io/codelf/](https://unbug.github.io/codelf/)
 
-电脑装机：
+电脑装机，组装一台电脑：
 
 去bilibili随便搜前二的 多看几遍
 
@@ -542,6 +757,14 @@ nodejs下载安装与初始化方法
 gradio的proxy冲突了怎么办？
 
 ——设置不同的监听地址，比如gradio可以直接监听ip或者172的容器地址，不需要127.0.0.1
+
+QT报错如何，类似 qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "" even though it was found. [https://neucrack.com/p/407](https://neucrack.com/p/407)
+
+```Bash
+export QT_QPA_PLATFORM="xcb"
+export QT_QPA_PLATFORM=offscreen
+export QT_DEBUG_PLUGINS=1
+```
 
 ### 其他有趣的文章
 
@@ -711,6 +934,10 @@ tcp高级疑难汇总案例分析：[plantegg.github.io/2021/02/14/TCP疑难问�
 
 ### 数据结构与算法
 
+hello 算法，图文并茂的简单入门
+
+[https://www.hello-algo.com/](https://www.hello-algo.com/)
+
 程序员如何准备面试中的算法
 
 [https://wizardforcel.gitbooks.io/the-art-of-programming-by-july/content/00.01.html](https://wizardforcel.gitbooks.io/the-art-of-programming-by-july/content/00.01.html)
@@ -736,6 +963,12 @@ GitHub's largest open-source algorithm library
 一个图文并茂的设计模式学习网站
 
 [refactoringguru.cn/design-patterns](http://refactoringguru.cn/design-patterns)
+
+### 高性能计算
+
+华东师范大学高等数值分析（高性能计算，并行计算）(Parallel and High Performance Computing)
+
+[https://math.ecnu.edu.cn/~jypan/Teaching/ParaComp/](https://math.ecnu.edu.cn/~jypan/Teaching/ParaComp/)
 
 ## 高性能计算与编译器
 
@@ -815,6 +1048,20 @@ CS344 Introduction to Parallel Programming class code
 
 [https://github.com/YconquestY/Needle/blob/main/backend.md](https://github.com/YconquestY/Needle/blob/main/backend.md)
 
+CUDA samples CUDA官方案例
+
+[https://github.com/NVIDIA/CUDALibrarySamples](https://github.com/NVIDIA/CUDALibrarySamples)
+
+#### CUDA 课本相关
+
+Programming-Massively-Parallel-Processors 相关习题作业
+
+[https://github.com/guanrenyang/Programming-Massively-Parallel-Processors/blob/master/Chapter04/README.md](https://github.com/guanrenyang/Programming-Massively-Parallel-Processors/blob/master/Chapter04/README.md)
+
+[https://github.com/nvixnu/pmpp__programming_massively_parallel_processors/blob/master/chapter_04/ch4__matrix_mul.cu](https://github.com/nvixnu/pmpp__programming_massively_parallel_processors/blob/master/chapter_04/ch4__matrix_mul.cu)
+
+[https://github.com/Syencil/Programming_Massively_Parallel_Processors](https://github.com/Syencil/Programming_Massively_Parallel_Processors)
+
 ### MPI通信
 
 如何同时实现高性能并行+分布式计算？| Taichi x MPI4Py - 太极图形的文章 - 知乎 [https://zhuanlan.zhihu.com/p/581896682](https://zhuanlan.zhihu.com/p/581896682)
@@ -827,11 +1074,13 @@ CS344 Introduction to Parallel Programming class code
 
 （你也可以在这里下：[https://www.nvidia.com/download/index.aspx?lang=en-us](https://www.nvidia.com/download/index.aspx?lang=en-us)）
 
-ubuntu-drivers devices
+  ubuntu-drivers devices
 
 sudo apt install  输入显示的推荐版本
 
-（如果安装失败了或者重装，请先把原来的依赖删除：sudo apt-get remove --purge nvidia*
+（如果安装失败了或者重装或者遇到冲突依赖，请先把原来的依赖删除：sudo apt-get remove --purge nvidia*
+
+如果你使用docker，驱动重新安装后请根据 [https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) 重新启动docker
 
 - CUDA与cuDNN的安装：（直接官网文档）【警告⚠，如果你需要安装tensorrt，请用deb形式安装cuda安装包，官方建议如果CUDA采用的是deb方式，tensorrt也要采用deb方式，】
 
@@ -933,6 +1182,20 @@ NVIDIA显卡计算能力？(如sm75）查询：[https://developer.nvidia.com/zh-
 
 ### **深度学习网课**
 
+Anthropic 核心成员写的现代深度学习教材，包括CNN、transformer可解释性、强化学习，拥有大量有趣实验，非常推荐。
+
+[https://arena3-chapter1-transformer-interp.streamlit.app/](https://arena3-chapter1-transformer-interp.streamlit.app/)
+
+基础方向的经典 code [https://github.com/sgrvinod](https://github.com/sgrvinod)
+
+案例式入门深度学习，每个算法都与有最小data和code  [https://course.fast.ai/](https://course.fast.ai/)
+
+EECS 498-007 / 598-005
+
+[https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2020/](https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2020/)
+
+[https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2020/schedule.html](https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2020/schedule.html)
+
 - 李宏毅老师的课程主页：
 
 [https://speech.ee.ntu.edu.tw/~hylee/index.php](https://speech.ee.ntu.edu.tw/~hylee/index.php) 这是李老师的个人主页，可以找到每年ML的课程主页，然后获取作业代码和Kaggle链接  
@@ -967,6 +1230,19 @@ Home: [https://cs182sp21.github.io/](https://cs182sp21.github.io/)
 
 [https://www.bilibili.com/video/BV1PK4y1U751](https://www.bilibili.com/video/BV1PK4y1U751)
 
+University of Waterloo CS 886: Recent Advances on Foundation Models
+
+[https://cs.uwaterloo.ca/~wenhuche/teaching/cs886/](https://cs.uwaterloo.ca/~wenhuche/teaching/cs886/)
+
+CV相关，有关各种国外AIlab的课 某科学的计算机视觉学习路线
+
+某科学的计算机视觉学习路线 - Zircon的文章 - 知乎
+[https://zhuanlan.zhihu.com/p/418853202](https://zhuanlan.zhihu.com/p/418853202)
+
+paper with code 做法
+
+[https://nn.labml.ai/](https://nn.labml.ai/)
+
 ### 深度学习动手项目
 
 小土堆 pytorch学习
@@ -986,6 +1262,18 @@ Home: [https://cs182sp21.github.io/](https://cs182sp21.github.io/)
 学会自己训练一个esrgan等超分辨率模型
 
  [https://www.youtube.com/watch?v=iH7-eYlf7eg](https://www.youtube.com/watch?v=iH7-eYlf7eg)
+
+超分辨率训练框架
+
+[https://github.com/muslll/neosr](https://github.com/muslll/neosr)
+
+手写各种论文、复现各种论文项目
+
+[https://github.com/lucidrains](https://github.com/lucidrains)
+
+手写复现各种 vit 网络
+
+[https://github.com/lucidrains/vit-pytorch](https://github.com/lucidrains/vit-pytorch)
 
 ### 开源库/项目
 
@@ -1037,11 +1325,35 @@ NLP Chinese Data Augmentation 一键中文数据增强工具
 
 [https://github.com/425776024/nlpcda](https://github.com/425776024/nlpcda)
 
+url_img to dataset
+
+Easily turn large sets of image urls to an image dataset. Can download, resize and package 100M urls in 20h on one machine.
+
+[https://github.com/rom1504/img2dataset](https://github.com/rom1504/img2dataset)
+
 ### 3D感知相关
 
 从零开始搭一套激光SLAM出来, 通过代码的角度一点一点地深入学习激光SLAM.
 
 [https://github.com/xiangli0608/Creating-2D-laser-slam-from-scratch](https://github.com/xiangli0608/Creating-2D-laser-slam-from-scratch)
+
+### AIGC
+
+不错的aigc设计资讯网
+
+[https://www.uisdc.com/category/ai](https://www.uisdc.com/category/ai)
+
+在线AI Prompt生成工具和Prompt库  
+
+[http://t.cn/A6N4WjEX](http://t.cn/A6N4WjEX)
+
+该工具把 AIGC 提示词可视化，并提供在线编辑功能，动态编辑十分方便
+
+在线体验：[http://t.cn/A6N46h6p](http://t.cn/A6N46h6p)  GitHub：[github.com/Moonvy/OpenPromptStudio](http://github.com/Moonvy/OpenPromptStudio)、
+
+comfyui工作流分享网站
+
+[https://openart.ai/workflows/home?workflowSort=featured](https://openart.ai/workflows/home?workflowSort=featured)
 
 ### 其他
 
@@ -1058,6 +1370,16 @@ pip install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1
 
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
+```
+
+xformers与pytorch版本对应
+
+```Bash
+2.3.0  pip install xformers==0.0.26.post1
+2.2.2  pip install xformers==0.0.25.post1
+2.2.0  pip install xformers==0.0.24
+2.1.2  pip install xformers==0.0.23.post1
+2.1.0  pip install xformers==0.0.22.post7
 ```
 
 孪生神经网络的相关实现：
@@ -1109,11 +1431,20 @@ cmu 15-884: Machine Learning Systems
 
 CMU 10-414/714 Deep Learning Systems Algorithms and Implementation
 
+神课，必修
+
+[https://csdiy.wiki/机器学习系统/CMU10-414/](https://csdiy.wiki/机器学习系统/CMU10-414/)
+
 [https://dlsyscourse.org/](https://dlsyscourse.org/)
 
 cmu Deep Learning Systems
 
 [https://dlsyscourse.org/](https://dlsyscourse.org/)
+
+CSE599W system for ML
+
+CSE 599W - Systems for ML - 辛酸阅读记录 - 清欢守护者的文章 - 知乎
+[https://zhuanlan.zhihu.com/p/104649426](https://zhuanlan.zhihu.com/p/104649426)
 
 MIT 6.5940: TinyML and Efficient Deep Learning
 
@@ -1132,6 +1463,10 @@ Programming Heterogeneous Computing Systems with GPUs and other Accelerators (22
 MiniTorch is a diy teaching library for machine learning engineers who wish to learn about the internal concepts underlying deep learning systems. It is a pure Python re-implementation of the Torch API designed to be simple, easy-to-read, tested, and incremental. The final library can run Torch code.
 
 [https://minitorch.github.io/](https://minitorch.github.io/)
+
+libtorch 非官方教程
+
+[https://github.com/DataXujing/libtorch_tutorials/tree/main](https://github.com/DataXujing/libtorch_tutorials/tree/main)
 
 ### 深度学习部署
 
@@ -1299,6 +1634,10 @@ how-to-optim-algorithm-in-cuda
 
 [https://github.com/BBuf/how-to-optim-algorithm-in-cuda](https://github.com/BBuf/how-to-optim-algorithm-in-cuda)
 
+A repository for storing models that have been inter-converted between various frameworks. Supported frameworks are TensorFlow, PyTorch, ONNX, OpenVINO, TFJS, TFTRT, TensorFlowLite (Float32/16/INT8), EdgeTPU, CoreML
+
+[https://github.com/PINTO0309/PINTO_model_zoo](https://github.com/PINTO0309/PINTO_model_zoo)
+
 #### 手写类课程
 
 手写量化、剪枝、蒸馏
@@ -1364,6 +1703,8 @@ conda所有库更新：`conda update --all`
 
 pip 下载 cache不想默认在主目录：`pip config set global.cache-dir 新目录`
 
+python 生成launch.json调试配置，zpdb库 [https://github.com/LYMDLUT/zpdb](https://github.com/LYMDLUT/zpdb)
+
 awesome项目（包含了绝大部分的python相关资源）
 
 [https://github.com/vinta/awesome-python](https://github.com/vinta/awesome-python)
@@ -1381,6 +1722,10 @@ Python并行编程
 Python 3 标准库实例教程(真正现代、进阶的python教程
 
 [https://learnku.com/docs/pymotw](https://learnku.com/docs/pymotw)
+
+完整的Python大项目模板，如果你想实现一个包含完整的静态检查、单元测试、CI、文档的项目
+
+[https://github.com/waynerv/cookiecutter-pypackage/tree/master](https://github.com/waynerv/cookiecutter-pypackage/tree/master)
 
 pandas教程
 
@@ -1642,6 +1987,10 @@ btop （实现一个硬件检测工具）
 
 [https://github.com/aristocratos/btop](https://github.com/aristocratos/btop)
 
+内存泄露咋办？
+
+先看监控一两周的情况。。实在不行上 ASAN Valgrind等
+
 ### 音视频相关
 
 音视频原理必看国内大神-雷神
@@ -1693,6 +2042,10 @@ LaTeX开源OCR方案
 AI论文检索
 
 [https://elicit.org/](https://elicit.org/)
+
+AI阅读论文
+
+[https://www.aminer.cn/](https://www.aminer.cn/)
 
 ## 其他日常使用网站
 
@@ -1776,9 +2129,37 @@ Software Download Hub 纯净的软件下载区
 
 [https://pixabay.com/photos/](https://pixabay.com/photos/)
 
-## 有趣的项目
+[https://stockup.sitebuilderreport.com/](https://stockup.sitebuilderreport.com/)
 
-比disco diffusion更强大的绘制工具SD：
+[https://www.shopify.com/stock-photos](https://www.shopify.com/stock-photos)
+
+各类开源工具收录的网站HelloGitHub
+
+[https://hellogithub.com/](https://hellogithub.com/)
+
+Machine Learning Engineering Online Book:
+
+An open collection of methodologies to help with successful training of large language models and multi-modal models.
+
+[https://github.com/stas00/ml-engineering](https://github.com/stas00/ml-engineering)
+
+excel表格转为markdown格式互转
+
+[https://tableconvert.com/zh-cn/excel-to-markdown#google_vignette](https://tableconvert.com/zh-cn/excel-to-markdown#google_vignette)
+
+4k电影截图
+
+[https://highdefdiscnews.com/4k-screenshots/](https://highdefdiscnews.com/4k-screenshots/)
+
+arxiv 总结  推送
+
+[https://papers.cool/](https://papers.cool/)
+
+ the latest advances in MM-LLMs.
+
+[https://mm-llms.github.io/](https://mm-llms.github.io/)
+
+## 有趣的项目
 
 在自己电脑运行Stable Diffusion和完整项目下载
 
@@ -1822,15 +2203,23 @@ Github下载很慢，用上了这个插件后，下载速度嗖嗖嗖的
 
 [https://github.com/fhefh2015/Fast-GitHub](https://github.com/fhefh2015/Fast-GitHub)
 
-## 提示词工程
+硬盘空间分析工具spacesniffer
 
-在线AI Prompt生成工具和Prompt库  
+[https://sourceforge.net/projects/spacesniffer/](https://sourceforge.net/projects/spacesniffer/)
 
-[http://t.cn/A6N4WjEX](http://t.cn/A6N4WjEX)
+开源下载工具
 
-该工具把 AIGC 提示词可视化，并提供在线编辑功能，动态编辑十分方便
+[https://motrix.app/download](https://motrix.app/download)
 
-在线体验：[http://t.cn/A6N46h6p](http://t.cn/A6N46h6p)  GitHub：[github.com/Moonvy/OpenPromptStudio](http://github.com/Moonvy/OpenPromptStudio)
+微软的免费用户行为洞察埋点工具
+
+[https://clarity.microsoft.com/](https://clarity.microsoft.com/)
+
+## PPT之神
+
+各种软件架构图
+
+ [https://www.iodraw.com/template?pn=3](https://www.iodraw.com/template?pn=3)
 
 ## 有趣的故事
 
@@ -1878,6 +2267,10 @@ Github下载很慢，用上了这个插件后，下载速度嗖嗖嗖的
 
 [xnview.com/en/xnviewmp/](http://xnview.com/en/xnviewmp/)
 
+最好的windows下b站下载器
+
+[https://space.bilibili.com/1608325226](https://space.bilibili.com/1608325226)
+
  windows下的bilibli视频下载器（如果要使用ffmpeg，可以下载后加入到系统path环境变量）
 
 [https://github.com/nICEnnnnnnnLee/BilibiliDown](https://github.com/nICEnnnnnnnLee/BilibiliDown)
@@ -1890,7 +2283,7 @@ Github下载很慢，用上了这个插件后，下载速度嗖嗖嗖的
 
 [https://github.com/YaoFANGUK/video-subtitle-extractor](https://github.com/YaoFANGUK/video-subtitle-extractor)
 
-一个跨平台的划词翻译软件
+一个跨平台的划词翻译软件pot
 
 [https://github.com/pot-app/pot-desktop](https://github.com/pot-app/pot-desktop)
 
@@ -1908,16 +2301,38 @@ kazam ubuntu下最轻便的录制工具，可以直接apt install kazam
 
 [https://github.com/Tyrrrz/YoutubeDownloader](https://github.com/Tyrrrz/YoutubeDownloader)
 
+[https://youtubemultidownloader.net/playlists.html](https://youtubemultidownloader.net/playlists.html)
+
 最好的免费pdf处理开源程序
 
 [https://github.com/torakiki/pdfsam](https://github.com/torakiki/pdfsam)
 
-### 英文论文好用工具
+开源版本的按键精灵
 
-TextRanch 句子参考
+[https://github.com/taojy123/KeymouseGo](https://github.com/taojy123/KeymouseGo)
 
-[https://textranch.com/](https://textranch.com/)
+开源视频录制、git录制
 
-QuillBot 文段改写
+[https://github.com/NickeManarin/ScreenToGif](https://github.com/NickeManarin/ScreenToGif)
 
-[https://quillbot.com/](https://quillbot.com/)
+最好的windows开源OCR软件
+
+[https://github.com/hiroi-sora/Umi-OCR](https://github.com/hiroi-sora/Umi-OCR)
+
+开源视频编辑器
+
+[https://github.com/OpenShot/openshot-qt/releases/tag/v3.1.1](https://github.com/OpenShot/openshot-qt/releases/tag/v3.1.1)
+
+优雅的图片浏览器
+
+[https://imageglass.org/](https://imageglass.org/)
+
+开源、重复图片和文件搜索神器
+
+[https://github.com/qarmin/czkawka/releases/tag/7.0.0](https://github.com/qarmin/czkawka/releases/tag/7.0.0)
+
+## startup协作工具
+
+Ship your startup in days,not weeks
+
+[https://shipfa.st/](https://shipfa.st/)  包含一切所需的前后端健权等
