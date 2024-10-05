@@ -79,11 +79,6 @@ const config = {
           ],
         },
         {
-          label: 'Project',
-          position: 'left',
-          to: 'project',
-        },
-        {
           label: 'AwesomeWeb',
           position: 'left',
           to: 'docs/other/awesomeweb',
@@ -94,9 +89,19 @@ const config = {
           to: 'blog',
         },
         {
+          label: 'soul',
+          position: 'left',
+          to: 'docs/other/soul',
+        },
+        {
           label: 'Friend',
           position: 'left',
           to: 'resource',
+        },
+        {
+          label: 'Project',
+          position: 'left',
+          to: 'project',
         },
         {
           label: 'other',
