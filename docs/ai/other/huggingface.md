@@ -2,15 +2,24 @@
 title: huggingface 最佳实践
 ---
 
-## 优雅的下载
+随手设定环境变量：
 
-### 使用 huggingface-cli 下载
+```
+export HF_HOME=./cache/   
+export HF_ENDPOINT='https://hf-mirror.com'
+```
 
-`huggingface-cli download 仓库地址 --local-dir=./models/ --local-dir-use-symlinks=False --resume-download`
+## 权重与数据集下载
 
-如果你想要下载数据集，你只需要在后续加上 `--repo-type dataset` 即可。
+### 使用 cli 下载
 
-### 使用snapshot下载
+`huggingface-cli download 仓库地址 --local-dir=./cache/ --local-dir-use-symlinks=False --resume-download`
+
+如果你想要下载数据集，你只需要在后续加上 `--repo-type dataset` 即可：
+
+`huggingface-cli download 仓库地址 --local-dir=./cache/ --local-dir-use-symlinks=False --resume-download --repo-type dataset`
+
+### 使用 snapshot 下载
 
 如何下载官方仓库等：
 
@@ -51,7 +60,10 @@ snapshot_download(repo_id="bert-base-chinese",cache_dir="输入你想下载到�
 
 通过环境变量的方式
 
-`export HF_HOME=./cache/   export HF_ENDPOINT='https://hf-mirror.com'`
+```
+export HF_HOME=./cache/   
+export HF_ENDPOINT='https://hf-mirror.com'
+```
 
 具体参考文档
 
