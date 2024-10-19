@@ -5,13 +5,13 @@ const announcementBarContent = ''
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '散步Home',
+  title: 'SanbuBlog',
   url: 'https://aispacewalk.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'sanbu',
   projectName: 'blog',
-  tagline: '不懂就问，不会就学',
+  tagline: '求知若饥 虚心若愚',
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
   themeConfig: {  
     image: 'img/logo.jpg',
@@ -35,7 +35,7 @@ const config = {
       },
     },
     navbar: {
-      title: '散步Home',
+      title: 'SanbuBlog',
       logo: {
         alt: '散步',
         src: 'img/logo.webp',

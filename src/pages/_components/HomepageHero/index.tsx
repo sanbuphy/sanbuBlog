@@ -2,7 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion' // Import motion from framer-motion
 
-import Translate from '@docusaurus/Translate'
+import Translate from '@docusaurus/Translate' 
 
 import HeroMain from './img/hero_main.svg'
 
@@ -17,7 +17,7 @@ const variants = {
       type: 'spring',
       damping: 25,
       stiffness: 100,
-      duration: 0.3,
+      duration: 0.5,
       delay: i * 0.3,
     },
   }),
@@ -47,8 +47,8 @@ function Hero() {
           variants={variants}
         >
           <Translate id="homepage.hero.text">
-            {`I am interested in AI and enjoy asking "why". If you share the same interests, 
-            feel free to ask me any strange questions and we can discuss and research together. (博客施工中...) 欢迎到 blog 中留言与我交流。 在这个新家修缮完成前，你也可以访问我的旧家👇`}
+            {`I'm interested in Gen AI and application of Diffusion model, as well as performance optimization. 
+            Pursuit to do something meaningful.  Hope the artificial general intelligence will come soon. `}  
           </Translate>
         </motion.p>
         <motion.div
@@ -71,19 +71,13 @@ function Hero() {
           <div className={styles.outer}>
             <div className={styles.gradient} />
             <a className={styles.button} href={'./about'}>
-              <Translate id="hompage.hero.introduce">🤔 关于我</Translate>
+              <Translate id="hompage.hero.introduce">About Me</Translate>
             </a>
           </div>
           <div className={styles.outer}>
             <div className={styles.gradient} />
             <a className={styles.button} href={'./blog'}>
-              <Translate id="hompage.hero.introduce">🌟 Blog</Translate>
-            </a>
-          </div>
-          <div className={styles.outer}>
-            <div className={styles.gradient} />
-            <a className={styles.button} href={'https://sanbuphy.github.io/'}>
-              <Translate id="hompage.hero.introduce">🏠 旧家</Translate>
+              <Translate id="hompage.hero.introduce">Blog</Translate>
             </a>
           </div>
         </motion.div>

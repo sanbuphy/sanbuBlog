@@ -4,4 +4,4 @@ title: 引言
 keywords: ['pytorch']
 ---
 
-测试
+此处存放 pytorch 相关文档、教程、笔记。
