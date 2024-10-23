@@ -2,4 +2,4 @@
 id: introduction
 ---
 
-此处用于记录一些是lab的笔记，github上优先更新
+此处用于收藏已完成 lab 及其对应记录.

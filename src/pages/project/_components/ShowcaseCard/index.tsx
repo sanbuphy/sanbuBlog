@@ -62,7 +62,8 @@ const ShowcaseCard = memo(({ project }: { project: Project }) => {
       whileTap={{ scale: 0.975 }}
       transition={{ type: 'spring', stiffness: 400, damping: 10 }}
     >
-      {project.preview && (
+      {/* 不显示展示图片的模块 */}
+      {/* {project.preview && (
         <div className={clsx('card__image', styles.showcaseCardImage)}>
           <Image
             src={project.preview}
@@ -70,7 +71,7 @@ const ShowcaseCard = memo(({ project }: { project: Project }) => {
             img={project.preview}
           />
         </div>
-      )}
+      )} */}
       <div className="card__body">
         <div className={clsx(styles.showcaseCardHeader)}>
           <h4 className={styles.showcaseCardTitle}>
@@ -78,7 +79,7 @@ const ShowcaseCard = memo(({ project }: { project: Project }) => {
               {project.title}
             </Link>
           </h4>
-          {project.tags.includes('favorite') && (
+          {project.tags.includes('personal') && (
             <FavoriteIcon svgClass={styles.svgIconFavorite} size="small" />
           )}
           {project.source && (

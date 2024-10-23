@@ -84,12 +84,12 @@ const config = {
           to: 'docs/other/awesomeweb',
         },
         {
-          label: 'blog',
+          label: 'Blog',
           position: 'left',
           to: 'blog',
         },
         {
-          label: 'soul',
+          label: 'Soul',
           position: 'left',
           to: 'docs/other/soul',
         },

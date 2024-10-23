@@ -92,9 +92,9 @@ const Slider = ({ items }: { items: Project[] }) => {
             <div className={styles.slide}>
               <a href={item.website} target="_blank">
                 <img
-                  src={item.preview}
-                  alt={item.title}
-                  className={styles.image}
+                  // src={item.preview}
+                  // alt={item.title}
+                  // className={styles.image}
                   loading="lazy"
                 />
                 <div className={styles.slideBody}>

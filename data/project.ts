@@ -1,11 +1,11 @@
 export const projects: Project[] = [
   {
-    title: '测试demo',
-    description: '🥭测试',
-    website: 'https://github.com/',
-    preview: '/img/project/vue-chrome-extension.png',
+    title: 'Tianji',
+    description: '全栈大语言模型教程与应用',
+    website: 'https://github.com/SocialAI-tianji/Tianji',
+    preview: 'static/img/project/tianjilogo.jpg',
     tags: ['opensource'],
-    type: 'personal',
+    type: 'LLM',
   },
 ]
 
@@ -16,14 +16,13 @@ export type Tag = {
 }
 
 export type TagType =
-  | 'favorite'
   | 'opensource'
   | 'product'
   | 'design'
   | 'large'
   | 'personal'
 
-export type ProjectType = 'personal' | 'web' | 'app' | 'toy' | 'other'
+export type ProjectType = 'LLM' | 'web' | 'app' | 'toy' | 'other'
 
 export type Project = {
   title: string
@@ -36,11 +35,6 @@ export type Project = {
 }
 
 export const Tags: Record<TagType, Tag> = {
-  favorite: {
-    label: '喜爱',
-    description: '我最喜欢的网站，一定要去看看!',
-    color: '#e9669e',
-  },
   opensource: {
     label: '开源',
     description: '开源项目可以提供灵感!',
