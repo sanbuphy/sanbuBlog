@@ -79,46 +79,46 @@ const config = {
           ],
         },
         {
-          label: 'AwesomeWeb',
+          label: 'Project',
           position: 'left',
-          to: 'docs/other/awesomeweb',
+          to: 'project',
         },
         {
           label: 'Blog',
           position: 'left',
           to: 'blog',
+          items: [
+            {
+              label: '归档',
+              to: 'blog/archive',
+            },
+            {
+              label: '标签',
+              to: 'blog/tags',
+            },
+          ],
+        },
+        {
+          label: 'AwesomeWeb',
+          position: 'left',
+          to: 'docs/other/awesomeweb',
         },
         {
           label: 'Soul',
           position: 'left',
           to: 'docs/other/soul',
         },
-        {
-          label: 'Friend',
-          position: 'left',
-          to: 'resource',
-        },
-        {
-          label: 'Project',
-          position: 'left',
-          to: 'project',
-        },
-        {
-          label: 'other',
-          position: 'left',
-          to: 'blog',
-          items: [
-            {
-              label: '标签',
-              to: 'blog/tags',
-            },
-            {
-              label: '归档',
-              to: 'blog/archive',
-            },
+        // {
+        //   label: 'Friend',
+        //   position: 'left',
+        //   to: 'resource',
+        // },
+        // {
+        //   label: 'other',
+        //   position: 'left',
+        //   to: 'blog',
 
-          ],
-        },
+        // },
         // {
         //   type: 'localeDropdown',
         //   position: 'right',

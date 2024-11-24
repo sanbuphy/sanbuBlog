@@ -24,3 +24,9 @@ modelscope download --model 'AI-ModelScope/gpt2' --cache_dir './cache_dir'
 ```
 modelscope download --model 'AI-ModelScope/gpt2' --exclude 'onnx/*' '*.tflite' 
 ```
+
+如果需要下载数据集，则需要使用 --dataset
+
+```
+modelscope download --dataset 'cutedataset/imagenet-1k' --cache_dir './datasets'
+```
