@@ -302,6 +302,15 @@ git reset --hard origin/master
 
 你可能经常会遇到在 vscode 中使用git同步遇到网络的问题，这时候你只需要搜索设置 proxy，然后根据本地监听的proxy设置一个对应的地址即可。
 
+- remote ssh 链接失败，一直在链接中，和 install 对应服务器初始化中，看linux中的日志有类似以下问题报错：
+
+```
+thread 'tokio-runtime-worker' panicked at src/util/http.rs:298:24:
+expected initresponse as first message from delegated http
+```
+
+解决方案： For now, setting "remote.SSH.useExecServer": false is required.
+
 ## 优雅的调试
 
 - 如何顺利看调用过程然后自己增加log？————使用调用堆栈。
