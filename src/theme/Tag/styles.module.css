@@ -10,19 +10,26 @@
 }
 
 .tag {
-  border: 1px solid var(--docusaurus-tag-list-border);
-  transition: border var(--ifm-transition-fast);
+  border: 1px solid var(--ifm-color-emphasis-400); /* 主题色边框 */
+  transition: border var(--ifm-transition-fast), background 0.2s;
+  background: var(--ifm-card-background-color); /* 主题卡片背景 */
+  color: var(--ifm-font-color-base); /* 主题字体色 */
+  border-radius: 0; /* Remove rounded corners */
 }
 
 .tag:hover {
-  --docusaurus-tag-list-border: var(--ifm-link-color);
+  border: 1px solid var(--ifm-link-color);
   text-decoration: none;
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-link-color);
 }
 
 .tagRegular {
-  border-radius: var(--ifm-global-radius);
+  border-radius: 0; /* Remove rounded corners */
   padding: 0.2rem 0.5rem 0.3rem;
   font-size: 90%;
+  background: var(--ifm-card-background-color);
+  color: var(--ifm-font-color-base);
 }
 
 .tagWithCount {
@@ -31,6 +38,9 @@
   position: relative;
   padding: 0 0.5rem 0 1rem;
   border-left: 0;
+  border-radius: 0; /* Remove rounded corners */
+  background: var(--ifm-card-background-color);
+  color: var(--ifm-font-color-base);
 }
 
 .tagWithCount::before,
@@ -38,7 +48,7 @@
   content: '';
   position: absolute;
   top: 50%;
-  border: 1px solid var(--docusaurus-tag-list-border);
+  border: 1px solid var(--ifm-color-emphasis-400);
   transition: inherit;
 }
 
@@ -56,15 +66,15 @@
   transform: translateY(-50%);
   width: 0.5rem;
   height: 0.5rem;
-  border-radius: 50%;
+  border-radius: 0; /* Remove rounded corners */
 }
 
 .tagWithCount span {
-  background: var(--ifm-color-secondary);
-  color: var(--ifm-color-black);
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
   font-size: 0.7rem;
   line-height: 1.2;
-  border-radius: var(--ifm-global-radius);
+  border-radius: 0; /* Remove rounded corners */
   padding: 0.1rem 0.4rem;
   margin-left: 0.3rem;
 }

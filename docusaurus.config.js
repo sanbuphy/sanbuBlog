@@ -35,12 +35,7 @@ const config = {
       },
     },
     navbar: {
-      title: 'SanbuBlog',
-      logo: {
-        alt: '散步',
-        src: 'img/logo.webp',
-        srcDark: 'img/logo.webp',
-      },
+      title: "Sanbu'log",
       hideOnScroll: true,
       items: [
         {
@@ -78,25 +73,10 @@ const config = {
             },
           ],
         },
-        {
-          label: 'Project',
-          position: 'left',
-          to: 'project',
-        },
-        {
+          {
           label: 'Blog',
           position: 'left',
           to: 'blog',
-          items: [
-            {
-              label: '归档',
-              to: 'blog/archive',
-            },
-            {
-              label: '标签',
-              to: 'blog/tags',
-            },
-          ],
         },
         {
           label: 'AwesomeWeb',
@@ -106,7 +86,7 @@ const config = {
         {
           label: 'Soul',
           position: 'left',
-          to: 'docs/other/soul',
+          to: 'soul',
         },
         // {
         //   label: 'Friend',
@@ -127,78 +107,8 @@ const config = {
     },
     footer: { // 下面的栏目
       style: 'dark',
-      links: [
-        {
-          title: '学习',
-          items: [
-            {
-              label: '博客',
-              to: 'blog',
-            },
-            {
-              label: '归档',
-              to: 'blog/archive',
-            },
-            {
-              label: '技术笔记',
-              to: 'docs/skill',
-            },
-            {
-              label: '实战项目',
-              to: 'project',
-            },
-          ],
-        },
-        {
-          title: '社交媒体',
-          items: [
-            {
-              label: '关于我',
-              to: '/about',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/sanbuphy',
-            },
-            // {
-            //   label: 'Twitter',
-            //   to: 'https://twitter.com/kuizuo',
-            // },
-            // {
-            //   label: '掘金',
-            //   href: 'https://juejin.cn/user/1565318510545901',
-            // },
-            // {
-            //   label: 'Discord',
-            //   href: 'https://discord.gg/M8cVcjDxkz',
-            // },
-          ],
-        },
-        {
-          title: '更多',
-          items: [
-            {
-              label: '友链',
-              position: 'right',
-              to: 'friends',
-            },
-            {
-              label: '导航',
-              position: 'right',
-              to: 'resource',
-            },
-            // {
-            //   label: '我的站点',
-            //   position: 'right',
-            //   to: 'website',
-            // },
-            {
-              html: `<a href="https://docusaurus.io/zh-CN/" target="_blank"><img style="height:50px;margin-top:0.5rem" src="/img/buildwith.png" /><a/>`,
-            },
-          ],
-        },
-      ],
-      copyright: `<p>Copyright © 2023 - PRESENT 散步 Built with Docusaurus.</p>`,
+      links: [],
+      copyright: `<p>Copyright © 2023 - PRESENT 散步</p>`,
     },
     prism: {
       theme: require('prism-react-renderer/themes/vsLight'),

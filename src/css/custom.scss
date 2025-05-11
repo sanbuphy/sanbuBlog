@@ -15,7 +15,7 @@
   --ifm-heading-font-family: var(var(--ifm-font-family-base));
   /* --content-font-family: "Raleway", "Kai", "楷体", "Kaiti", serif; */
 
-  --ifm-navbar-shadow: 0 4px 28px rgb(0 0 0 / 10%);
+  --ifm-navbar-shadow: none;
   --ifm-toc-border-color: #f7f7f7;
   --text-color: #2b333e;
   /* --ifm-heading-color: hsl(200deg, 20%, 20%); */
@@ -191,14 +191,271 @@ html[data-theme='dark'] .theme-code-block {
   }
 }
 
-/* navbar */
+/* navbar - 线条风格导航栏 */
 .navbar {
   box-shadow: none;
+  border-bottom: 1px solid #000;
+  background-color: #fff;
+  height: auto;
+  padding: 0.5rem 0.5rem; /* 减少水平内边距，使整体靠左 */
 
   .navbar__title {
-    margin-left: 12px;
-    color: var(--ifm-color-primary);
+    margin-left: 5px; /* 减少左边距，让标题更靠左 */
+    color: #00336a; /* 深蓝色 */
     font-family: var(--ifm-font-family-name);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem; /* 减小字体大小 */
+  }
+
+  .navbar__items {
+    justify-content: flex-start; /* 让项目靠左对齐 */
+  }
+
+  .navbar__items--right {
+    justify-content: flex-end; /* 右侧项目仍然靠右对齐 */
+  }
+
+  .navbar__link {
+    font-weight: 600;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 0.8rem; /* 减少内边距 */
+    position: relative;
+    margin: 0 0.1rem; /* 减少项目间的间距 */
+    border: none;
+    transition: all 0.2s ease;
+    font-size: 0.8rem; /* 减小字体大小 */
+
+    &:hover {
+      color: #000;
+      text-decoration: none;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    
+    &--active {
+      color: #000;
+      background-color: transparent;
+      position: relative;
+      
+      /* 创建"几"字形内嵌效果 */
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        /* 顶部和侧边有边框，底部没有 */
+        border-top: 2px solid #000;
+        border-left: 2px solid #000;
+        border-right: 2px solid #000;
+        /* 创建切角效果 */
+        clip-path: polygon(
+          0 0,                 /* 左上角 */
+          100% 0,              /* 右上角 */
+          100% calc(100% - 8px), /* 右下角的右侧 */
+          calc(100% - 8px) 100%, /* 右下角的底部 */
+          8px 100%,            /* 左下角的底部 */
+          0 calc(100% - 8px)    /* 左下角的左侧 */
+        );
+        pointer-events: none;
+      }
+      
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  /* 修复下拉菜单问题 */
+  .dropdown {
+    /* 确保下拉菜单可以正常悬停交互 */
+    &:hover .dropdown__menu,
+    &:focus-within .dropdown__menu,
+    &.dropdown--show .dropdown__menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    
+    /* 保持焦点状态 */
+    &:hover,
+    &:focus-within,
+    &.dropdown--show {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &__menu {
+      border: 2px solid #000;
+      border-radius: 0;
+      padding: 0;
+      margin-top: 0; /* 移除margin，消除间隙 */
+      box-shadow: none;
+      z-index: 100; /* 确保z-index足够高 */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+      
+      /* 创建连接父菜单的区域，防止鼠标移出时菜单消失 */
+      &::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background-color: transparent;
+      }
+    }
+
+    &__link {
+      color: #000;
+      font-weight: 600;
+      padding: 0.5rem 0.8rem; /* 调整内边距 */
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #eee;
+      transition: all 0.2s ease;
+      position: relative;
+      font-size: 0.75rem; /* 下拉菜单项字体略小于主导航 */
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: #000;
+      }
+
+      &--active {
+        color: #000;
+        background-color: transparent;
+        position: relative;
+        
+        /* 创建侧面的"几"字形内嵌效果 */
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 4px;
+          background-color: #000;
+          /* 创建切角效果 */
+          clip-path: polygon(
+            0 0,                /* 左上角 */
+            100% 8px,           /* 右上角顶部 */
+            100% calc(100% - 8px), /* 右下角底部 */
+            0 100%              /* 左下角 */
+          );
+        }
+      }
+    }
+  }
+
+  .navbar__items {
+    border-bottom: none;
+  }
+
+  .navbar__brand {
+    border-bottom: none;
+  }
+
+  .navbar__logo {
+    height: 2rem;
+  }
+}
+
+/* Docusaurus默认下拉菜单交互的修复 */
+.dropdown > .navbar__link:after {
+  border-color: currentColor;
+}
+
+.dropdown > .navbar__link {
+  cursor: pointer;
+}
+
+/* 暗色主题下的导航栏 */
+html[data-theme='dark'] .navbar {
+  border-bottom: 1px solid #333;
+  background-color: #000;
+  padding: 0.5rem 0.5rem; /* 与浅色模式保持一致 */
+
+  .navbar__title {
+    color: #4d8cce; /* 深色模式下使用亮蓝色，以提高对比度 */
+    margin-left: 5px; /* 与浅色模式保持一致 */
+    font-size: 0.9rem; /* 与浅色模式保持一致 */
+  }
+
+  .navbar__items {
+    justify-content: flex-start; /* 与浅色模式保持一致 */
+  }
+
+  .navbar__items--right {
+    justify-content: flex-end; /* 与浅色模式保持一致 */
+  }
+
+  .navbar__link {
+    color: #fff;
+    padding: 0.4rem 0.8rem; /* 与浅色模式保持一致 */
+    margin: 0 0.1rem; /* 与浅色模式保持一致 */
+    font-size: 0.8rem; /* 与浅色模式保持一致 */
+
+    &:hover {
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    &--active {
+      color: #fff;
+      
+      &::before {
+        border-top: 2px solid #fff;
+        border-left: 2px solid #fff;
+        border-right: 2px solid #fff;
+      }
+    }
+  }
+
+  /* 暗色主题下拉菜单样式 */
+  .dropdown {
+    &:hover,
+    &:focus-within,
+    &.dropdown--show {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    &__menu {
+      border: 2px solid #fff;
+      background-color: #000;
+    }
+
+    &__link {
+      color: #fff;
+      border-bottom: 1px solid #333;
+      padding: 0.5rem 0.8rem; /* 与浅色模式保持一致 */
+      font-size: 0.75rem; /* 与浅色模式保持一致 */
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      &--active {
+        color: #fff;
+        
+        &::before {
+          background-color: #fff;
+        }
+      }
+    }
   }
 }
 
@@ -206,7 +463,29 @@ html[data-theme='dark'] .theme-code-block {
 .dropdown,
 .navbar__title,
 .menu {
-  font-weight: 400;
+  font-weight: 600;
+}
+
+/* 菜单样式 */
+.menu {
+  border-right: 1px solid #eee;
+  padding: 1rem;
+}
+
+html[data-theme='dark'] .menu {
+  border-right: 1px solid #333;
+}
+
+.footer {
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  color: #000;
+}
+
+html[data-theme='dark'] .footer {
+  border-top: 1px solid #333;
+  background-color: #000;
+  color: #fff;
 }
 
 .pagination-nav__link {
@@ -308,5 +587,132 @@ div[class^='announcementBar_'] {
 }
 
 .container-wrapper {
-  background: var(--content-background-color);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+html[data-theme='dark'] .container-wrapper {
+  border-bottom: 1px solid #333;
+}
+
+/* 移动端侧边菜单样式 */
+.navbar-sidebar {
+  border-right: 2px solid #000;
+  background-color: #fff;
+
+  &__brand {
+    border-bottom: 1px solid #000;
+    box-shadow: none;
+  }
+
+  &__back {
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__item {
+    padding: 0;
+  }
+
+  .menu {
+    &__link {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #eee;
+      transition: all 0.2s ease;
+      padding: 0.75rem 1rem;
+      position: relative;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      &--active {
+        color: #000;
+        background-color: transparent;
+        position: relative;
+        
+        /* 创建侧面的"几"字形内嵌效果 */
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 4px;
+          background-color: #000;
+          /* 创建切角效果 */
+          clip-path: polygon(
+            0 0,                /* 左上角 */
+            100% 8px,           /* 右上角顶部 */
+            100% calc(100% - 8px), /* 右下角底部 */
+            0 100%              /* 左下角 */
+          );
+        }
+      }
+    }
+
+    &__caret {
+      color: #000;
+    }
+
+    &__list-item-collapsible {
+      background-color: transparent;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+}
+
+/* 暗色主题下的移动端侧边菜单 */
+html[data-theme='dark'] .navbar-sidebar {
+  border-right: 2px solid #fff;
+  background-color: #000;
+
+  &__brand {
+    border-bottom: 1px solid #333;
+  }
+
+  &__back {
+    color: #fff;
+  }
+
+  .menu {
+    &__link {
+      color: #fff;
+      border-bottom: 1px solid #333;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      &--active {
+        color: #fff;
+        
+        &::before {
+          background-color: #fff;
+        }
+      }
+    }
+
+    &__caret {
+      color: #fff;
+    }
+
+    &__list-item-collapsible {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
 }

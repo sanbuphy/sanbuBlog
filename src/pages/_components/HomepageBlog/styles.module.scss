@@ -1,19 +1,44 @@
 .blogContainer {
   max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.sectionHeader {
+  margin-bottom: 2rem;
 }
 
 .list {
-  margin: 0;
-  padding: 0.5rem 0;
+  margin: 0 var(--ifm-spacing-horizontal);
+  padding: 0;
   overflow: hidden;
   max-height: 640px;
-  border-radius: var(--ifm-card-border-radius);
+  border-radius: 0;
+  margin-top: 1.5rem;
 
   li {
     display: flex;
     width: 100%;
-    background: var(--blog-item-background-color);
-    box-shadow: var(--blog-item-shadow);
+    background: transparent;
+    box-shadow: none;
+    border: 2px solid #000;
+    border-radius: 0;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: #000;
+      color: #fff;
+      
+      h4 a {
+        color: #fff;
+      }
+      
+      p {
+        color: #ddd;
+      }
+    }
   }
 
   .image {
@@ -21,6 +46,8 @@
     object-fit: cover;
     max-height: 240px;
     cursor: pointer;
+    border-right: 2px solid #000;
+    border-radius: 0;
 
     img {
       width: 100%;
@@ -29,19 +56,72 @@
 
   p {
     font-size: smaller;
+    color: #333;
   }
 
   h4 {
     font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 
     a {
       position: relative;
+      color: #000;
 
       &:hover {
         text-decoration: none;
       }
     }
   }
+}
+
+/* 暗色主题 */
+html[data-theme='dark'] {
+  .blogContainer {
+    border-bottom: 1px solid #333;
+  }
+  
+  .list {
+    li {
+      border: 2px solid #fff;
+      
+      &:hover {
+        background-color: #fff;
+        color: #000;
+        
+        h4 a {
+          color: #000;
+        }
+        
+        p {
+          color: #333;
+        }
+      }
+    }
+    
+    .image {
+      border-right: 2px solid #fff;
+    }
+    
+    p {
+      color: #ddd;
+    }
+    
+    h4 a {
+      color: #fff;
+    }
+  }
+}
+
+/* Override Docusaurus card defaults */
+:global(.card) {
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+:global(.card__body) {
+  border-radius: 0 !important;
 }
 
 @media only screen and (max-width: 996px) {

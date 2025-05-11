@@ -15,12 +15,13 @@ export default function SectionTitle({ children, icon, href }: Props) {
   return (
     <div className={styles.sectionTitle}>
       <h2>
-        {icon && <Icon icon={icon}></Icon>}
+        {/* 移除图标的显示 */}
         {children}
       </h2>
       {href && (
         <Link href={href} className={styles.moreButton}>
-          <Translate id="homepage.lookMore">查看更多</Translate>
+          {/* 更新为英文 */}
+          View More
           <Icon icon="ri:arrow-right-s-line"></Icon>
         </Link>
       )}

@@ -20,14 +20,12 @@ export default function BlogPostItemFooter(): JSX.Element | null {
     date,
     formattedDate,
     readingTime,
-    authors,
   } = metadata
 
   // A post is truncated if it's in the "list view" and it has a truncate marker
   const truncatedPost = !isBlogPostPage && hasTruncateMarker
 
   const tagsExists = tags.length > 0
-  const authorsExists = authors.length > 0
 
   const renderFooter = isBlogPostPage
 
@@ -35,18 +33,6 @@ export default function BlogPostItemFooter(): JSX.Element | null {
     return (
       <>
         <div className={styles.blogPostInfo}>
-          {/* {authorsExists && (
-            <>
-              <Icon icon="ri:user-fill" color="#9ca3af" />
-              {authors.map(a => (
-                <span key={a.url} className="blog__author">
-                  <a href={a.url} className={styles.blogPostAuthor}>
-                    {a.name}
-                  </a>
-                </span>
-              ))}
-            </>
-          )} */}
           {date && (
             <>
               <Icon icon="ri:calendar-fill" color="#9ca3af" />

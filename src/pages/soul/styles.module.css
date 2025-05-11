@@ -1,0 +1,136 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.pageContent {
+  display: flex;
+}
+
+.mainContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.headerTitle {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin: 2rem 0 0.5rem;
+}
+
+.separator {
+  display: block;
+  margin: 0 auto;
+  width: calc(100% - 2 * var(--ifm-spacing-horizontal));
+  height: 1px;
+  background-color: var(--ifm-color-emphasis-300);
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+html[data-theme='dark'] .separator {
+  background-color: #fff;
+}
+
+.soulItem {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  position: relative;
+}
+
+.soulItem:last-child {
+  border-bottom: none;
+}
+
+.soulItemTitle {
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  scroll-margin-top: 70px;
+}
+
+.soulItemContent {
+  color: var(--ifm-font-color-base);
+  line-height: 1.7;
+}
+
+.soulItemContent blockquote {
+  border-left: 3px solid var(--ifm-color-primary);
+  margin-left: 0;
+  padding: 0.5rem 0 0.5rem 1rem;
+  color: var(--ifm-color-emphasis-700);
+  background-color: var(--ifm-color-emphasis-100);
+  border-radius: 0 3px 3px 0;
+}
+
+/* Table of Contents Sidebar */
+.tocSidebar {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem);
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem));
+  overflow-y: auto;
+  width: 240px;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.tocTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.5rem;
+}
+
+.tocList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tocItem {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.tocLink {
+  color: var(--ifm-color-emphasis-800);
+  text-decoration: none;
+  display: block;
+  padding: 0.2rem 0;
+  transition: color 0.2s;
+}
+
+.tocLink:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.tocLinkActive {
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 996px) {
+  .tocSidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 570px) {
+  .soulItemTitle {
+    font-size: 1.3rem;
+  }
+} 

@@ -13,8 +13,10 @@ import BlogListPaginator from '@theme/BlogListPaginator'
 import SearchMetadata from '@theme/SearchMetadata'
 import type { Props } from '@theme/BlogTagsPostsPage'
 import BlogPostItems from '@theme/BlogPostItems'
+import BlogPostGridItems from '../BlogPostGridItems'
 import Unlisted from '@theme/Unlisted'
 import Heading from '@theme/Heading'
+import { Icon } from '@iconify/react'
 
 import styles from './styles.module.scss'
 import MyLayout from '../MyLayout'
@@ -66,11 +68,20 @@ function BlogTagsPostsPageContent({
   listMetadata,
 }: Props): JSX.Element {
   const title = useBlogTagsPostsPageTitle(tag)
+  // Force grid view
+  const isGridView = true
+
   return (
     <MyLayout>
       {tag.unlisted && <Unlisted />}
       <header className={clsx(styles.pageHeader)}>
-        <Heading as="h1">{title}</Heading>
+        <div className={styles.headerLeft}>
+          <Link href="/blog" className={styles.backButton}>
+            <Icon icon="ri:arrow-left-line" width="20" height="20" />
+            <span>Back to Blog</span>
+          </Link>
+          <Heading as="h1">{title}</Heading>
+        </div>
         <Link href={tag.allTagsPath}>
           <Translate
             id="theme.tags.tagsPageLink"
@@ -80,12 +91,24 @@ function BlogTagsPostsPageContent({
           </Translate>
         </Link>
       </header>
-      <BlogPostItems items={items} />
-      <BlogListPaginator metadata={listMetadata} />
+      <div className={styles.separator}></div>
+      <div className="row">
+        <div className={'col col--12'}>
+          <>
+            {isGridView && (
+              <div className={styles.blogGrid}>
+                <BlogPostGridItems items={items} />
+              </div>
+            )}
+          </>
+          <BlogListPaginator metadata={listMetadata} />
+        </div>
+      </div>
       <BackToTopButton />
     </MyLayout>
   )
 }
+
 export default function BlogTagsPostsPage(props: Props): JSX.Element {
   return (
     <HtmlClassNameProvider

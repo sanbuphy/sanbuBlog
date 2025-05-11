@@ -1,0 +1,48 @@
+.blogTagWidget {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.tagToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 0;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: var(--ifm-color-emphasis-200);
+  }
+}
+
+.tagsList {
+  margin-top: 1rem;
+  padding: 10px;
+  border-radius: 0;
+  background-color: var(--ifm-card-background-color);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+  }
+}
+
+html[data-theme='dark'] .tagToggle {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-color);
+}
+
+html[data-theme='dark'] .tagsList {
+  background-color: var(--ifm-card-background-color);
+} 

@@ -1,9 +1,7 @@
 ---
 title: 分类和回归是同一种问题吗
 date: 2024-09-07
-authors: sanbu
-tags: [life]
-keywords: [life]
+tags: [think]
 ---
 
 回归是开放空间，分类是固定空间 这个是基于结果来说的视角.

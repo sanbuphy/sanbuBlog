@@ -12,7 +12,6 @@ function Home() {
       <main className="container-wrapper">
         <HomepageBlog />
         <HomepageProject />
-        {/* <HomepageFeatures /> */}
       </main>
     </Layout>
   )

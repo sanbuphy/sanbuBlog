@@ -67,14 +67,6 @@ export default function UserCard({ isNavbar = false }: { isNavbar?: boolean }) {
           <Icon icon="carbon:notebook" width="20" height="20" />
           {count.doc}
         </Link>
-        <Link
-          className={styles.numItem}
-          href="/project"
-          data-tips="project count"
-        >
-          <Icon icon="ph:projector-screen" width="20" height="20" />
-          {count.project}
-        </Link>
       </div>
       <SocialLinks
         style={{

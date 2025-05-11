@@ -25,17 +25,17 @@ export function BlogItem({ post }: { post: BlogPost }) {
       <motion.li
         className={clsx('card', 'margin-bottom--md')}
         key={permalink}
-        initial={{ y: 100, opacity: 0.001 }}
-        whileInView={{ y: 0, opacity: 1, transition: { duration: 0.5 } }}
-        whileHover={{ y: -10, transition: { duration: 0.3 } }}
+        initial={{ opacity: 0.001 }}
+        whileInView={{ opacity: 1, transition: { duration: 0.5 } }}
         viewport={{ once: true }}
+        style={{ borderRadius: 0 }}
       >
         {frontMatter.image && (
           <Link href={permalink} className={styles.image}>
             <Image src={frontMatter.image!} alt={title} img={''} />
           </Link>
         )}
-        <div className={'card__body'}>
+        <div className={'card__body'} style={{ borderRadius: 0 }}>
           <h4>
             <Link href={permalink}>{title}</Link>
           </h4>
@@ -70,15 +70,17 @@ export default function BlogRecent(): JSX.Element {
     <section
       className={clsx('container padding-vert--sm', styles.blogContainer)}
     >
-      <SectionTitle icon="ri:quill-pen-line" href={'/blog'}>
-        <Translate id="homepage.blog.title">近期博客</Translate>
-      </SectionTitle>
+      <div className={styles.sectionHeader}>
+        <SectionTitle href={'/blog'}>
+          Recent Posts
+        </SectionTitle>
+      </div>
       <div ref={ref} className={clsx('row', styles.list)}>
         {posts.map((postGroup, index) => (
           <div className="col col-6 margin-top--sm" key={index}>
             {postGroup.map((post, i) => (
-              <motion.div style={{ y: i / 2 ? y : 0 }}>
-                <BlogItem key={post.id} post={post} />
+              <motion.div key={post.id}>
+                <BlogItem post={post} />
               </motion.div>
             ))}
           </div>

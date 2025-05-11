@@ -1,9 +1,7 @@
 ---
 title: 人生五十年——敦盛
 date: 2023-06-10
-authors: sanbu
 tags: [life]
-keywords: [life]
 ---
 :::info
 据传说中，织田信长最喜欢的能乐。当然我也很喜欢，出自能乐《敦盛》的谣曲。

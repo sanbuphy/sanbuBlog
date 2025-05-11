@@ -1,9 +1,7 @@
 ---
 title: 从RAG知识库反思学习的第一性原理
 date: 2024-03-11
-authors: sanbu
-tags: [life]
-keywords: [life]
+tags: [think]
 ---
 
 # 从RAG知识库反思学习的第一性原理
