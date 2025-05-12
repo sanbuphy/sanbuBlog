@@ -9,7 +9,6 @@
   row-gap: 0.2em;
   align-items: center;
   padding: 1.5em 0.5em;
-  background: #fff;
   border: none;
   border-bottom: 1px solid #000;
   border-radius: 0;
@@ -18,7 +17,6 @@
   margin-bottom: 0;
 
   &:hover {
-    background-color: #fff;
     color: inherit;
     .itemTitle {
       color: inherit;
@@ -53,7 +51,7 @@
       z-index: 100;
       box-shadow: 0 4px 12px rgba(0,0,0,0.12);
       margin-top: 0.5rem;
-      max-width: 350px;
+      max-width: 550px;
       line-height: 1.5;
       p {
         margin-bottom: 0.8rem;
